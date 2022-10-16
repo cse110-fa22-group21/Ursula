@@ -6,8 +6,8 @@ We are a 10 member team working on a CRUD application using HTML, CSS and JavaSc
 We will create a CRUD application using HTML, CSS and JavaScript that will allow users to create, read, update and delete items of their choosing.
 
 ## Team
-- Team Lead - Ji Hoon Kim
-- Team Lead - Michael Ruddy
+- Team Leader - Ji Hoon Kim
+- Team Leader - Michael Ruddy
 - Developer - Linh Ngyuen
 - Developer - Joyce Weng
 - Developer - Moritz Wagner
