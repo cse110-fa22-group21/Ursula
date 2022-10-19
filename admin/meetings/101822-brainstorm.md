@@ -44,12 +44,7 @@ Decide for
 	- Applied company, position, date, etc.
 	- Interview Schedule check
 
-## TODO 
-- Functions and features for the to-do list (if TA approves the idea about to-do list after the meeting on Oct 19th.)
-- Meet again after TA meeting to start completing pitch materials that are due next week.
-
-
-## BRAINSTORMING IDEAS
+## Ranking the BRAINSTORMING IDEAS
 1. To do list for assigning tasks/roles 🌟🌟🌟🌟🌟🌟🌟
 - Could be specific to software engineering management
 - Create list of tasks
@@ -74,3 +69,8 @@ Decide for
 - Track application response 
 - Applied company, position, date, etc.
 - Interview Schedule check
+
+## TODO 
+- Functions and features for the to-do list (if TA approves the idea about to-do list after the meeting on Oct 19th.)
+- Meet again after TA meeting to start completing pitch materials that are due next week.
+
