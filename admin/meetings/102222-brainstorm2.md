@@ -79,10 +79,9 @@ The Create, Read, Update, Delete features are implemented nicely. The use of sta
 - Backend / Frontend - Melvyn Tan
  
 ## To-Do
-Make sure you have joined the workspace
-https://join.slack.com/t/team21-ursula/shared_invite/zt-1hxxl0qvl-K537rmbaB4AMxrmUhOElRg
-Daily stand ups
-What did you do yesterday?
-What will you do today?
-Anything blocking your progress?
-Additional comments?
+- Make sure you have joined the workspace https://join.slack.com/t/team21-ursula/shared_invite/zt-1hxxl0qvl-K537rmbaB4AMxrmUhOElRg
+- Daily stand ups
+1. What did you do yesterday?
+2. What will you do today?
+3. Anything blocking your progress?
+4. Additional comments?
