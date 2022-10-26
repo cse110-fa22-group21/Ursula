@@ -19,13 +19,13 @@ https://miro.com/app/board/uXjVPLcrIG4=/
 Team 21
 
 ## Goals for Today
-[x] Diagram for Flow Chart on how website functions
-[x] User personas
-[x] Decide on Standup template
-[x] Functions and features for the to-do list?
-[x] Ranking features
-[x] Surveying Competition
-[x] Color theme
+- [x] Diagram for Flow Chart on how website functions
+- [x] User personas
+- [x] Decide on Standup template
+- [x] Functions and features for the to-do list?
+- [x] Ranking features
+- [x] Surveying Competition
+- [x] Color theme
 
 ## Diagram for Flow Chart
 
