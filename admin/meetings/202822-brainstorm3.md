@@ -1,0 +1,78 @@
+# Brainstorming Meeting 3 10/28/2022
+
+## Meeting Time & Location
+3pm CSE Basement
+
+## Diagrams/Tools Used
+None
+
+## Minutes
+3pm - 3:45pm
+
+## Attendance List
+1. Melvyn Tan
+2. Tianya Zhan
+3. Vicky Chou
+4. Joyce Weng
+5. Ji Hoon Kim
+6. Michael Ruddy
+7. Nikki Rejai
+8. Moritz Wagner
+9. Ziting Xiong
+10. Linh Nguyen
+
+## Team Number
+Team 21
+
+## Goals for Today
+- [x] Go through feedback given by TA in the TA meeting on 10262022
+- [x] Discuss overview of features we want to have in our app
+- [x] Updating previously brainstormed ideas
+- [x] Decide on Pitch team and Pipeline team
+
+## Feedback By TA
+Slight miscommunication in the team regarding the CRUD app. It was brainstormed to be for a single person not for multiple people to share to add tasks to it.
+We must enforce local-first by making the CRUD app to be used for a single person and then if given extra time we can implement it to be for multiple people to use.
+
+## Features and Updating Brainstorming Ideas
+Application is for any individual that wants to organize their tasks 
+Could be used for software engineers as an example
+
+3 Pages: List, Log, Analytics
+### 1. List
+Creating tasks & hours estimated for it to take
+Adds it to list, sorted by type of task, and task status, or due date
+Number of hours it took to complete vs time from task in progress to completed and give difference after complete
+
+#### Types of tasks: 
+Have different status for tasks: planned, in progress, complete, deleted
+Section for feedback/notes on a task that you can update
+
+### 2. Log
+When tasks are completed, they are deleted from list and move to log
+
+### 3. Analytics
+Can graph the efficiency of tasks on if they were completed within expected time
+
+## Accessibility ideas:
+1. Tab navigation (moving without mouse)
+2. TTS(Text-to-Speech) function (for blind)
+3. Contrast of light and shade (implemented in two versions) for color blindness
+4. Implement responsive apps by device (cell phones, tablets, PCs)
+
+## Other Features
+Implementation of work order, alarm function, repeat setting at creation (cycle)
+
+## Pitch Team:
+1. Michael
+2. Nikki
+3. Ji Hoon
+4. Linh
+
+## Pipeline Team:
+1. Melvyn
+2. Vicky
+3. Tianya
+4. Joyce
+5. Ziting
+6. Moritz
