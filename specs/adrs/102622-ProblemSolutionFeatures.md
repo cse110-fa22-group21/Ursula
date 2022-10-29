@@ -1,4 +1,5 @@
 # Problem Definition, Solution and potential Features & Priorities
+# THIS SHOULD BE AN ADR IN MARKDOWN TODO
 
 ## Problem
 Aspiring software developers such as ourselves are trying to experience project management in a group for the first time but are having difficulty managing the tasks that each person has to do.
