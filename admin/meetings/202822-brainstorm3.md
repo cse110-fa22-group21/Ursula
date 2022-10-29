@@ -31,8 +31,7 @@ Team 21
 - [x] Decide on Pitch team and Pipeline team
 
 ## Feedback By TA
-Slight miscommunication in the team regarding the CRUD app. It was brainstormed to be for a single person not for multiple people to share to add tasks to it.
-We must enforce local-first by making the CRUD app to be used for a single person and then if given extra time we can implement it to be for multiple people to use.
+After meeting with the TA on Wednesday 10262022, we decided we should have another brainstorming meeting to go through the feedback and make sure everyone is on the same page as to what the CRUD app should be. Slight miscommunication in the team regarding the CRUD app. It was brainstormed to be for a single person not for multiple people to share to add tasks to it. We must enforce local-first by making the CRUD app to be used for a single person and then if given extra time we can implement it to be for multiple people to use.
 
 ## Features and Updating Brainstorming Ideas
 Application is for any individual that wants to organize their tasks 
