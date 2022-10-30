@@ -4,7 +4,7 @@
 3pm CSE Basement
 
 ## Diagrams/Tools Used
-None
+Created fat marker design of website. View it [here](https://github.com/cse110-fa22-group21/cse110-fa22-group21/blob/main/specs/interface/rough/fatMarkerDesign.pdf) or at specs/interface/rough/fatMarkerDesign.pdf
 
 ## Minutes
 3pm - 3:45pm
@@ -28,6 +28,7 @@ Team 21
 - [x] Go through feedback given by TA in the TA meeting on 10262022
 - [x] Discuss overview of features we want to have in our app
 - [x] Updating previously brainstormed ideas
+- [x] Create fat marker design for website.
 - [x] Decide on Pitch team and Pipeline team
 
 ## Feedback By TA
@@ -61,6 +62,9 @@ Can graph the efficiency of tasks on if they were completed within expected time
 
 ## Other Features
 Implementation of work order, alarm function, repeat setting at creation (cycle)
+
+## Fat Marker Design
+Created fat market design of website using iPad and apple Pencil. View the design [here](https://github.com/cse110-fa22-group21/cse110-fa22-group21/blob/main/specs/interface/rough/fatMarkerDesign.pdf) or at specs/interface/rough/fatMarkerDesign.pdf.
 
 ## Pitch Team:
 1. Michael
