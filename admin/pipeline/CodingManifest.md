@@ -40,6 +40,6 @@ Every major part of the website gets its own branch, for example the Header or t
 Don't delete the branch, as it might be needed for bugfixes down the line. 
 
 Name the branches according to the following types:
-* Bugs: `bugs-<name>`
+* Bugs: `bug-<name>`
 * Features: `feature-<name>`
 * Issues: `WIP-<name>`
