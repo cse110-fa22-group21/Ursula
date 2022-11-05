@@ -61,17 +61,19 @@ We will be using the **camelCase** naming convention. <br>
 Constants will be in **UPPERCASE**. <br>
 `ELEMENTS = 100`, `TASKS = 50`, `PI = 3.41...`
 
-4. Indentation <br>
-1 Tab inside functons or use VS Code Shortcut <br>
-
-5. Curly Braces { } <br>
-Curly Braces will be on the same line of every piece of code that is required to use `{` <br>
-`if {`, `function myFunction() {`, `else {`
-
-6. Syntax Statements  <br>
+4. Syntax Statements  <br>
 Every line of code should end with a semi-colon, including objects when necessary. <br>
 `CONST NEWOBJECT = object;`, `let numTasks = 10;`, `var updated = true;` 
 
-7. Spacing Around Operations <br>
+5. Spacing Around Operations <br>
 There should be spaces between the operators `= + - * /` <br>
 `let x = 1 + 2;`, `let y = 'my' + 'string';`, `let z = true;`
+
+## Indentation and Curly Brackets
+
+1. Indentation <br>
+1 Tab inside functons or use VS Code Shortcut <br>
+
+2. Curly Braces { } <br>
+Curly Braces will be on the same line of every piece of code that is required to use `{` <br>
+`if {`, `function myFunction() {`, `else {`
