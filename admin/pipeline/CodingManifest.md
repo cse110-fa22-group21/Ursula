@@ -48,7 +48,11 @@ Name the branches according to the following types:
 Each pull request will be reviewed and approved by 2 other reviewers. 
 
 ### Project Board
-Use the To Do List board on Github Projects tab to update status of issues. Add issues to each stage in the project board in order of priority. 
+Use the To Do List board on Github Projects tab to update status of issues. Sort issues in each stage of the project board in order of priority. 
+1. Go to Issues.
+2. At the right, select Projects and select `To Do List` project board.
+3. Below, select `Status` and select the corresponding status.
+
 
 ## Programming Protocols
 
