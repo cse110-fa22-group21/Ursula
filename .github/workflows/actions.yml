@@ -3,7 +3,10 @@ name: HTML Check
 run-name: ${{ github.actor }} is trying HTML Check
 
 on:
-  branches: ["bug-*", "feature-*", "WIP-*"]
+ push:
+   branches: [ "main", "bug-*", "feature-*", "WIP-*" ]
+ pull_request:
+   branches: [ "main", "bug-*", "feature-*", "WIP-*" ]
 
 jobs:
   build:
