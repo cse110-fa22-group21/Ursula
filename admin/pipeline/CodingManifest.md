@@ -36,5 +36,10 @@ Please use these labels when requesting or reporting changes to the codebase. Yo
 > (js)(feature) Analytics - Implement sorting of tasks
 
 ### Branches
-Every major part of the website gets its own branch, for example the Header or the table in the To-Do-List. Then, a branch can be created for each feature (name starts with "feature - ") where individual features can be developed. Once the feature is complete, create a pull request for the branch and merge. \
-Don't delete the branch, as it might be needed for bugfixes down the line.
+Every major part of the website gets its own branch, for example the Header or the table in the To-Do-List. Then, a branch can be created for each feature (name starts with `feature-` as shown below) where individual features can be developed. Once the feature is complete, create a pull request for the branch and merge. \
+Don't delete the branch, as it might be needed for bugfixes down the line. 
+
+Name the branches according to the following types:
+* Bugs: `bugs-<name>`
+* Features: `feature-<name>`
+* Issues: `WIP-<name>`
