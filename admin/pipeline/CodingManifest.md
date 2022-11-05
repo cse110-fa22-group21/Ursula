@@ -71,9 +71,22 @@ There should be spaces between the operators `= + - * /` <br>
 
 ## Indentation and Curly Brackets
 
-1. Indentation <br>
+1. Auto Indentation <br>
 1 Tab inside functons or use VS Code Shortcut <br>
 
 2. Curly Braces { } <br>
 Curly Braces will be on the same line of every piece of code that is required to use `{` <br>
 `if {`, `function myFunction() {`, `else {`
+
+## HTML
+Write comments when necessary especially when creating `<section> <div>`. <br>
+`<!-- This section will contain the main table of the page -->` <br>
+ `<section>` <br>
+    `<p> Testing </p>` <br>
+ `</section>` <br>
+ 
+ ## CSS
+ Write comments for each section <br>
+ 
+ ## JavaScript
+ Write comments whenever necessary, for example comment complicated looking code.
