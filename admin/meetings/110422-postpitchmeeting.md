@@ -106,3 +106,7 @@ Allow task status to change on click so that it pops up a short drop down list
 - Check Syntax?
 - CSS
 - Validate/Lint (Check for programming protocols)
+
+## TODO
+1. Finalize and complete implementation of pipeline.
+2. Complete CSS by the end of the week.
