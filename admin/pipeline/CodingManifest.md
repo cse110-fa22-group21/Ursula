@@ -3,8 +3,8 @@
 1. Github
     1. Issues
     2. Branches
-    3. Pull requests and merging
-    4. Project board
+    3. Pull Requests & Branch Protection
+    4. Project Board
 2. Programming Protocols
    1. Naming Conventions
    2. Indentation and Curly Brackets
@@ -44,6 +44,11 @@ Name the branches according to the following types:
 * Features: `feature-<name>`
 * Issues: `WIP-<name>`
 
+### Pull Requests & Branch Protection
+Each pull request will be reviewed and approved by 2 other reviewers. 
+
+### Project Board
+Use the To Do List board on Github Projects tab to update status of issues. Add issues to each stage in the project board in order of priority. 
 
 ## Programming Protocols
 
