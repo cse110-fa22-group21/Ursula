@@ -4,21 +4,24 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>Ursula's To Do List</title>
+    <link href="index.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Abel&family=Rajdhani&family=Silkscreen&display=swap" rel="stylesheet">
   </head>
   <body>
     <header>
         <!-- Navigation for the page -->
         <nav>
+            <a href="index.html"><img src="./admin/branding/My project.png"></a>
             <ul>
-                <li><a href="index.html">Ursula's To Do List</a></li>
                 <li><a href="log.html">View Log</a></li>
                 <li><a href="analytics.html">View Analytics</a></li>
             </ul>
         </nav>
     </header>
+
     <main>
         <!-- Page Identifier Name and Add Button-->
-        <section>
+        <section id="pageIdentifier">
             <h1>To Do List</h1>
             <button>Add</button>
         </section>
@@ -28,16 +31,23 @@
                 <!-- DO NOT TOUCH -->
                 <thead>
                     <tr>
-                    <th>Name</th>
-                    <th>Estimated Time</th>
-                    <th>Status</th>
-                    <th>Action</th>
+                        <th id="theadName">Name</th>
+                        <th id="theadTime">Estimated Time</th>
+                        <th id="theadStatus">Status</th>
+                        <th id="theadAction">Action</th>
                     </tr>
                 </thead>
                 <!-- DO NOT TOUCH -->
                 <tbody>
                     <!-- Data Goes Here-->
                     <!-- POPULATE DATA INTO THIS TBODY -->
+                    <!-- TR FOLLOWED BY TD -->
+                    <tr>
+                        <td>Task 1</td>
+                        <td>2 hr 30 min</td>
+                        <td>In Progress</td>
+                        <td>Edit</td>
+                    </tr>
                 </tbody>
               </table>
         </section>
