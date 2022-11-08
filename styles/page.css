@@ -49,4 +49,8 @@ td {
     padding: 1rem;
     text-align: center;
 }
+
+#editIcon {
+    width: 30px;
+}
 /* End of Table styling */
