@@ -11,15 +11,14 @@
     /* font-size: 2rem; */
     display: inline;
     margin-left: 35%;
-}
-
-/* Sets */
-#pageIdentifier > button {
+    /* Sets Button to be covered by the header */
     z-index: -1;
 }
 
 /* End of Page Identifier Name */
 
+
+/* End of Button Styling */
 .add {
     font-family: 'Rajdhani', sans-serif;
     background-color: #FAFBFC;
