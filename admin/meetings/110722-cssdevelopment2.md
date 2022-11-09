@@ -4,7 +4,7 @@
 6pm CSE Basement
 
 ## Minutes
-6pm - 
+6pm - 8pm
 
 ## Attendance List
 - [ ] Ji Hoon Kim
