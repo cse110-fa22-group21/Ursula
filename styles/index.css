@@ -1,0 +1,71 @@
+/*Load Colors from colors.css*/
+@import "colors.css";
+
+/* Page Identifier Name */
+#pageIdentifier{
+    text-align: left;
+}
+
+#pageIdentifier > *  {
+    /* Font size of page identifier + button */
+    display: inline;
+    margin-left: 35%;
+    /* Sets Button and h1 tag to be covered by the header */
+    /* z-index: -1; */
+}
+/* End of Page Identifier Name */
+
+/* Button Styling */
+.add {
+    font-family: 'Rajdhani', sans-serif;
+    background-color: #FAFBFC;
+    border: 1px solid #dacae1;
+    border-radius: 6px;
+    box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+    box-sizing: border-box;
+    color: #24292E;
+    cursor: pointer;
+    display: inline-block;
+    padding: 6px 16px;
+    position: relative;
+    transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    white-space: nowrap;
+    word-wrap: break-word;
+}
+
+/* .edit {
+    font-family: 'Rajdhani', sans-serif;
+    background-color: var(--tableBackgroundColor);
+    background-image: url('/images/edit-button.png');
+    border: 1px solid #000000;
+    border-radius: 6px;
+    box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+    box-sizing: border-box;
+    color: #24292E;
+    cursor: pointer;
+    display: inline-block;
+    padding: 6px 16px;
+    position: relative;
+    transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    white-space: nowrap;
+    word-wrap: break-word;
+    background-image: url('/images/edit-button.png');
+    background-size: 100px 130px;
+    height: 134px;  
+    width: 104px;
+} */
+  
+button:hover {
+    background-color: #dacae1;
+    text-decoration: none;
+    transition-duration: 0.1s;
+}
+/* End of Button Styling */
