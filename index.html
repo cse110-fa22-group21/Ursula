@@ -35,17 +35,16 @@
                 <h2 id="addNewTask">Add New To Do Task</h2>
                 <label for="taskNameField">Task Name:</label>
                 <input type="text" id="taskNameField" name="taskName" required><br>
-                <label for="timeField">Estimated time required:</label>
-                <input type="number" id="hour" name="minute" required>
+                <label>Estimated time required:</label>
+                <input type="number" id="hourField" name="minute" required>
                 <label for="hourField">hours</label>
-                <input type="number" id="minutes" name="hour" required>
+                <input type="number" id="minField" name="hour" required>
                 <label for="minField">minutes</label> <br>
                 <label for="typeTaskField">Type of Task (optional)</label>
                 <input type="text" id="typeTaskField" name="typeTaskName"><br>
                 <div id="textArea">
                     <label for="noteField">Notes: </label>
-                    <!-- cols="50" rows="5" -->
-                    <textarea type="text" id="noteField" name="note" required></textarea><br>
+                    <textarea id="noteField" name="note" required></textarea><br>
                 </div>
                 <button class="submitButton" id="subButton">Submit</button>
                 <button type="button" id="cancelButton">Cancel</button>

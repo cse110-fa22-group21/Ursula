@@ -96,7 +96,7 @@ button:hover, #addButton:hover {
     padding: 1%;
 }
 
-#hour, #minutes {
+#hourField, #minField {
     max-width: 5%;
 }
 
