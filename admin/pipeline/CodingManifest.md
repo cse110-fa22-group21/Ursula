@@ -87,15 +87,32 @@ There should be spaces between the operators `= + - * /` <br>
 Curly Braces will be on the same line of every piece of code that is required to use `{` <br>
 `if {`, `function myFunction() {`, `else {`
 
-## HTML
-Write comments when necessary especially when creating `<section> <div>`. <br>
-`<!-- This section will contain the main table of the page -->` <br>
- `<section>` <br>
-    `<p> Testing </p>` <br>
- `</section>` <br>
+## Comments 
+### Function/Method Styling
+Provide a brief description of 
+1. What the function/method does.
+2. Declare any paramenters and return variables.
+3. Each parameter and return variable should have the data type specified. <br>
+```
+Adds two numbers.
+@param {number} num1 The first number to add.
+@param {number} num2 The second number to add.
+@return {number} The result of adding num1 and num2.
+function bigThing() {
+    // ...
+}
+```
+### HTML
+Write comments when necessary especially when creating <br>
+```
+<!-- This section will contain the main table of the page -->
+ <section>
+    <p> Testing </p>
+ </section>
+ ```
  
- ## CSS
- Write comments for each section <br>
+### CSS
+Write comments for each section <br>
  
- ## JavaScript
- Write comments whenever necessary, for example comment complicated looking code.
+### JavaScript
+Write comments whenever necessary, for example comment complicated looking code.
