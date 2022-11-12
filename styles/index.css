@@ -16,7 +16,7 @@
 /* End of Page Identifier Name */
 
 /* Button Styling */
-.add {
+#addButton {
     font-family: 'Rajdhani', sans-serif;
     background-color: #FAFBFC;
     border: 1px solid #dacae1;
@@ -62,10 +62,60 @@
     height: 134px;  
     width: 104px;
 } */
-  
-button:hover {
+
+button:hover, #addButton:hover {
     background-color: #dacae1;
     text-decoration: none;
     transition-duration: 0.1s;
 }
+
+
 /* End of Button Styling */
+
+/* Popup Form Styling */
+#popupForm {
+    display: none;
+    background-color: var(--tableBackgroundColor);
+    position: fixed;
+    margin-left: auto;
+    margin-right: auto;
+    right: 25%;
+    left: 25%;
+    border: 2px solid black;
+    z-index: 9;
+  }
+
+#popupForm > * {
+    padding: 2%;
+    font-size: medium;
+    padding-top: 2%;
+}
+
+#popupForm input {
+    margin: 2%;
+    padding: 1%;
+}
+
+#hour, #minutes {
+    max-width: 5%;
+}
+
+#addNewTask {
+    text-align: center;
+}
+
+#cancelButton, #subButton {
+    float: right;
+    margin: 2%;
+    padding: 1%;
+}
+
+textarea {
+    width: 80%;
+    height: 5vh;
+}
+
+#textArea * {
+    vertical-align: middle;
+}
+/* Popup Form Styling Completed */
