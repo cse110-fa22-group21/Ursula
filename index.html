@@ -8,6 +8,7 @@
     <link href="styles/header.css" rel="stylesheet">
     <link href="styles/footer.css" rel="stylesheet">
     <link href="styles/index.css" rel="stylesheet">
+    <script src="scripts/add.js" type="module"></script>
     <link href="https://fonts.googleapis.com/css2?family=Abel&family=Rajdhani&family=Silkscreen&display=swap" rel="stylesheet">
   </head>
   <body>
@@ -26,8 +27,30 @@
         <!-- Page Identifier Name and Add Button-->
         <section id="pageIdentifier">
             <h1>To Do List</h1>
-            <button class = "add">Add</button>
+            <button id="addButton">Add</button>
         </section>
+        <!-- Create Form that will be hidden initially but will show when add button clicked-->
+        <div id="popupForm">
+            <form>
+                <h2 id="addNewTask">Add New To Do Task</h2>
+                <label for="taskNameField">Task Name:</label>
+                <input type="text" id="taskNameField" name="taskName" required><br>
+                <label>Estimated time required:</label>
+                <input type="number" id="hourField" name="minute" required>
+                <label for="hourField">hours</label>
+                <input type="number" id="minField" name="hour" required>
+                <label for="minField">minutes</label> <br>
+                <label for="typeTaskField">Type of Task (optional)</label>
+                <input type="text" id="typeTaskField" name="typeTaskName"><br>
+                <div id="textArea">
+                    <label for="noteField">Notes: </label>
+                    <textarea id="noteField" name="note" required></textarea><br>
+                </div>
+                <button class="submitButton" id="subButton">Submit</button>
+                <button type="button" id="cancelButton">Cancel</button>
+            </form>
+        </div>
+
         <!-- Main Table Where Data Will Go In-->
         <section>
             <table>
