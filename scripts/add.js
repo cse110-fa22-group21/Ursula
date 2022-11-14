@@ -7,7 +7,7 @@ document.getElementById("cancelButton").addEventListener("click", closeForm);
 // TODO styling for function methods
 /*
  * Add button function
- * Once the use click on the add button, the popup form should pop up
+ * Once the use click on the add button, the popup form should pops up
  */
 function openForm() {
     document.getElementById("popupForm").style.display = "block";
