@@ -3,7 +3,30 @@ class ToDoTask extends HTMLElement {
     // the element is written into the DOM directly as <task>
     constructor() {
         super(); // Inherit everything from HTMLElement
+
+        this.attachShadow({mode:"open"});
         const tableRow = document.createElement("tr");
+        const style = document.createElement("style");
+        style.innerText = `
+
+        tr>td {
+            padding: 1rem;
+            text-align: center;
+        }
+        button{
+            background-color: transparent;
+            background-repeat: no-repeat;
+            border: none;
+            cursor: pointer;
+            overflow: hidden;
+            outline: none;
+        }
+        #editIcon {
+            width: 30px;
+        }
+        `
+        this.shadowRoot.append(style, tableRow);
+        
         /*
         this.attachShadow({ mode: "open" });
         this.shadowRoot.append(tableRow);
@@ -33,8 +56,10 @@ class ToDoTask extends HTMLElement {
         // If nothing was passed in, return
         if (!data) return;
 
-        // const tableRow = this.shadowRoot.querySelector("tr");
-        const tableRow = document.getElementsByTagName("tr")[1];
+        //const tableRow = document.createElement("tr");
+        
+        const tableRow = this.shadowRoot.querySelector("tr");
+        
         tableRow.innerHTML = `<td>${data.name}</td>
         <td>${data.hours} hr ${data.minutes} min</td>
         <td>${data.status}</td>

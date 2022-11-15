@@ -10,7 +10,7 @@ window.addEventListener('DOMContentLoaded', init);
 function init() {
   let tasks = getTasksFromStorage();
   // Add each recipe to the <main> element
-  addRecipesToDocument(tasks);
+  addTaskToDocument(tasks);
   // Add the event listeners to the form elements
   initFormHandler();
 }
@@ -40,23 +40,24 @@ function closeForm() {
 
 // -------------------------- ADD DATA STORAGE --------------------------------------
 /**
- * Takes in an array of recipes and for each recipe creates a
+ * Takes in an array of tasks and for each recipe creates a
  * new <recipe-card> element, adds the recipe data to that card
  * using element.data = {...}, and then appends that new recipe
  * to <main>
- * @param {Array<Object>} recipes An array of recipes
+ * @param {Array<Object>} tasks An array of recipes
  */
- function addRecipesToDocument(tasks) {
+ function addTaskToDocument(tasks) {
     // A10. TODO - Get a reference to the <main> element
     const ref = document.querySelector("tbody");
     // A11. TODO - Loop through each of the recipes in the passed in array,
     //            create a <recipe-card> element for each one, and populate
     //            each <recipe-card> with that recipe data using element.data = ...
     //            Append each element to <main>
-  
+
     for (let i = 0; i < tasks.length; i++)
     {
       let ele = document.createElement("to-do-task");
+
   
       ele.data = tasks[i];
       ref.append(ele);
@@ -99,13 +100,13 @@ function closeForm() {
       // define task status
       taskData.status = "In Progress";
       taskData.id = ++items; 
-      console.log(items);
-      console.log('test', taskData);
+      //console.log(items);
+      //console.log('test', taskData);
       const task = document.createElement("to-do-task");
       task.data = taskData;
 
-      let tbody = document.querySelector("tbody").append(task);
-      document.getElementsByTagName("main")[0].append(tbody);
+      document.querySelector("tbody").append(task);
+      //document.getElementsByTagName("main")[0].append(tbody);
       
       // save data to global variable
       data.push(taskData);
@@ -113,6 +114,6 @@ function closeForm() {
       let tasks = getTasksFromStorage();
       tasks.push(taskData);
       saveTaskToStorage(tasks);
-      console.log('tasks', tasks)
+      //console.log('tasks', tasks)
     })
 }
