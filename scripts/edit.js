@@ -16,7 +16,7 @@ function openEditForm() {
  * Cancel Edit button function
  * Once the use click on the button, the edit popup form should be closed
  */
-function closeEditForm(id) {
+function closeEditForm() {
     document.getElementById(`editForm`).style.display = "none";
 }
 

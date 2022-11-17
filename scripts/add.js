@@ -1,7 +1,7 @@
 // Global Variables
 var data = [];
 // TODO: consider another array to store deleted tasks
-var deleted = [];
+// var deleted = [];
 
 // Run the init() function when the page has loaded
 window.addEventListener('DOMContentLoaded', init);
