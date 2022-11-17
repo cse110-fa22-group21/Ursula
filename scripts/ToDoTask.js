@@ -8,6 +8,10 @@ class ToDoTask extends HTMLElement {
 
         // this.attachShadow({mode:"open"});
         // const tableRow = document.createElement("tr");
+
+        // The css style is used only if shadow dom is used
+        // it is kept in case shadow dom is needed in the future
+        /*
         const style = document.createElement("style");
         style.innerText = `
 
@@ -32,7 +36,7 @@ class ToDoTask extends HTMLElement {
         tr {
             display: inherit;
         }`;
-
+        */
         // this.shadowRoot.append(tableRow, style);
     }
 
