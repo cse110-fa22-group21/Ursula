@@ -17,7 +17,6 @@
 
 /* Button Styling */
 button {
-    font-family: 'Rajdhani', sans-serif;
     color: var(--btnTextColor);
     border: 1px solid var(--btnBorderColor);
     border-radius: 6px;
