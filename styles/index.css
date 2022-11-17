@@ -1,17 +1,13 @@
 /*Load Colors from colors.css*/
 @import "colors.css";
 
-/* Page Identifier Name */
-#pageIdentifier{
-    text-align: left;
-}
-
+/* Page Identifier*/
 #pageIdentifier > *  {
     /* Font size of page identifier + button */
     display: inline;
-    margin-left: 35%;
+    margin-left: 5vw;
 }
-/* End of Page Identifier Name */
+/* End of Page Identifier*/
 
 
 
@@ -67,6 +63,7 @@ button:hover {
     vertical-align: middle;
     white-space: nowrap;
     word-wrap: break-word;
+    margin-left: 10vw;
 }
 /* End of Button Styling */
 

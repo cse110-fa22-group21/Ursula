@@ -1,0 +1,36 @@
+/*Specific CSS overwrites for mobile devices (low width screens)*/
+/*We should not change general elements in here, just positioning and flows*/
+@media only screen and (max-width: 480px), only screen and (max-device-width: 480px) {
+
+    header img {
+        margin-top: 0.5rem;
+        margin-left: 10vw;
+        height: 80px;
+    }
+
+    nav > ul {
+        padding: 15px 15px;
+        text-align: center;
+    }
+
+    body {
+        font-size: 1.4rem;
+    }
+
+    #pageIdentifier {
+        margin-top: 7rem;
+    }
+
+    table {
+        font-size: 1.1rem;
+        width: 100%;
+    }
+
+    th{
+        padding: 0.5rem;
+    }
+
+    td {
+        padding: 0.5rem;
+    }
+}
