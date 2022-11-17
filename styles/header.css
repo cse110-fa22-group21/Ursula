@@ -13,8 +13,9 @@ header {
 }
 
 header img {
-    height: 150px;
-    margin-left: 2rem;
+    height: 120px;
+    margin-left: 6rem;
+    margin-top: 1rem;
 }
 
 header * {
