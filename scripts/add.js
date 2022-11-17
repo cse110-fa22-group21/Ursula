@@ -146,3 +146,5 @@ function initFormHandler() {
     saveTaskToStorage(tasks);
   })
 }
+
+export {getTasksFromStorage, saveTaskToStorage};
