@@ -1,3 +1,6 @@
+// Imports
+import { openEditForm } from "./edit.js";
+
 // Global Variables
 var data = [];
 // TODO: consider another array to store deleted tasks
@@ -57,7 +60,6 @@ function generateUniqueID() {
  * @param {Array<Object>} tasks An array of recipes
  */
 function addTaskToDocument(tasks) {
-
   for (let i = 0; i < tasks.length; i++) {
     addTask(tasks[i]);
   }
