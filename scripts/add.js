@@ -84,8 +84,12 @@ function saveTaskToStorage(tasks) {
   localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
-/** STORE DATA FROM TASK POPUP */
-
+/** STORE DATA FROM TASK POPUP 
+ * Initializes the handler function when the task form is submitted.
+ * 
+ * Task data is populated from each input in the form, generated with a unique ID, and  
+ * assigned the initial status. The new task is then added into local storage.
+ */
 function initFormHandler() {
   // Get data from task popup form
   const form = document.querySelector("form");
@@ -96,15 +100,13 @@ function initFormHandler() {
     for (const key of formData.keys()) {
       taskData[key] = formData.get(key);
     }
-    // define task status
-    taskData.status = "Planned";
 
+    taskData.status = "Planned";
     taskData.id = generateUniqueID();
 
     const task = document.createElement("to-do-task");
     task.data = taskData;
-    task.style.cssText = "display: inherit";
-
+    
     // save data to global variable
     data.push(taskData);
 
