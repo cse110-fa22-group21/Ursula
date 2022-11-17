@@ -59,16 +59,45 @@ function generateUniqueID() {
 function addTaskToDocument(tasks) {
 
   for (let i = 0; i < tasks.length; i++) {
-    let ele = document.createElement("to-do-task");
-
-    ele.data = tasks[i];
+    addTask(tasks[i]);
   }
 }
 
+
+ /**
+  * Populate the table using the data object. 
+  * 
+  * @param {Object} data - The data to pass into the <task>, must be of the
+  *                        following format:
+  *                        {
+  *                          "id": "number",
+  *                          "name": "string",
+  *                          "hours": "number",
+  *                          "minutes": "number",
+  *                          "type": "string",
+  *                          "status": "string",
+  *                          "notes": "string"
+  *                        }
+  */
+function addTask(data){
+  // populate data in the table
+  const tableRow = document.createElement("tr");
+
+  // The information from data is added following the below format
+  tableRow.innerHTML = `<td>${data.name}</td>
+  <td>${data.hours} hr ${data.minutes} min</td>
+  <td>${data.status}</td>
+  <td><button class="editButton" id="editButton${data.id}">
+  <img id="editIcon" src="admin/branding/edit-icon.svg" alt="Edit icon button for task ${data.id}"></button></td>`;
+
+  document.body.querySelector('tbody').append(tableRow);
+  document.getElementById(`editButton${data.id}`).onclick = openEditForm;
+}
+
 /**
- * Reads 'to-do-tasks' from localStorage and returns an array of
+ * Reads 'tasks' from localStorage and returns an array of
  * all of the tasks found. If nothing is found in localStorage for
- * 'to-do-tasks', an empty array is returned.
+ * 'tasks', an empty array is returned.
  * @returns {Array<Object>} An array of recipes found in localStorage
  */
 function getTasksFromStorage() {
@@ -76,8 +105,8 @@ function getTasksFromStorage() {
 }
 
 /**
- * Takes in an array of to-do-task, converts it to a string, and then
- * saves that string to 'to-do-task' in localStorage
+ * Takes in an array of tasks, converts it to a string, and then
+ * saves that string to 'tasks' in localStorage
  * @param {Array<Object>} tasks An array of recipes
  */
 function saveTaskToStorage(tasks) {
@@ -101,9 +130,8 @@ function initFormHandler() {
 
     taskData.id = generateUniqueID();
 
-    const task = document.createElement("to-do-task");
-    task.data = taskData;
-    task.style.cssText = "display: inherit";
+    //populate the table 
+    addTask(taskData);
 
     // save data to global variable
     data.push(taskData);
