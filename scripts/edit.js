@@ -8,14 +8,16 @@ document.getElementById('cancelEditButton').addEventListener("click", closeEditF
  * Open Edit button function
  * Once the use click on the add button, the edit popup form should pops up
  */
-function openEditForm() {
-    document.getElementById("editForm").style.display = "block";
+function openEditForm(event) {
+    document.getElementById(`editForm`).style.display = "block";
 }
 
 /*
  * Cancel Edit button function
  * Once the use click on the button, the edit popup form should be closed
  */
-function closeEditForm() {
-    document.getElementById("editForm").style.display = "none";
+function closeEditForm(id) {
+    document.getElementById(`editForm`).style.display = "none";
 }
+
+export { openEditForm, closeEditForm };

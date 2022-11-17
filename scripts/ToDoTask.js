@@ -1,3 +1,5 @@
+import { openEditForm } from "./edit.js";
+
 class ToDoTask extends HTMLElement {
     // Called once when document.createElement('task') is called, or
     // the element is written into the DOM directly as <task>
@@ -51,7 +53,7 @@ class ToDoTask extends HTMLElement {
     *                          "type": "string",
     *                          "status": "string",
     *                          "notes": "string"
-    *                        }
+    *                        }f
     */
     set data(data) {
         // If nothing was passed in, return
@@ -63,9 +65,11 @@ class ToDoTask extends HTMLElement {
         tableRow.innerHTML = `<td>${data.name}</td>
         <td>${data.hours} hr ${data.minutes} min</td>
         <td>${data.status}</td>
-        <td><button class="editButton" id="editButton${data.id}"><img id="editIcon" src="admin/branding/edit-icon.svg" alt="Edit icon button for task ${data.id}"></button></td>`;
+        <td><button class="editButton" id="editButton${data.id}">
+        <img id="editIcon" src="admin/branding/edit-icon.svg" alt="Edit icon button for task ${data.id}"></button></td>`;
 
         document.body.querySelector('tbody').append(tableRow);
+        document.getElementById(`editButton${data.id}`).onclick = openEditForm;
     }
 }
 

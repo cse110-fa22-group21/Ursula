@@ -1,8 +1,7 @@
 // Global Variables
 var data = [];
-var items = 0;
 // TODO: consider another array to store deleted tasks
-
+var deleted = [];
 
 // Run the init() function when the page has loaded
 window.addEventListener('DOMContentLoaded', init);
@@ -30,6 +29,7 @@ document.getElementById("cancelButton").addEventListener("click", closeForm);
 function openForm() {
   document.getElementById("popupForm").style.display = "block";
 }
+
 /*
  * Cancel button function
  * Once the user clicks on the button, the popup form should be closed
@@ -40,6 +40,15 @@ function closeForm() {
 
 
 // -------------------------- ADD DATA STORAGE --------------------------------------
+/**
+ * Generates a unique ID using crypto.randomUUID. 
+ * https://stackoverflow.com/questions/1155008/how-unique-is-uuid
+ * @returns {string} A unique string ID to represent each task.
+ */
+function generateUniqueID() {
+  return crypto.randomUUID();
+}
+
 /**
  * Takes in an array of tasks and for each task creates a
  * new <to-do-task> element, adds the task data to that item 
@@ -91,7 +100,8 @@ function initFormHandler() {
     }
     // define task status
     taskData.status = "Planned";
-    taskData.id = ++items;
+
+    taskData.id = generateUniqueID();
 
     const task = document.createElement("to-do-task");
     task.data = taskData;
