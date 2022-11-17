@@ -92,7 +92,7 @@ function initFormHandler() {
   // Get data from task popup form
   const form = document.querySelector("form");
 
-  form.addEventListener("submit", (event) => {
+  form.addEventListener("submit", () => {
     let formData = new FormData(form);
     let taskData = new Object();
     for (const key of formData.keys()) {
