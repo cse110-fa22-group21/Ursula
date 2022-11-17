@@ -43,7 +43,7 @@ button:hover {
     transition-duration: 0.1s;
 }
 
-#editButton {
+.editButton {
     background-color: transparent;
     background-repeat: no-repeat;
     border: none;

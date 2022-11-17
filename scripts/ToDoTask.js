@@ -4,8 +4,8 @@ class ToDoTask extends HTMLElement {
     constructor() {
         super(); // Inherit everything from HTMLElement
 
-        this.attachShadow({mode:"open"});
-        const tableRow = document.createElement("tr");
+        // this.attachShadow({mode:"open"});
+        // const tableRow = document.createElement("tr");
         const style = document.createElement("style");
         style.innerText = `
 
@@ -25,12 +25,13 @@ class ToDoTask extends HTMLElement {
             width: 30px;
         }
         `
-        this.shadowRoot.append(style, tableRow);
         
-        /*
-        this.attachShadow({ mode: "open" });
-        this.shadowRoot.append(tableRow);
-        */
+        style.innerText = `
+        tr {
+            display: inherit;
+        }`;
+
+        // this.shadowRoot.append(tableRow, style);
     }
 
     /**
@@ -56,14 +57,15 @@ class ToDoTask extends HTMLElement {
         // If nothing was passed in, return
         if (!data) return;
 
-        //const tableRow = document.createElement("tr");
-        
-        const tableRow = this.shadowRoot.querySelector("tr");
-        
+        const tableRow = document.createElement("tr");
+
+        // const tableRow = this.shadowRoot.querySelector("tr");
         tableRow.innerHTML = `<td>${data.name}</td>
         <td>${data.hours} hr ${data.minutes} min</td>
         <td>${data.status}</td>
-        <td><button id="editButton${data.id}"><img id="editIcon" src="admin/branding/edit-icon.svg" alt="Edit icon button for task ${data.id}"></button></td>`;
+        <td><button class="editButton" id="editButton${data.id}"><img id="editIcon" src="admin/branding/edit-icon.svg" alt="Edit icon button for task ${data.id}"></button></td>`;
+
+        document.body.querySelector('tbody').append(tableRow);
     }
 }
 
