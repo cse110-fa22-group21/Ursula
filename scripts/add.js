@@ -63,7 +63,6 @@ function addTaskToDocument(tasks) {
     let ele = document.createElement("to-do-task");
 
     ele.data = tasks[i];
-    ref.append(ele);
   }
 }
 
@@ -106,8 +105,6 @@ function initFormHandler() {
     const task = document.createElement("to-do-task");
     task.data = taskData;
     task.style.cssText = "display: inherit";
-
-    document.querySelector("tbody").append(task);
 
     // save data to global variable
     data.push(taskData);
