@@ -59,8 +59,10 @@ class ToDoTask extends HTMLElement {
         // If nothing was passed in, return
         if (!data) return;
 
+        // populate data in the table
         const tableRow = document.createElement("tr");
 
+        // The information from data is added following the below format
         // const tableRow = this.shadowRoot.querySelector("tr");
         tableRow.innerHTML = `<td>${data.name}</td>
         <td>${data.hours} hr ${data.minutes} min</td>
