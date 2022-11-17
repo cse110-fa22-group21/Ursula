@@ -90,7 +90,7 @@ function initFormHandler() {
       taskData[key] = formData.get(key);
     }
     // define task status
-    taskData.status = "In Progress";
+    taskData.status = "Planned";
     taskData.id = ++items;
 
     const task = document.createElement("to-do-task");
