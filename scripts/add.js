@@ -57,7 +57,6 @@ function generateUniqueID() {
  * @param {Array<Object>} tasks An array of recipes
  */
 function addTaskToDocument(tasks) {
-  const ref = document.querySelector("tbody");
 
   for (let i = 0; i < tasks.length; i++) {
     let ele = document.createElement("to-do-task");
