@@ -1,10 +1,9 @@
-// popup window
+// --------------------------add popup window--------------------------------------
 
 /* add functions to add button on-click */
 document.getElementById("addButton").addEventListener("click", openForm);
 document.getElementById("cancelButton").addEventListener("click", closeForm);
 
-// TODO styling for function methods
 /*
  * Add button function
  * Once the use click on the add button, the popup form should pop up

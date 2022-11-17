@@ -68,9 +68,9 @@ button:hover {
     word-wrap: break-word;
 }
 /* End of Button Styling */
-
+/* IMPORTANT EDIT FORM AND ADD FORM ARE USING THE SAME CSS FOR CONSISTENCY */
 /* Popup Form Styling */
-#popupForm {
+#popupForm, #editForm{
     display: none;
     background-color: var(--tableBackgroundColor);
     position: fixed;
@@ -82,13 +82,13 @@ button:hover {
     z-index: 9;
   }
 
-#popupForm > * {
+#popupForm > *, #editForm > * {
     padding: 2%;
     font-size: medium;
     padding-top: 2%;
 }
 
-#popupForm input {
+#popupForm input, #editForm input {
     margin: 2%;
     padding: 1%;
 }
@@ -97,11 +97,11 @@ button:hover {
     max-width: 5%;
 }
 
-#addNewTask {
+#addNewTask, #editTask {
     text-align: center;
 }
 
-#cancelButton, #subButton {
+#cancelButton, #subButton, #cancelEditButton, #subEditButton, #deleteEditButton  {
     float: right;
     margin: 2%;
     padding: 1%;
@@ -116,3 +116,17 @@ textarea {
     vertical-align: middle;
 }
 /* Popup Form Styling Completed */
+
+/* Start of Edit Feature Styling */
+/* Complete Button Styling */
+#completeIcon {
+    margin-left: 1%;
+    max-width: 30px;
+    max-height: 30px;
+}
+
+#statusField {
+    margin: 2%;
+    padding: 1%;
+}
+/* End of Edit Feature Styling */
