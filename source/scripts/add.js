@@ -2,6 +2,9 @@
 import { openEditForm } from "./edit.js";
 
 // Global Variables
+/**
+ * @type {Array}
+ */
 var data = [];
 // TODO: consider another array to store deleted tasks
 // var deleted = [];
