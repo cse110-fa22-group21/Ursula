@@ -33,4 +33,9 @@
     td {
         padding: 0.5rem;
     }
+
+    #popupForm, #editForm{
+        left: 5px;
+        right: 5px;
+    }
 }
