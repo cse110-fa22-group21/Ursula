@@ -4,8 +4,8 @@
 
     header img {
         margin-top: 0.5rem;
-        margin-left: 10vw;
-        height: 80px;
+        margin-left: 1rem;
+        height: 5rem;
     }
 
     nav > ul {
@@ -19,6 +19,10 @@
 
     #pageIdentifier {
         margin-top: 7rem;
+    }
+
+    #addButton {
+        margin-left: 2rem;
     }
 
     table {
