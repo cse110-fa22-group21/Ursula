@@ -1,13 +1,13 @@
 /*Colors*/
 :root {
-    --backgroundColor: #F2E5D7;
-    --addColor: #FFBCB5;
-    --fontColor: #3A2E39;
-    --hoverColor: #EBBFF6;
-    --tableBackgroundColor: #e0d3de;
-    --tableBorderColor: #73648A;
-    --btnColor: #FAFBFC;
-    --btnTextColor: black;
-    --btnBorderColor: #66626f;
-    --btnHoverBackgroundColor: #e3d4e9;
+  --backgroundColor: #f2e5d7;
+  --addColor: #ffbcb5;
+  --fontColor: #3a2e39;
+  --hoverColor: #ebbff6;
+  --tableBackgroundColor: #e0d3de;
+  --tableBorderColor: #73648a;
+  --btnColor: #fafbfc;
+  --btnTextColor: black;
+  --btnBorderColor: #66626f;
+  --btnHoverBackgroundColor: #e3d4e9;
 }

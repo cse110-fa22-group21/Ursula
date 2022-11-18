@@ -10,7 +10,7 @@ var data = [];
 // var deleted = [];
 
 // Run the init() function when the page has loaded
-window.addEventListener('DOMContentLoaded', init);
+window.addEventListener("DOMContentLoaded", init);
 
 // Starts the task program, all function calls trace back here
 function init() {
@@ -20,7 +20,6 @@ function init() {
   // Add the event listeners to the form elements
   initFormHandler();
 }
-
 
 // -------------------------- ADD TASK POPUP --------------------------------------
 
@@ -44,10 +43,9 @@ function closeForm() {
   document.getElementById("popupForm").style.display = "none";
 }
 
-
 // -------------------------- ADD DATA STORAGE --------------------------------------
 /**
- * Generates a unique ID using crypto.randomUUID. 
+ * Generates a unique ID using crypto.randomUUID.
  * https://stackoverflow.com/questions/1155008/how-unique-is-uuid
  * @returns {string} A unique string ID to represent each task.
  */
@@ -57,8 +55,8 @@ function generateUniqueID() {
 
 /**
  * Takes in an array of tasks and for each task creates a
- * new <to-do-task> element, adds the task data to that item 
- * using element.data = {...}, and then appends that new task 
+ * new <to-do-task> element, adds the task data to that item
+ * using element.data = {...}, and then appends that new task
  * to <tbody>
  * @param {Array<Object>} tasks An array of recipes
  */
@@ -68,23 +66,22 @@ function addTaskToDocument(tasks) {
   }
 }
 
-
- /**
-  * Populate the table using the data object. 
-  * 
-  * @param {Object} data - The data to pass into the <task>, must be of the
-  *                        following format:
-  *                        {
-  *                          "id": "number",
-  *                          "name": "string",
-  *                          "hours": "number",
-  *                          "minutes": "number",
-  *                          "type": "string",
-  *                          "status": "string",
-  *                          "notes": "string"
-  *                        }
-  */
-function addTask(data){
+/**
+ * Populate the table using the data object.
+ *
+ * @param {Object} data - The data to pass into the <task>, must be of the
+ *                        following format:
+ *                        {
+ *                          "id": "number",
+ *                          "name": "string",
+ *                          "hours": "number",
+ *                          "minutes": "number",
+ *                          "type": "string",
+ *                          "status": "string",
+ *                          "notes": "string"
+ *                        }
+ */
+function addTask(data) {
   // populate data in the table
   const tableRow = document.createElement("tr");
 
@@ -95,7 +92,7 @@ function addTask(data){
   <td><button class="editButton" id="editButton${data.id}">
   <img id="editIcon" src="admin/branding/edit-icon.svg" alt="Edit icon button for task ${data.id}"></button></td>`;
 
-  document.body.querySelector('tbody').append(tableRow);
+  document.body.querySelector("tbody").append(tableRow);
   document.getElementById(`editButton${data.id}`).onclick = openEditForm;
 }
 
@@ -118,10 +115,10 @@ function saveTaskToStorage(tasks) {
   localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
-/** STORE DATA FROM TASK POPUP 
+/** STORE DATA FROM TASK POPUP
  * Initializes the handler function when the task form is submitted.
- * 
- * Task data is populated from each input in the form, generated with a unique ID, and  
+ *
+ * Task data is populated from each input in the form, generated with a unique ID, and
  * assigned the initial status. The new task is then added into local storage.
  */
 function initFormHandler() {
@@ -138,7 +135,7 @@ function initFormHandler() {
     taskData.status = "Planned";
     taskData.id = generateUniqueID();
 
-    //populate the table 
+    //populate the table
     addTask(taskData);
 
     // save data to global variable
@@ -147,7 +144,7 @@ function initFormHandler() {
     let tasks = getTasksFromStorage();
     tasks.push(taskData);
     saveTaskToStorage(tasks);
-  })
+  });
 }
 
-export {getTasksFromStorage, saveTaskToStorage};
+export { getTasksFromStorage, saveTaskToStorage };
