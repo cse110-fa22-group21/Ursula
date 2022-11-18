@@ -95,6 +95,7 @@ button:hover {
 
 #hourField, #minField, #hourFieldEdit, #minFieldEdit {
     max-width: 5%;
+    min-width: 40px;
 }
 
 #addNewTask, #editTask {
