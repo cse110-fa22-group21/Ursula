@@ -101,13 +101,13 @@ function addTask(data) {
   const tableRowNotes = document.createElement("tr");
   tableRowNotes.innerHTML = `<td COLSPAN="4">${data.notes}</td>`;
   // Each note will have its own ID
-  tableRowNotes.className = `notes`;
+  tableRowNotes.className = "notes";
   tableRowNotes.id = `notes${data.id}`;
   // tableRow.append(tableRowNotes);
   document.body.querySelector("tbody").append(tableRowNotes);
 
   // display notes when clicked, hide when clicked again
-  tableRow.addEventListener(`click`, () => { 
+  tableRow.addEventListener("click", () => { 
     document.getElementById(`notes${data.id}`).style.display = (document.getElementById(`notes${data.id}`).style.display=="none") ? "table-row" : "none";
     //document.getElementById(`task${data.id}`).childNodes.forEach(x => {if(x.localName == "td") x.style.backgroundColor = (document.getElementById(`notes${data.id}`).style.display=="none") ? "none" : "#e8e0e2"});
   });
