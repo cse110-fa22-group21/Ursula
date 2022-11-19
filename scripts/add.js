@@ -93,7 +93,7 @@ function addTask(data){
   <img id="editIcon" src="admin/branding/edit-icon.svg" alt="Edit icon button for task ${data.id}"></button></td>`;
 
   document.body.querySelector('tbody').append(tableRow);
-  document.getElementById(`editButton${data.id}`).onclick = openEditForm;
+  document.getElementById(`editButton${data.id}`).addEventListener("click", () => {openEditForm(data.id)});
 }
 
 /**

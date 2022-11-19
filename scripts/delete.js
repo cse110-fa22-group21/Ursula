@@ -1,5 +1,7 @@
 import { getTasksFromStorage, saveTaskToStorage } from "./add.js";
 
+document.getElementsByClassName("deleteEditButton")[0].addEventListener("click", () => {deleteTaskById(document.getElementsByClassName("deleteEditButton")[0].id)});
+
 /**
  * Reads 'to-do-tasks' from localStorage, removes the task with the given ID
  * And then rewrites the updated list of Tasks back to local storage.
@@ -22,4 +24,6 @@ export function deleteTaskById(id){
     }
 
     saveTaskToStorage(taskList);
+
+    location.reload();
 }
