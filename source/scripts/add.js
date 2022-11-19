@@ -91,9 +91,27 @@ function addTask(data) {
   <td>${data.status}</td>
   <td><button class="editButton" id="editButton${data.id}">
   <img id="editIcon" src="/source/images/edit-icon.svg" alt="Edit icon button for task ${data.id}"></button></td>`;
+  tableRow.id = `task${data.id}`;
+  tableRow.className = "task";
 
   document.body.querySelector("tbody").append(tableRow);
-  document.getElementById(`editButton${data.id}`).addEventListener("click", () => {openEditForm(data.id);});
+
+  // On Click Task Name, Show the Task Notes
+  // Create another task row tag and put the notes into it
+  const tableRowNotes = document.createElement("tr");
+  tableRowNotes.innerHTML = `<td COLSPAN="4">${data.notes}</td>`;
+  // Each note will have its own ID
+  tableRowNotes.className = `notes`;
+  tableRowNotes.id = `notes${data.id}`;
+  // tableRow.append(tableRowNotes);
+  document.body.querySelector("tbody").append(tableRowNotes);
+
+  // display notes when clicked, hide when clicked again
+  tableRow.addEventListener(`click`, () => { 
+    document.getElementById(`notes${data.id}`).style.display = (document.getElementById(`notes${data.id}`).style.display=="none") ? "table-row" : "none";
+    //document.getElementById(`task${data.id}`).childNodes.forEach(x => {if(x.localName == "td") x.style.backgroundColor = (document.getElementById(`notes${data.id}`).style.display=="none") ? "none" : "#e8e0e2"});
+  });
+  document.getElementById(`editButton${data.id}`).addEventListener("click", () => { openEditForm(data.id); });
 }
 
 /**
