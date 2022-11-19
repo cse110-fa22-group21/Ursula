@@ -90,10 +90,10 @@ function addTask(data) {
   <td>${data.hours} hr ${data.minutes} min</td>
   <td>${data.status}</td>
   <td><button class="editButton" id="editButton${data.id}">
-  <img id="editIcon" src="admin/branding/edit-icon.svg" alt="Edit icon button for task ${data.id}"></button></td>`;
+  <img id="editIcon" src="/source/images/edit-icon.svg" alt="Edit icon button for task ${data.id}"></button></td>`;
 
-  document.body.querySelector("tbody").append(tableRow);
-  document.getElementById(`editButton${data.id}`).onclick = openEditForm;
+  document.body.querySelector('tbody').append(tableRow);
+  document.getElementById(`editButton${data.id}`).addEventListener("click", () => {openEditForm(data.id)});
 }
 
 /**

@@ -6,10 +6,10 @@
     <title>Ursula's To Do List</title>
 
     <!-- Styling -->
-    <link href="styles/page.css" rel="stylesheet" />
-    <link href="styles/header.css" rel="stylesheet" />
-    <link href="styles/footer.css" rel="stylesheet" />
-    <link href="styles/index.css" rel="stylesheet" />
+    <link href="/source/styles/page.css" rel="stylesheet" />
+    <link href="/source/styles/header.css" rel="stylesheet" />
+    <link href="/source/styles/footer.css" rel="stylesheet" />
+    <link href="/source/styles/index.css" rel="stylesheet" />
     <!-- Font -->
     <link
       href="https://fonts.googleapis.com/css2?family=Abel&family=Rajdhani&family=Silkscreen&display=swap"
@@ -17,15 +17,16 @@
     />
 
     <!-- Main Script -->
-    <script src="scripts/add.js" type="module"></script>
-    <script src="scripts/edit.js" type="module"></script>
+    <script src="/source/scripts/add.js" type="module"></script>
+    <script src="/source/scripts/edit.js" type="module"></script>
+    <script src="/source/scripts/delete.js" type="module"></script>
   </head>
   <body>
     <header>
       <!-- Navigation for the page -->
       <nav>
         <a href="index.html"
-          ><img src="./admin/branding/team21-nobg.png" alt="Team Ursula's Logo"
+          ><img src="/source/images/team21-nobg.png" alt="Team Ursula's Logo"
         /></a>
         <ul>
           <li><a href="log.html">View Log</a></li>
@@ -134,7 +135,7 @@
           </div>
           <button type="button" id="cancelEditButton">Cancel</button>
           <button class="submitButton" id="subEditButton">Save</button>
-          <button type="button" id="deleteEditButton">Delete</button>
+          <button type="button" class="deleteEditButton" id="deleteEditButton">Delete</button>
         </form>
       </div>
       <!-- End Edit Popup Form -->
@@ -164,14 +165,14 @@
                 <button id="editButton" class="editButton">
                   <img
                     id="editIcon"
-                    src="admin/branding/edit-icon.svg"
+                    src="/source/images/edit-icon.svg"
                     alt="Edit icon button"
                   />
                 </button>
                 <button id="completeButton">
                   <img
                     id="completeIcon"
-                    src="images/complete-icon.png"
+                    src="/source/images/complete-icon.png"
                     alt="Complete icon button"
                   />
                 </button>
