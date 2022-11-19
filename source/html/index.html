@@ -10,6 +10,7 @@
     <link href="/source/styles/header.css" rel="stylesheet" />
     <link href="/source/styles/footer.css" rel="stylesheet" />
     <link href="/source/styles/index.css" rel="stylesheet" />
+    <link href="/source/styles/mobile.css" rel="stylesheet" media="only screen and (max-width: 720px)">
     <!-- Font -->
     <link
       href="https://fonts.googleapis.com/css2?family=Abel&family=Rajdhani&family=Silkscreen&display=swap"
@@ -29,8 +30,8 @@
           ><img src="/source/images/team21-nobg.png" alt="Team Ursula's Logo"
         /></a>
         <ul>
-          <li><a href="log.html">View Log</a></li>
-          <li><a href="analytics.html">View Analytics</a></li>
+          <li><a href="log.html">Log</a></li>
+          <li><a href="analytics.html">Analytics</a></li>
         </ul>
       </nav>
     </header>
@@ -147,7 +148,7 @@
           <thead>
             <tr>
               <th id="theadName">Name</th>
-              <th id="theadTime">Estimated Time</th>
+              <th id="theadTime">Est. Time</th>
               <th id="theadStatus">Status</th>
               <th id="theadAction">Action</th>
             </tr>
@@ -169,7 +170,7 @@
                     alt="Edit icon button"
                   />
                 </button>
-                <button id="completeButton">
+                <button id="completeButton" class="completeButton">
                   <img
                     id="completeIcon"
                     src="/source/images/complete-icon.png"
