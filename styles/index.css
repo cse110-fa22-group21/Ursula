@@ -37,7 +37,7 @@ button:hover {
     transition-duration: 0.1s;
 }
 
-.editButton {
+.editButton, .completeButton {
     background-color: transparent;
     background-repeat: no-repeat;
     border: none;
@@ -73,8 +73,8 @@ button:hover {
     position: fixed;
     margin-left: auto;
     margin-right: auto;
-    right: 30%;
-    left: 30%;
+    right: 15%;
+    left: 15%;
     border: 2px solid black;
     z-index: 9;
   }
