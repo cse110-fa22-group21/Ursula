@@ -1,0 +1,24 @@
+/* Footer Styling */
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  height: fit-content; /* Height of the footer */
+  background-color: var(--tableBackgroundColor);
+  padding: 0.5rem 0;
+  font-size: 1rem;
+}
+
+footer a {
+  color: black;
+}
+
+footer a:hover {
+  color: var(--tableBorderColor);
+}
+footer > ul > li {
+  list-style: none;
+}
+/* End of Footer Styling */

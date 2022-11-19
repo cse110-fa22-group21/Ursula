@@ -3,18 +3,18 @@ name: HTML Check
 run-name: ${{ github.actor }} is trying HTML Check
 
 on:
- push:
-   branches: [ "main", "bug-*", "feature-*", "WIP-*" ]
- pull_request:
-   branches: [ "main", "bug-*", "feature-*", "WIP-*" ]
+  push:
+    branches: ["main", "bug-*", "feature-*", "WIP-*"]
+  pull_request:
+    branches: ["main", "bug-*", "feature-*", "WIP-*"]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2 # Requried will all actions
-    - name: Checks HTML5
-      uses: Cyb3r-Jak3/html5validator-action@master
-      with:
-        root: ./
-        css: true
+      - uses: actions/checkout@v2 # Requried will all actions
+      - name: Checks HTML5
+        uses: Cyb3r-Jak3/html5validator-action@master
+        with:
+          root: ./source
+          css: true
