@@ -1,8 +1,8 @@
 // --------------------------edit popup window--------------------------------------
 
 /* add functions to the edit button on-click */
-document.getElementById('editButton').addEventListener("click", () => {openEditForm(0)});
-document.getElementById('cancelEditButton').addEventListener("click", closeEditForm);
+document.getElementById("editButton").addEventListener("click", () => {openEditForm(0);});
+document.getElementById("cancelEditButton").addEventListener("click", closeEditForm);
 
 /**
  * Open Edit button function
@@ -11,8 +11,8 @@ document.getElementById('cancelEditButton').addEventListener("click", closeEditF
  * @param {number} id ID of the task to be edited
  */
 function openEditForm(id) {
-    document.getElementById(`editForm`).style.display = "block";
-    document.getElementsByClassName(`deleteEditButton`)[0].id = id;
+    document.getElementById("editForm").style.display = "block";
+    document.getElementsByClassName("deleteEditButton")[0].id = id;
 }
 
 /*
