@@ -10,6 +10,7 @@ module.exports = {
     ecmaVersion: "latest",
     sourceType: "module",
   },
+  ignorePatterns: ["./docs/"],
   rules: {
     quotes: ["error", "double"],
     semi: ["error", "always"],
