@@ -1,22 +1,21 @@
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
     <title>Ursula's To Do List</title>
+
+    <!-- Styling -->
     <link href="styles/page.css" rel="stylesheet">
     <link href="styles/header.css" rel="stylesheet">
     <link href="styles/footer.css" rel="stylesheet">
     <link href="styles/index.css" rel="stylesheet">
-
-    <!-- Task Custom Element -->
-    <script src="scripts/ToDoTask.js" type="module"></script>
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Abel&family=Rajdhani&family=Silkscreen&display=swap" rel="stylesheet">
 
     <!-- Main Script -->
     <script src="scripts/add.js" type="module"></script>
-
-
-    <link href="https://fonts.googleapis.com/css2?family=Abel&family=Rajdhani&family=Silkscreen&display=swap" rel="stylesheet">
+    <script src="scripts/edit.js" type="module"></script>
   </head>
   <body>
     <header>
@@ -41,15 +40,15 @@
             <form>
                 <h2 id="addNewTask">Add New To Do Task</h2>
                 <label for="taskNameField">Task Name:</label>
-                <input type="text" id="taskNameField" name="name" required><br>
+                <input class="formInput" type="text" id="taskNameField" name="name" required><br>
                 <label>Estimated time required:</label>
-                <input type="number" id="hourField" name="minutes" required>
+                <input class="formInput" type="number" id="hourField" name="hours" required>
                 <label for="hourField">hours</label>
-                <input type="number" id="minField" name="hours" required>
+                <input class="formInput" type="number" id="minField" name="minutes" required>
                 <label for="minField">minutes</label> <br>
                 <label for="typeTaskField">Type of Task (optional)</label>
-                <input type="text" id="typeTaskField" name="type"><br>
-                <div id="textArea">
+                <input class="formInput" type="text" id="typeTaskField" name="type"><br>
+                <div class="textArea">
                     <label for="noteField">Notes: </label>
                     <textarea id="noteField" name="notes" required></textarea><br>
                 </div>
@@ -57,6 +56,37 @@
                 <button type="button" id="cancelButton">Cancel</button>
             </form>
         </div>
+        <!-- End Add Popup Form -->
+
+        <!-- Edit Popup Form -->
+        <div id="editForm">
+            <form>
+                <h2 id="editTask">Editing TODO specific Name</h2>
+                <label for="taskNameFieldEdit">Task Name:</label>
+                <input class="formInput" type="text" id="taskNameFieldEdit" name="taskName" required><br>
+                <label>Estimated time required:</label>
+                <input class="formInput" type="number" id="hourFieldEdit" name="minute" required>
+                <label class="hourInput" for="hourFieldEdit">hours</label>
+                <input class="formInput" type="number" id="minFieldEdit" name="hour" required>
+                <label for="minFieldEdit">minutes</label> <br>
+                <label for="typeTaskFieldEdit">Type of Task (optional)</label>
+                <input class="formInput" type="text" id="typeTaskFieldEdit" name="typeTaskName"><br>
+                <label for="statusField">Status: </label>
+                <select name="status" id="statusField">
+                    <option value="planned">Planned</option>
+                    <option value="inProgress">In-Progress</option>
+                    <option value="complete">Complete</option>
+                </select>
+                <div class="textArea">
+                    <label for="noteFieldEdit">Notes: </label>
+                    <textarea id="noteFieldEdit" name="note" required></textarea><br>
+                </div>
+                <button type="button" id="cancelEditButton">Cancel</button>
+                <button class="submitButton" id="subEditButton">Save</button>
+                <button type="button" id="deleteEditButton">Delete</button>
+            </form>
+        </div>
+        <!-- End Edit Popup Form -->
 
         <!-- Main Table Where Data Will Go In-->
         <section>
@@ -79,7 +109,10 @@
                         <td>Task 1</td>
                         <td>2 hr 30 min</td>
                         <td>In Progress</td>
-                        <td><button id = "editButton"><img id="editIcon" src="admin/branding/edit-icon.svg" alt="Edit icon button"></button></td>
+                        <td>
+                            <button id="editButton" class="editButton"><img id="editIcon" src="admin/branding/edit-icon.svg" alt="Edit icon button"></button>
+                            <button id="completeButton"><img id="completeIcon" src="images/complete-icon.png" alt="Complete icon button"></button>
+                        </td>
                     </tr>
                 </tbody>
               </table>
