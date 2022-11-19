@@ -11,7 +11,7 @@ document
  * Once the use click on the add button, the edit popup form should pops up
  */
 function openEditForm() {
-  document.getElementById(`editForm`).style.display = "block";
+  document.getElementById("editForm").style.display = "block";
 }
 
 /*
@@ -19,7 +19,7 @@ function openEditForm() {
  * Once the use click on the button, the edit popup form should be closed
  */
 function closeEditForm() {
-  document.getElementById(`editForm`).style.display = "none";
+  document.getElementById("editForm").style.display = "none";
 }
 
 export { openEditForm, closeEditForm };
