@@ -101,7 +101,7 @@ button:hover {
     text-align: center;
 }
 
-#cancelButton, #subButton, #cancelEditButton, #subEditButton, .deleteEditButton  {
+#cancelButton, #subButton, #cancelEditButton, #subEditButton, .deleteEditButton, .submitEditButton {
     float: right;
     margin: 2%;
     padding: 1%;
