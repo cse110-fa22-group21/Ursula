@@ -1,6 +1,6 @@
 /*Colors*/
 :root {
-  --backgroundColor: #f2e5d7;
+  --backgroundColor: #f0ece7;
   --addColor: #ffbcb5;
   --fontColor: #3a2e39;
   --hoverColor: #ebbff6;
@@ -10,4 +10,5 @@
   --btnTextColor: black;
   --btnBorderColor: #66626f;
   --btnHoverBackgroundColor: #e3d4e9;
+  --tableHoverColor: #e8e0e2;
 }

@@ -130,3 +130,22 @@ button:hover {
     padding: 1%;
 }
 /* End of Edit Feature Styling */
+
+/* Task Notes DropDown Styling */
+.notes {
+    display: none;
+    background-color: var(--tableHoverColor);
+}
+
+.notes td {
+    text-align: left;
+}
+
+.task {
+    cursor: pointer;
+}
+
+.task:hover {
+    background-color: var(--tableHoverColor);
+}
+/* End of Task Notes DropDown Styling */

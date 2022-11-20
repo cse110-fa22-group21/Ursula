@@ -13,7 +13,7 @@
 body {
   font-family: "Rajdhani", sans-serif;
   margin-top: 5rem;
-  background-color: #f0ece7;
+  background-color: var(--backgroundColor);
   color: black;
   width: 100%;
   font-size: 1.8rem;
