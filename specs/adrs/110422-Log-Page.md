@@ -1,8 +1,21 @@
 ## Date 
 November 4
+## Problem Description  
+The information you want to display on the log page is not suitable for user.  
 
-## Problem
-Most of users does not need all type of the time log information, and the log page becomes too long.
+## Options considered and Pros & Cons  
+**[Selected] Limits the information displayed on the log page to the task completion time only.**  
+The UI design is simplified by displaying only the information the majority of users want.  
+User cannot access other information that is not displayed.  
+
+**Among the information displayed on the log page, only the main information(task completion time) is displayed,  
+and the secondary information is hidden at the bottom of the detail.**  
+The user can access all information without complicating the UI design.  
+Creating this feature for some users is too costly.  
+
+## the driving force behind decision-making  
+Seeking to save developers' precious time  
+Selectively provide users with the information they need  
 
 ## Solution
 The Log page that is displayed to the user only displays the end time of the job, and saves the entire time log as a Beck and Log.
