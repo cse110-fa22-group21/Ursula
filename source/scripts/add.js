@@ -1,5 +1,5 @@
-// Imports
-import { openEditForm, getData } from "./edit.js";
+// Import functions from edit.js
+import { openEditForm } from "./edit.js";
 
 // Global Variables
 /**
@@ -111,10 +111,8 @@ function addTask(data) {
     document.getElementById(`notes${data.id}`).style.display = (document.getElementById(`notes${data.id}`).style.display=="none") ? "table-row" : "none";
     //document.getElementById(`task${data.id}`).childNodes.forEach(x => {if(x.localName == "td") x.style.backgroundColor = (document.getElementById(`notes${data.id}`).style.display=="none") ? "none" : "#e8e0e2"});
   });
-  // When editbutton is clicked, it will call getData to populate the data in the form
-  // and then it will call openEditForm to open the form with the populated data
+  // When editbutton is clicked, it will call openEditForm to open the form with the populated data
   document.getElementById(`editButton${data.id}`).addEventListener("click", () => { 
-    getData(data.id);
     openEditForm(data.id);
    });
 }

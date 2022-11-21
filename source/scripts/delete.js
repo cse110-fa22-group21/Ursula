@@ -1,9 +1,5 @@
+// Import functions from add.js
 import { getTasksFromStorage, saveTaskToStorage } from "./add.js";
-
-//when delete button is clicked, call deleteTaskById by finding the ID associated with the particular task
-document.getElementsByClassName("deleteEditButton")[0].addEventListener("click", () => {
-    deleteTaskById(document.getElementsByClassName("deleteEditButton")[0].id);
-});
 
 /**
  * Reads 'to-do-tasks' from localStorage, removes the task with the given ID
@@ -11,18 +7,20 @@ document.getElementsByClassName("deleteEditButton")[0].addEventListener("click",
  * Then, it reloads the page to refresh the task list
  * @param {number} id ID of the task to be removed from local storage
  */
-export function deleteTaskById(id){
-    //obtain tasks from storage
+function deleteTaskById(id){
+    // Obtain tasks from storage
     const taskList = getTasksFromStorage();
-    //iterate until we find the ID
+    // iterate until we find the ID
     for (var i = 0; i < taskList.length; i++) {
-        //delete the ID
+        // delete the ID
         if (taskList[i].id == id){
             taskList.splice(i, 1);
         }
     }
-    //save all other tasks back to storage
+    // Save all other tasks back to storage
     saveTaskToStorage(taskList);
-    //reload the page with the new contents
+    // Reload the page with the new contents
     location.reload();
 }
+
+export { deleteTaskById };
