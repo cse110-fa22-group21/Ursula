@@ -1,8 +1,17 @@
 ## Date 
 November 11
 
-## Problem
-Currently, dividing the entire group into two teams to implement the functions of creation and editing is difficult to allocate appropriate workload for each individual, and the responsibility is unclear. 
+## Problem Description  
+The information you want to display on the log page is not suitable for user.  
+
+## Options considered and Pros & Cons  
+**[Selected] It is divided into five groups according to the functions to be implemented (reactive app, creation, read, update, and delete).**  
+pro : Since team members are allocated by function, what needs to be done more clearly and who is responsible is clear.  
+con : Tasks that are avoided may occur, and there may be differences in workload.  
+
+## the driving force behind decision-making  
+Reflecting TA's comments  
+Clear to-do distribution and responsibility  
 
 ## Solution
 The entire group is divided into a total of five small teams to implement detailed functions.
