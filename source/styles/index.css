@@ -77,8 +77,10 @@ button:hover {
     margin-right: auto;
     right: 15%;
     left: 15%;
+    top : 15%;
     border: 2px solid black;
-    z-index: 9;
+    /* Changed z-index to have priority over header */
+    z-index: 100;
   }
 
 #popupForm > *, #editForm > * {
