@@ -4,7 +4,7 @@ October 15th
 ## Problem Description
 The existing team's theme colors, green and blue, do not match the newly set team mascot Ursula.
 
-## Options considered and pros and cons
+## Options considered and Pros & Cons
 **Blue**  
 pro : It is familiar because it is the color of the UCSD mascot, Triton. It is also related to Ursula because it is the color of the sea.  
 con : It is difficult to use as a main color because it is a triton opposite to Ursula, a team mascot.
