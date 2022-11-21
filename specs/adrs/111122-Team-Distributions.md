@@ -2,7 +2,7 @@
 November 11
 
 ## Problem Description  
-The information you want to display on the log page is not suitable for user.  
+We must distribute the work amongst the team such that all of our CRUD features will be done by 11/22. 
 
 ## Options considered and Pros & Cons  
 **[Selected] It is divided into five groups according to the functions to be implemented (reactive app, creation, read, update, and delete).**  
