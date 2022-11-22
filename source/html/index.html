@@ -126,17 +126,17 @@
           /><br />
           <label for="statusField">Status: </label>
           <select name="status" id="statusField">
-            <option value="planned">Planned</option>
-            <option value="inProgress">In-Progress</option>
-            <option value="complete">Complete</option>
+            <option value="Planned">Planned</option>
+            <option value="In-Progress">In-Progress</option>
+            <option value="Complete">Complete</option>
           </select>
           <div class="textArea">
             <label for="noteFieldEdit">Notes: </label>
             <textarea id="noteFieldEdit" name="note" required></textarea><br />
           </div>
           <button type="button" id="cancelEditButton">Cancel</button>
-          <button class="submitButton" id="subEditButton">Save</button>
-          <button type="button" class="deleteEditButton" id="deleteEditButton">Delete</button>
+          <button class="submitEditButton">Save</button>
+          <button type="button" class="deleteEditButton">Delete</button>
         </form>
       </div>
       <!-- End Edit Popup Form -->
@@ -158,7 +158,9 @@
             <!-- Data Goes Here-->
             <!-- POPULATE DATA INTO THIS TBODY -->
             <!-- TR FOLLOWED BY TD -->
-            <tr>
+
+            <!-- COMMENTED OUT FOR NOW AS IT IS THE MODEL AND DOES NOT WORK -->
+            <!-- <tr>
               <td>Task 1</td>
               <td>2 hr 30 min</td>
               <td>In Progress</td>
@@ -178,7 +180,9 @@
                   />
                 </button>
               </td>
-            </tr>
+            </tr> -->
+            <!-- END OF MODEL TEST -->
+            
           </tbody>
         </table>
       </section>
