@@ -78,7 +78,10 @@ function addTaskToDocument(tasks) {
  *                          "minutes": "number",
  *                          "type": "string",
  *                          "status": "string",
- *                          "notes": "string"
+ *                          "notes": "string",
+ *                          "start": "object",
+ *                          "end": "object",
+ *                          "difference": "number"
  *                        }
  */
 function addTask(data) {
@@ -89,8 +92,14 @@ function addTask(data) {
   tableRow.innerHTML = `<td>${data.name}</td>
   <td>${data.hours} hr ${data.minutes} min</td>
   <td>${data.status}</td>
-  <td><button class="editButton" id="editButton${data.id}">
-  <img id="editIcon" src="/source/images/edit-icon.svg" alt="Edit icon button for task ${data.id}"></button></td>`;
+  <td>
+  <button class="startButton" id="startButton${data.id}">Start</button>
+  <button class="endButton" id="endButton${data.id}">End</button>
+  <button class="finishButton" id="finishButton${data.id}">Finish</button>
+  <button class="editButton" id="editButton${data.id}">
+  <img id="editIcon" src="/source/images/edit-icon.svg" alt="Edit icon button for task ${data.id}">
+  </button>
+  </td>`;
   tableRow.id = `task${data.id}`;
   tableRow.className = "task";
 
@@ -111,10 +120,54 @@ function addTask(data) {
     document.getElementById(`notes${data.id}`).style.display = (document.getElementById(`notes${data.id}`).style.display=="none") ? "table-row" : "none";
     //document.getElementById(`task${data.id}`).childNodes.forEach(x => {if(x.localName == "td") x.style.backgroundColor = (document.getElementById(`notes${data.id}`).style.display=="none") ? "none" : "#e8e0e2"});
   });
+
   // When editbutton is clicked, it will call openEditForm to open the form with the populated data
   document.getElementById(`editButton${data.id}`).addEventListener("click", () => { 
     openEditForm(data.id);
    });
+
+  // When startButton is clicked, switch the startButton to endButton
+  document.getElementById(`startButton${data.id}`).addEventListener("click", () => {
+    data.start = new Date();
+    startSwitch(data.id);
+  });
+
+  // When endButton is clicked, switch the endButton to finishButton
+  document.getElementById(`endButton${data.id}`).addEventListener("click", () => {
+    data.end = new Date();
+    endSwitch(data.id);
+  });
+
+  // When finishButton is clicked, calculate difference
+  document.getElementById(`finishButton${data.id}`).addEventListener("click", () => {
+    data.difference = data.end - data.start;
+    console.log(data.difference);
+  });
+}
+
+/**
+ * When start button is clicked, set the styling of it to be none
+ * and set the styling of end button to be inline.
+ * @param {number} id ID of the start button.
+ */
+// Change the ID and Classname of the start button to be endButton
+function startSwitch(id) {
+  let myStartButton = document.getElementById(`startButton${id}`);
+  myStartButton.style = `display: none;`;
+  let myEndButton = document.getElementById(`endButton${id}`);
+  myEndButton.style = `display: block;`;
+}
+
+/**
+ * When end button is clicked, set the styling of it to be none
+ * and set the styling of finish button to be inline.
+ * @param {number} id ID of the start button to be changed.
+ */
+function endSwitch(id) {
+  let myEndButton = document.getElementById(`endButton${id}`);
+  myEndButton.style = `display: none;`;
+  let myFinishButton = document.getElementById(`finishButton${id}`);
+  myFinishButton.style = `display: block;`;
 }
 
 /**

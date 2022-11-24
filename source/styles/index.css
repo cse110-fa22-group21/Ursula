@@ -151,3 +151,12 @@ button:hover {
     background-color: var(--tableHoverColor);
 }
 /* End of Task Notes DropDown Styling */
+
+/* Start, End, Finish Styling */
+.endButton {
+    display: none;
+}
+
+.finishButton {
+    display: none;
+}
