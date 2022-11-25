@@ -46,7 +46,7 @@
       <div id="popupForm">
         <form>
           <h2 id="addNewTask">Add New To Do Task</h2>
-          <label for="taskNameField">Task Name:</label>
+          <label class="formLabel" for="taskNameField">Task Name:</label>
           <input
             class="formInput"
             type="text"
@@ -54,7 +54,7 @@
             name="name"
             required
           /><br />
-          <label>Estimated time required:</label>
+          <label class="formLabel" >Estimated time required:</label>
           <input
             class="formInput"
             type="number"
@@ -71,7 +71,7 @@
             required
           />
           <label for="minField">minutes</label> <br />
-          <label for="typeTaskField">Type of Task (optional)</label>
+          <label class="formLabel" for="typeTaskField">Type of Task (optional)</label>
           <input
             class="formInput"
             type="text"
@@ -79,7 +79,7 @@
             name="type"
           /><br />
           <div class="textArea">
-            <label for="noteField">Notes: </label>
+            <label class="formLabel" for="noteField">Notes: </label>
             <textarea id="noteField" name="notes" required></textarea><br />
           </div>
           <button class="submitButton" id="subButton">Submit</button>
@@ -92,7 +92,7 @@
       <div id="editForm">
         <form>
           <h2 id="editTask">Editing TODO specific Name</h2>
-          <label for="taskNameFieldEdit">Task Name:</label>
+          <label class="formLabel" for="taskNameFieldEdit">Task Name:</label>
           <input
             class="formInput"
             type="text"
@@ -100,7 +100,7 @@
             name="taskName"
             required
           /><br />
-          <label>Estimated time required:</label>
+          <label class="formLabel" >Estimated time required:</label>
           <input
             class="formInput"
             type="number"
@@ -117,21 +117,21 @@
             required
           />
           <label for="minFieldEdit">minutes</label> <br />
-          <label for="typeTaskFieldEdit">Type of Task (optional)</label>
+          <label class="formLabel" for="typeTaskFieldEdit">Type of Task (optional)</label>
           <input
             class="formInput"
             type="text"
             id="typeTaskFieldEdit"
             name="typeTaskName"
           /><br />
-          <label for="statusField">Status: </label>
+          <label class="formLabel" for="statusField">Status: </label>
           <select name="status" id="statusField">
             <option value="Planned">Planned</option>
             <option value="In-Progress">In-Progress</option>
             <option value="Complete">Complete</option>
           </select>
           <div class="textArea">
-            <label for="noteFieldEdit">Notes: </label>
+            <label class="formLabel" for="noteFieldEdit">Notes: </label>
             <textarea id="noteFieldEdit" name="note" required></textarea><br />
           </div>
           <button type="button" id="cancelEditButton">Cancel</button>

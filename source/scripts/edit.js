@@ -26,7 +26,9 @@ function openEditForm(id) {
     // Iterate until we find the ID
     for (var i = 0; i < taskList.length; i++) {
       // If ID matches, extract that data and populate the edit form input fields
+      // Also customises the edit title to be "Editing Specific Task Name"
       if (taskList[i].id == id) {
+        document.getElementById("editTask").innerText = "Editing " + taskList[i].name;
         document.getElementById("taskNameFieldEdit").value = taskList[i].name;
         document.getElementById("hourFieldEdit").value = taskList[i].hours;
         document.getElementById("minFieldEdit").value = taskList[i].minutes;
