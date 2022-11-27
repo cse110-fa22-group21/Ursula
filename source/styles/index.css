@@ -101,8 +101,14 @@ button:hover {
     text-align: center;
 }
 
-#cancelButton, #subButton, #cancelEditButton, .deleteEditButton, .submitEditButton {
+#cancelButton, #subButton, #cancelEditButton, .submitEditButton, #resetButton {
     float: right;
+    margin: 1.5%;
+    padding: 2%;
+}
+
+.deleteEditButton {
+    float: left;
     margin: 1.5%;
     padding: 2%;
 }
@@ -148,13 +154,3 @@ textarea {
     background-color: var(--tableHoverColor);
 }
 /* End of Task Notes DropDown Styling */
-
-/* Start, End, Finish Styling */
-.endButton {
-    display: none;
-}
-
-.finishButton {
-    display: none;
-}
-/* End of Start, End, Finish Styling */

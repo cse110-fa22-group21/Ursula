@@ -124,12 +124,6 @@
             id="typeTaskFieldEdit"
             name="typeTaskName"
           /><br />
-          <label class="formLabel" for="statusField">Status: </label>
-          <select name="status" id="statusField">
-            <option value="Planned">Planned</option>
-            <option value="In-Progress">In-Progress</option>
-            <option value="Complete">Complete</option>
-          </select>
           <div class="textArea">
             <label class="formLabel" for="noteFieldEdit">Notes: </label>
             <textarea id="noteFieldEdit" name="note" required></textarea><br />
@@ -137,6 +131,7 @@
           <button type="button" id="cancelEditButton">Cancel</button>
           <button class="submitEditButton">Save</button>
           <button type="button" class="deleteEditButton">Delete</button>
+          <button type="button" id="resetButton">Reset</button>
         </form>
       </div>
       <!-- End Edit Popup Form -->

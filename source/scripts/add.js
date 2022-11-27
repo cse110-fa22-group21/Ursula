@@ -1,5 +1,6 @@
 // Import functions from edit.js
 import { openEditForm } from "./edit.js";
+import { deleteTaskById } from "./delete.js"
 
 // Global Variables
 /**
@@ -81,7 +82,8 @@ function addTaskToDocument(tasks) {
  *                          "notes": "string",
  *                          "start": "object",
  *                          "end": "object",
- *                          "difference": "number"
+ *                          "difference": "number",
+ *                          "started" : "boolean"
  *                        }
  */
 function addTask(data) {
@@ -94,8 +96,6 @@ function addTask(data) {
   <td>${data.status}</td>
   <td>
   <button class="startButton" id="startButton${data.id}">Start</button>
-  <button class="endButton" id="endButton${data.id}">End</button>
-  <button class="finishButton" id="finishButton${data.id}">Finish</button>
   <button class="editButton" id="editButton${data.id}">
   <img id="editIcon" src="/source/images/edit-icon.svg" alt="Edit icon button for task ${data.id}">
   </button>
@@ -116,58 +116,87 @@ function addTask(data) {
   document.body.querySelector("tbody").append(tableRowNotes);
 
   // Display notes when clicked, hide when clicked again
-  tableRow.addEventListener("click", () => { 
-    document.getElementById(`notes${data.id}`).style.display = (document.getElementById(`notes${data.id}`).style.display=="none") ? "table-row" : "none";
+  tableRow.addEventListener("click", () => {
+    document.getElementById(`notes${data.id}`).style.display = (document.getElementById(`notes${data.id}`).style.display == "none") ? "table-row" : "none";
     //document.getElementById(`task${data.id}`).childNodes.forEach(x => {if(x.localName == "td") x.style.backgroundColor = (document.getElementById(`notes${data.id}`).style.display=="none") ? "none" : "#e8e0e2"});
   });
 
-  // When editbutton is clicked, it will call openEditForm to open the form with the populated data
-  document.getElementById(`editButton${data.id}`).addEventListener("click", () => { 
-    openEditForm(data.id);
-   });
+  // Checks each data.started and chagnes the innerText of the startButton to Finish or Start
+  // Set the button inner to End
+  if (data.started) {
+    document.getElementById(`startButton${data.id}`).innerText = "Finish";
+  }
 
-  // When startButton is clicked, switch the startButton to endButton
+  // Else set button inner to Start
+ else {
+    document.getElementById(`startButton${data.id}`).innerText = "Start";
+  }
+
+  // When startButton is clicked, check to see if started or not
   document.getElementById(`startButton${data.id}`).addEventListener("click", () => {
-    data.start = new Date();
-    startSwitch(data.id);
+    // If started is true 
+    if (data.started) {
+      // Call endSwitch
+      endSwitch(data.id);
+      // TODO Team2: Add to Log here, pass in ID
+    }
+    // If started is false
+    else {
+      // Call startSwitch to set the data accordingly
+      startSwitch(data.id);
+    }
   });
 
-  // When endButton is clicked, switch the endButton to finishButton
-  document.getElementById(`endButton${data.id}`).addEventListener("click", () => {
-    data.end = new Date();
-    endSwitch(data.id);
-  });
 
-  // When finishButton is clicked, calculate difference
-  document.getElementById(`finishButton${data.id}`).addEventListener("click", () => {
-    data.difference = data.end - data.start;
-    console.log(data.difference);
+  // When editbutton is clicked, it will call openEditForm to open the form with the populated data
+  document.getElementById(`editButton${data.id}`).addEventListener("click", () => {
+    openEditForm(data.id);
   });
 }
 
 /**
- * When start button is clicked, set the styling of it to be none
- * and set the styling of end button to be inline.
+ * Find the task in local storage, set its started to be true, status to be In-Progress
+ * and record the start time in start. Once we set the new data, save it to storage and reload the page.
  * @param {number} id ID of the start button.
  */
 // Change the ID and Classname of the start button to be endButton
 function startSwitch(id) {
-  let myStartButton = document.getElementById(`startButton${id}`);
-  myStartButton.style = `display: none;`;
-  let myEndButton = document.getElementById(`endButton${id}`);
-  myEndButton.style = `display: block;`;
+  // Obtain tasks from storage
+  const taskList = getTasksFromStorage();
+  // Iterate until we find the ID
+  for (var i = 0; i < taskList.length; i++) {
+    // If ID matches, set to be new status
+    if (taskList[i].id == id) {
+      taskList[i].started = true;
+      taskList[i].status = "In-Progress";
+      taskList[i].start = new Date();
+      console.log(taskList[i].start);
+    }
+  }
+  saveTaskToStorage(taskList);
+  location.reload();
 }
 
 /**
- * When end button is clicked, set the styling of it to be none
- * and set the styling of finish button to be inline.
- * @param {number} id ID of the start button to be changed.
+ * Find the task in local storage, set its started to be true, status to be In-Progress
+ * and record the start time in start. Once we set the new data, save it to storage and reload the page.
+ * @param {number} id ID of the start button.
  */
+// Change the ID and Classname of the start button to be endButton
 function endSwitch(id) {
-  let myEndButton = document.getElementById(`endButton${id}`);
-  myEndButton.style = `display: none;`;
-  let myFinishButton = document.getElementById(`finishButton${id}`);
-  myFinishButton.style = `display: block;`;
+  // Obtain tasks from storage
+  const taskList = getTasksFromStorage();
+  // Iterate until we find the ID
+  for (var i = 0; i < taskList.length; i++) {
+    // If ID matches, set to be new status
+    if (taskList[i].id == id) {
+      taskList[i].end = new Date();
+      // console.log(taskList[i].end);
+      // taskList[i].difference = taskList[i].end - taskList[i].start;
+      // console.log((taskList[i].end.getTime() - taskList[i].start.getTime())/1000);
+      deleteTaskById(id);
+    }
+  }
 }
 
 /**
@@ -206,10 +235,12 @@ function initFormHandler() {
       taskData[key] = formData.get(key);
     }
 
+    // Initially set status to be planned and started to be false, generate unique ID for the task
     taskData.status = "Planned";
+    taskData.started = false;
     taskData.id = generateUniqueID();
 
-    //populate the table
+    // populate the table
     addTask(taskData);
 
     // save data to global variable
@@ -221,4 +252,4 @@ function initFormHandler() {
   });
 }
 
-export { getTasksFromStorage, saveTaskToStorage };
+export { getTasksFromStorage, saveTaskToStorage, startSwitch };
