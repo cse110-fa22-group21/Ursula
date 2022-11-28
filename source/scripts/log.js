@@ -4,7 +4,6 @@
 /**
  * @type {Array}
  */
- var data = [];
  var count = 0;
  var maxFull = false;
 

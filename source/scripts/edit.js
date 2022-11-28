@@ -1,5 +1,5 @@
 // Import functions from add.js and delete.js
-import { getTasksFromStorage, saveTaskToStorage, startSwitch } from "./add.js";
+import { getTasksFromStorage, saveTaskToStorage } from "./add.js";
 import { deleteTaskById } from "./delete.js";
 // --------------------------edit popup window--------------------------------------
 
