@@ -21,8 +21,8 @@
 Work on Analytics Page
 
 Team 3: Analytics - Nikki, Moritz, Tianya
--[x] Display Expected time
--[x] Display Expected - actual
--[x] Use a happy/sad face with varied color based on residual (or other idea to graphically represent the info)
+- [x] Display Expected time
+- [x] Display Expected - actual
+- [x] Use a happy/sad face with varied color based on residual (or other idea to graphically represent the info)
 
 - Instead of deleting from local storage for to do list delete task, we stop displaying task data and then we read it from local storage for the analytics page
