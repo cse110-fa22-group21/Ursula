@@ -137,8 +137,16 @@ function addTask(data) {
     // If started is true 
     if (data.started) {
       // Call endSwitch
+      // TODO Team2: Add to Log here, pass in id
+      // let nameElement = data.name;
+      // let typeElement = data.type;
+      // let startTime = data.start;
+      // // let endTime = data.end;
+      // console.log(nameElement);
+      // console.log(typeElement);
+      // console.log(startTime);
+      // console.log(endTime);
       endSwitch(data.id);
-      // TODO Team2: Add to Log here, pass in ID
     }
     // If started is false
     else {
@@ -185,17 +193,25 @@ function startSwitch(id) {
 // Change the ID and Classname of the start button to be endButton
 function endSwitch(id) {
   // Obtain tasks from storage
-  const taskList = getTasksFromStorage();
+  let taskList = getTasksFromStorage();
   // Iterate until we find the ID
   for (var i = 0; i < taskList.length; i++) {
     // If ID matches, set to be new status
     if (taskList[i].id == id) {
+      console.log(1);
+      taskList[i].status = "Completed";
       taskList[i].end = new Date();
-      // console.log(taskList[i].end);
+      console.log(taskList[i].end);
       // taskList[i].difference = taskList[i].end - taskList[i].start;
       // console.log((taskList[i].end.getTime() - taskList[i].start.getTime())/1000);
-      deleteTaskById(id);
+
+      
+      // To-do Team1 
+      // delete task info from the table
+      // deleteTaskById(id);
     }
+    saveTaskToStorage(taskList);
+    location.reload();
   }
 }
 
@@ -250,6 +266,8 @@ function initFormHandler() {
     tasks.push(taskData);
     saveTaskToStorage(tasks);
   });
+
 }
+
 
 export { getTasksFromStorage, saveTaskToStorage, startSwitch };
