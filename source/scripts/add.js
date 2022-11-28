@@ -1,6 +1,6 @@
 // Import functions from edit.js
 import { openEditForm } from "./edit.js";
-import { deleteTaskById } from "./delete.js"
+import { deleteTaskById } from "./delete.js";
 
 // Global Variables
 /**
