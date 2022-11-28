@@ -1,8 +1,8 @@
-// Run npm test unit.test.js
+// Run npm test /source/scripts/unit.test.js
 
 /** TEST LOCAL STORAGE */
-// Import functions from add.js and delete.js
-const functions = require('/source/scripts/add.js');
+// Import functions from add.js
+const functions = require('../source/scripts/add.js');
 
 test('Add one task to local storage', ()=>{
     // create task
@@ -19,5 +19,6 @@ test('Add one task to local storage', ()=>{
     // validate task in local storage
     functions.saveTaskToStorage(task);
     expect(JSON.parse(localStorage.getItem("tasks"))).toBe(task);
-})
+});
 
+// TODO: Add end-to-end testing instead of unit tests
