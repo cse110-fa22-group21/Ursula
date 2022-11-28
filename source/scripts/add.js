@@ -59,11 +59,13 @@ function generateUniqueID() {
  * new <to-do-task> element, adds the task data to that item
  * using element.data = {...}, and then appends that new task
  * to <tbody>
+ * Doesn't add a new dask once a time difference is calculated,
+ * e.g. if the Task is finished
  * @param {Array<Object>} tasks An array of recipes
  */
 function addTaskToDocument(tasks) {
   for (let i = 0; i < tasks.length; i++) {
-    addTask(tasks[i]);
+    if(tasks[i].difference < 0) addTask(tasks[i]);
   }
 }
 
@@ -127,7 +129,7 @@ function addTask(data) {
   }
 
   // Else set button inner to Start
- else {
+  else {
     document.getElementById(`startButton${data.id}`).innerText = "Start";
   }
 
@@ -192,9 +194,13 @@ function endSwitch(id) {
       // Date.parse() to get the correct start time form.
       // Divide by 1000 to get the answer in seconds (instead of milliseconds by default).
       taskList[i].difference = (taskList[i].end - Date.parse(taskList[i].start))/1000;
-      deleteTaskById(id);
+      //deleteTaskById(id);
     }
   }
+
+  saveTaskToStorage(taskList);
+
+  location.reload(); 
 }
 
 /**
@@ -236,6 +242,7 @@ function initFormHandler() {
     // Initially set status to be planned and started to be false, generate unique ID for the task
     taskData.status = "Planned";
     taskData.started = false;
+    taskData.difference = -1;
     taskData.id = generateUniqueID();
 
     // populate the table
