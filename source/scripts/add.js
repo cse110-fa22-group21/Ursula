@@ -12,7 +12,10 @@ var data = [];
 // Run the init() function when the page has loaded
 window.addEventListener("DOMContentLoaded", init);
 
-// Starts the task program, all function calls trace back here
+/**
+ * @function init
+ * Starts the task program, all function calls trace back here
+ */
 function init() {
   let tasks = getTasksFromStorage();
   // Add each task to the <tbody> element
