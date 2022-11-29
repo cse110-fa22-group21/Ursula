@@ -192,7 +192,6 @@ function endSwitch(id) {
       // Date.parse() to get the correct start time form.
       // Divide by 1000 to get the answer in seconds (instead of milliseconds by default).
       taskList[i].difference = (taskList[i].end - Date.parse(taskList[i].start))/1000;
-      deleteTaskById(id);
     }
   }
 }
