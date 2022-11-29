@@ -1,0 +1,37 @@
+name: Refactor the Page for Pages setup
+run-name: ${{ github.actor }} is recompiling the page for gh-pages branch 🚀
+on: 
+  push:
+    branches: ["main"]
+jobs:
+  merge_main:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out main branch
+        uses: actions/checkout@v3
+      - name: Merge main to gh-pages
+        uses: devmasx/merge-branch@master
+        with:
+          type: now
+          from_branch: main
+          target_branch: gh-pages
+          github_token: ${{ github.token }}
+  move_html_files:
+    needs: merge_main
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out gh-pages branch
+        uses: actions/checkout@v2
+        with:
+          ref: gh-pages
+      - name: Copy html files
+        run: cp ./source/html/* ./
+      - name: commit and push changes to gh-pages branch
+        run: |
+          git config --global user.name 'Github pages action'
+          git config --global user.email 'pages@users.noreply.github.com'
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
+          git add .
+          git commit -m "Moved html files to root"
+          git push
+      
