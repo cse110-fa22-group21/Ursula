@@ -55,7 +55,6 @@ function addTask(data) {
 
     let reaction = "happy"; 
     if ((predictedDiff+(5*60)-data.difference) < 0) reaction = "sad";
-    else if ((predictedDiff/data.difference) > 1.5) reaction = "confused"; 
 
     // The information from data is added following the below format
     tableRow.innerHTML = `<td>${data.name}</td>
