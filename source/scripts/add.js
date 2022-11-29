@@ -7,7 +7,7 @@ import { openEditForm } from "./edit.js";
  */
 var data = [];
 var currentTasks = 0;
-
+const MAX_TASKS = 100;
 // Run the init() function when the page has loaded
 window.addEventListener("DOMContentLoaded", init);
 
@@ -51,7 +51,7 @@ document.getElementById("cancelButton").addEventListener("click", closeForm);
  */
 function openForm() {
   // Change how many tasks can be displayed
-  if (currentTasks < 3) {
+  if (currentTasks < MAX_TASKS) {
     document.getElementById("popupForm").style.display = "block";
   }
   else {
