@@ -26,15 +26,22 @@ function openEditForm(id) {
     // Iterate until we find the ID
     for (var i = 0; i < taskList.length; i++) {
       // If ID matches, extract that data and populate the edit form input fields
+      // Also customises the edit title to be "Editing Specific Task Name"
       if (taskList[i].id == id) {
+        document.getElementById("editTask").innerText = "Editing " + taskList[i].name;
         document.getElementById("taskNameFieldEdit").value = taskList[i].name;
         document.getElementById("hourFieldEdit").value = taskList[i].hours;
         document.getElementById("minFieldEdit").value = taskList[i].minutes;
         document.getElementById("typeTaskFieldEdit").value = taskList[i].type;
-        document.getElementById("statusField").value = taskList[i].status;
         document.getElementById("noteFieldEdit").value = taskList[i].notes;
       }
     }
+
+    // When resetButton is clicked, call resetData, written in edit.js
+    document.getElementById("resetButton").addEventListener("click", () => {
+      resetData(id);
+    });
+
 
     // When deletEditButton is clicked, call deleteTaskById, written in delete.js
     document.getElementsByClassName("deleteEditButton")[0].addEventListener("click", () => {
@@ -53,11 +60,29 @@ function openEditForm(id) {
 }
 
 /*
- * Cancel Edit button function
+ * Close Edit button function
  * Once the use click on the button, the edit popup form should be closed
  */
 function closeEditForm() {
   document.getElementById("editForm").style.display = "none";
+}
+
+/*
+ * Cancel Edit button function
+ * Once the use click on the button, the edit popup form should be closed
+ */
+function resetData(id) {
+  const taskList = getTasksFromStorage();
+  for (var i = 0; i < taskList.length; i++) {
+    // If ID matches, extract that data and populate edit form input field
+    if (taskList[i].id == id) {
+      taskList[i].start = "";
+      taskList[i].status = "Planned";
+      taskList[i].started = false;
+    }
+  }
+  saveTaskToStorage(taskList);
+  location.reload();
 }
 
 /**
@@ -79,7 +104,6 @@ function saveData(id) {
       taskList[i].hours = document.getElementById("hourFieldEdit").value;
       taskList[i].minutes = document.getElementById("minFieldEdit").value;
       taskList[i].type = document.getElementById("typeTaskFieldEdit").value;
-      taskList[i].status = document.getElementById("statusField").value;
       taskList[i].notes = document.getElementById("noteFieldEdit").value;
     }
   }
