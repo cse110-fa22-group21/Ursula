@@ -20,7 +20,7 @@ jobs:
           output_dir: ./source/docs
           template: minami
           recurse: true
-
+          github_token: ${{ github.token }}
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
