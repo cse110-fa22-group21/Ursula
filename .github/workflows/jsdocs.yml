@@ -1,13 +1,10 @@
-name: JSDoc Action
-
+name: Compile JSDocs
 on:
-  push:
-    branches: ["main", "bug-*", "feature-*", "WIP-*"]
   pull_request:
-    branches: ["main", "bug-*", "feature-*", "WIP-*"]
+    branches: "main"
 
 jobs:
-  deploy:
+  compile JSDocs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -20,8 +17,24 @@ jobs:
           output_dir: ./source/docs
           template: minami
           recurse: true
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-          publish_dir: ./source/docs
+
+      - name: Check for changes in docs
+          shell: pwsh
+          id: check_file_changed
+          run: |
+            $diff = git diff HEAD^ HEAD
+
+            $SourceDiff = $diff | Where-Object { $_ -match '^docs/' }
+            $HasDiff = $SourceDiff.Length -gt 0
+
+            Write-Host "::set-output name=docs_changed::$HasDiff"
+
+      - name: commit and push updated docs to the branch
+        if: steps.check_file_changed.outputs.docs_changed == 'True'
+        run: |
+          git config --global user.name 'JSDocs action'
+          git config --global user.email 'jsdocs@users.noreply.github.com'
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
+          git add .
+          git commit -m "Updated JSDocs"
+          git push
