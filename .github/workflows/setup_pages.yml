@@ -2,7 +2,7 @@ name: Refactor the Page for Pages setup
 run-name: ${{ github.actor }} is recompiling the page for gh-pages branch 🚀
 on: 
   push:
-    branches: ["main"]
+    branches: ["gh-pages-automation"]
 jobs:
   chk:
     runs-on: ubuntu-latest
