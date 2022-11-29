@@ -29,16 +29,16 @@ https://app.retrium.com/team-room/4c4d2144-2bda-4177-966a-c63896a554ed/history/7
 
 ## Screen Captures taken During Retrospective
 ### Initial Ideas
-![Initial Ideas](admin/meetings/../../retrospective-images/Retrium1.png)
+![Initial Ideas](admin/meetings/../../retrospective1-images/Retrium1.png)
 
 ### Grouping Ideas
-![Grouping Ideas](admin/meetings/../../retrospective-images/Retrium2.png)
+![Grouping Ideas](admin/meetings/../../retrospective1-images/Retrium2.png)
 
 ### Most Voted Opinion
-![Most Important Idea](admin/meetings/../../retrospective-images/Retrium3.png)
+![Most Important Idea](admin/meetings/../../retrospective1-images/Retrium3.png)
 
 ### Ratings
-![Ratings](admin/meetings/../../retrospective-images/Retrium4.png)
+![Ratings](admin/meetings/../../retrospective1-images/Retrium4.png)
 
 ## Takeaways
 ### What went well: 

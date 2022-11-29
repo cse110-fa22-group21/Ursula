@@ -28,7 +28,7 @@
 [Retrium](https://app.retrium.com/team-room/4c4d2144-2bda-4177-966a-c63896a554ed/history/54954eea-ed25-42e3-8e6c-de38379de45f)
 
 ## Screen Captures from Retrospective
-![Main Ideas](admin/meetings/../../retrospective-images2/Retrium2.1.png)
+![Main Ideas](admin/meetings/../../retrospective2-images/Retrium2.1.png)
 
 
 ## Takeaways
