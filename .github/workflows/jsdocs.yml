@@ -17,7 +17,7 @@ jobs:
               uses: andstor/jsdoc-action@v1
               with:
                   source_dir: ./source
-                  output_dir: ./docs
+                  output_dir: ./source/docs
                   config_file: jsdoc.json
                   template: minami
                   recurse: true
@@ -26,5 +26,4 @@ jobs:
               uses: peaceiris/actions-gh-pages@v3
               with:
                   github_token: ${{ github.token }}
-                  publish_dir: ./docs
-                  publish_dir: ./source
+                  publish_dir: ./source/docs
