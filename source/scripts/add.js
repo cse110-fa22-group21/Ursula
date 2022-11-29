@@ -101,7 +101,6 @@ function addTask(data) {
   </td>`;
   tableRow.id = `task${data.id}`;
   tableRow.className = "task";
-
   document.body.querySelector("tbody").append(tableRow);
 
   // On Click Task Name, Show the Task Notes
@@ -154,7 +153,6 @@ function addTask(data) {
     }
   });
 
-
   // When editbutton is clicked, it will call openEditForm to open the form with the populated data
   document.getElementById(`editButton${data.id}`).addEventListener("click", () => {
     openEditForm(data.id);
@@ -177,7 +175,6 @@ function startSwitch(id) {
       taskList[i].started = true;
       taskList[i].status = "In-Progress";
       taskList[i].start = new Date();
-      console.log(taskList[i].start);
     }
   }
   saveTaskToStorage(taskList);
@@ -261,6 +258,7 @@ function initFormHandler() {
     // save data to global variable
     data.push(taskData);
 
+    // Extract data from storage, add the new data then save it to storage
     let tasks = getTasksFromStorage();
     tasks.push(taskData);
     saveTaskToStorage(tasks);
