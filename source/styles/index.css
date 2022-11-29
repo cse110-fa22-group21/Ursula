@@ -67,7 +67,7 @@ button:hover {
 /* End of Button Styling */
 /* IMPORTANT EDIT FORM AND ADD FORM ARE USING THE SAME CSS FOR CONSISTENCY */
 /* Popup Form Styling */
-#popupForm, #editForm{
+#popupForm, #editForm {
     display: none;
     background-color: var(--tableBackgroundColor);
     position: fixed;
@@ -79,7 +79,7 @@ button:hover {
     border: 2px solid black;
     /* Changed z-index to have priority over header */
     z-index: 100;
-  }
+}
 
 #popupForm > *, #editForm > * {
     padding: 2%;
@@ -154,3 +154,28 @@ textarea {
     background-color: var(--tableHoverColor);
 }
 /* End of Task Notes DropDown Styling */
+
+/* Styling for Max Limit Warning Popup */
+#maxLimitPopup {
+    display: none;
+    text-align: center;
+    background-color: var(--tableBackgroundColor);
+    border: 2px solid black;
+    margin-left: 25%;
+    margin-right: 25%;
+    position: fixed;
+    top: 25%;
+    z-index: 100;
+}
+
+#maxLimitPopup > * {
+    padding: 2%;
+    text-align: center;
+}
+
+#okLimitPopup {
+    margin-bottom: 2%;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+/* End of Styling for Max Limit Warning Popup */

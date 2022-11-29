@@ -6,8 +6,7 @@ import { openEditForm } from "./edit.js";
  * @type {Array}
  */
 var data = [];
-// TODO: consider another array to store deleted tasks
-// var deleted = [];
+var currentTasks = 0;
 
 // Run the init() function when the page has loaded
 window.addEventListener("DOMContentLoaded", init);
@@ -15,10 +14,27 @@ window.addEventListener("DOMContentLoaded", init);
 // Starts the task program, all function calls trace back here
 function init() {
   let tasks = getTasksFromStorage();
+  // Count the number of tasks in the table, make sure the tasks "finished" are false
+  for (let i = 0; i < tasks.length; i++) {
+    if (!tasks[i].finished) {
+      currentTasks++;
+    }
+  }
+  console.log(currentTasks);
   // Add each task to the <tbody> element
   addTaskToDocument(tasks);
   // Add the event listeners to the form elements
   initFormHandler();
+}
+// -------------------------- MAX LIMIT TASK POPUP --------------------------------------
+document.getElementById("okLimitPopup").addEventListener("click", hideMaxPopup);
+
+/*
+ * Max Limit Popup function
+ * Once the user clicks on ok button, it will hide the maxLimitPopup display.
+ */
+function hideMaxPopup() {
+  document.getElementById("maxLimitPopup").style.display = "none";
 }
 
 // -------------------------- ADD TASK POPUP --------------------------------------
@@ -29,10 +45,18 @@ document.getElementById("cancelButton").addEventListener("click", closeForm);
 
 /*
  * Add button function
- * Once the user clicks on the add button, the popup form should pop up
+ * Once the user clicks on the add button, it will check to see if the limit of
+ * the number of tasks being displayed has been reached. If yes, then it will
+ * display the maxLimitPopup display. If no, the popup form will pop up.
  */
 function openForm() {
-  document.getElementById("popupForm").style.display = "block";
+  // Change how many tasks can be displayed
+  if (currentTasks < 3) {
+    document.getElementById("popupForm").style.display = "block";
+  }
+  else {
+    document.getElementById("maxLimitPopup").style.display = "block";
+  }
 }
 
 /*
@@ -82,7 +106,8 @@ function addTaskToDocument(tasks) {
  *                          "start": "object",
  *                          "end": "object",
  *                          "difference": "number",
- *                          "started" : "boolean"
+ *                          "started" : "boolean",
+ *                          "finished" : "boolean"
  *                        }
  */
 function addTask(data) {
@@ -126,8 +151,14 @@ function addTask(data) {
   }
 
   // Else set button inner to Start
- else {
+  else {
     document.getElementById(`startButton${data.id}`).innerText = "Start";
+  }
+
+  // Checks to see if the data has already "finished" (data.finished) if so, hide the table row
+  if (data.finished) {
+    // Hide the current row from the table
+    document.getElementById(`task${data.id}`).style.display = "none";
   }
 
   // When startButton is clicked, check to see if started or not
@@ -135,15 +166,6 @@ function addTask(data) {
     // If started is true 
     if (data.started) {
       // Call endSwitch
-      // TODO Team2: Add to Log here, pass in id
-      // let nameElement = data.name;
-      // let typeElement = data.type;
-      // let startTime = data.start;
-      // // let endTime = data.end;
-      // console.log(nameElement);
-      // console.log(typeElement);
-      // console.log(startTime);
-      // console.log(endTime);
       endSwitch(data.id);
     }
     // If started is false
@@ -194,17 +216,9 @@ function endSwitch(id) {
   for (var i = 0; i < taskList.length; i++) {
     // If ID matches, set to be new status
     if (taskList[i].id == id) {
-      console.log(1);
       taskList[i].status = "Completed";
       taskList[i].end = new Date();
-      console.log(taskList[i].end);
-      // taskList[i].difference = taskList[i].end - taskList[i].start;
-      // console.log((taskList[i].end.getTime() - taskList[i].start.getTime())/1000);
-
-      
-      // To-do Team1 
-      // delete task info from the table
-      // deleteTaskById(id);
+      taskList[i].finished = true;
     }
     saveTaskToStorage(taskList);
     location.reload();
@@ -250,6 +264,7 @@ function initFormHandler() {
     // Initially set status to be planned and started to be false, generate unique ID for the task
     taskData.status = "Planned";
     taskData.started = false;
+    taskData.finished = false;
     taskData.id = generateUniqueID();
 
     // populate the table
@@ -265,6 +280,4 @@ function initFormHandler() {
   });
 
 }
-
-
 export { getTasksFromStorage, saveTaskToStorage, startSwitch };

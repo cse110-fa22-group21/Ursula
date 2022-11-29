@@ -12,13 +12,13 @@ window.addEventListener("DOMContentLoaded", init);
 // Starts the task program, all function calls trace back here
 function init() {
   let taskList = getTasksFromStorage();
-  for(let i=0; i<taskList.length; i++){
-    console.log(taskList[i].name);
-    if(taskList[i].status =="Completed"){
+  for (let i = 0; i < taskList.length; i++) {
+    if (taskList[i].status == "Completed") {
       addLog(taskList[i]);
-      if(count < 99){  //max value of stack : 99
+      if ( count < 100 ) {  //max value of stack : 99
         count++;
-      }else{
+      } 
+      else {
         maxFull = true;
       }
     }
@@ -56,26 +56,29 @@ function init() {
  *                        }
  */
 function addLog(data) {
+    // Extract end date which is in milliseconds, change to date
+    let endTime = Date.parse(data.end);
+    let endDate = new Date(endTime);
     // if there are not 100 tasks yet, display on the page
-    if(!maxFull){
+    if (!maxFull) {
         // populate data in the table
         const tableRow = document.createElement("tr");
         // The information from data is added following the below format
         tableRow.innerHTML = 
         `<td>${data.name}</td>
         <td>${data.type}</td>
-        <td>${data.end}</td>
+        <td>${endDate}</td>
         </td>`;
         document.body.querySelector("tbody").append(tableRow);
     }
     // if there are more than 100 tasks, delete the first old tasks
-    else{
+    else {
         const tableRow = document.createElement("tr");
         // The information from data is added following the below format
         tableRow.innerHTML = 
         `<td>${data.name}</td>
         <td>${data.type}</td>
-        <td>${data.end}</td>
+        <td>${endDate}</td>
         </td>`;
         document.body.querySelector("tbody").append(tableRow);
         // delete old tasks
