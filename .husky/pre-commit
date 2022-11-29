@@ -2,5 +2,5 @@
 . "$(dirname -- "$0")/_/husky.sh"
 
 # npm run pretty-quick
-npm run doc
+# npm run doc
 npx pretty-quick --staged
