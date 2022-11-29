@@ -4,7 +4,7 @@ on:
   push:
     branches: ["gh-pages-automation"]
 jobs:
-  chk:
+  merge_main:
     runs-on: ubuntu-latest
     steps:
       - name: Check out main branch
@@ -16,6 +16,10 @@ jobs:
           from_branch: main
           target_branch: gh-pages
           github_token: ${{ github.token }}
+  move_html_files:
+    needs: merge_main
+    runs-on: ubuntu-latest
+    steps:
       - name: Check out gh-pages branch
         uses: actions/checkout@v2
         with:
@@ -27,6 +31,7 @@ jobs:
           git config --global user.name 'Github pages action'
           git config --global user.email 'pages@users.noreply.github.com'
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
+          git add .
           git commit -m "Moved html files to root"
           git push
       
