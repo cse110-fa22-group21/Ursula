@@ -18,5 +18,9 @@ We will create a CRUD application using HTML, CSS and JavaScript that will allow
 - Developer - Nikki Rejai
 - Developer - Tianya Zhan
 - Developer - Vicky Chou
-- Developer - Ziting Xiong
+- Developer - Ziting Xiongw
 - Developer - Melvyn Tan
+
+## Documentation
+Documentation can be found at
+https://cse110-fa22-group21.github.io/cse110-fa22-group21/docs/index.html
