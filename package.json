@@ -21,7 +21,7 @@
     },
     "homepage": "https://github.com/cse110-fa22-group21/cse110-fa22-group21#readme",
     "devDependencies": {
-        "@babel/core": "^7.20.2",
+        "@babel/core": "^7.20.5",
         "@babel/preset-env": "^7.20.2",
         "babel-jest": "^27.5.1",
         "eslint": "^8.27.0",

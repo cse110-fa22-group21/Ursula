@@ -1,7 +1,7 @@
 describe('Basic user flow for Website', () => {
     // First, the website
     beforeAll(async () => {
-      await page.goto('http://127.0.0.1:5500/source/html/');
+      await page.goto('https://cse110-fa22-group21.github.io/cse110-fa22-group21/');
     });
   
     // Check to see that there are 0 tasks
@@ -10,7 +10,7 @@ describe('Basic user flow for Website', () => {
       const storage = await page.evaluate(() => {
         return window.localStorage.getItem('tasks')
       });
-      expected = [];
+      expected = null;
       expect(storage).toBe(expected);
     });
   });
