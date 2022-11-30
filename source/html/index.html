@@ -1,168 +1,198 @@
 <!DOCTYPE html>
 <html lang="en-US">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>Ursula's To Do List</title>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>Ursula's To Do List</title>
 
-    <!-- Styling -->
-    <link href="/source/styles/page.css" rel="stylesheet" />
-    <link href="/source/styles/header.css" rel="stylesheet" />
-    <link href="/source/styles/footer.css" rel="stylesheet" />
-    <link href="/source/styles/index.css" rel="stylesheet" />
-    <link href="/source/styles/mobile.css" rel="stylesheet" media="only screen and (max-width: 720px)">
-    <!-- Font -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Abel&family=Rajdhani&family=Silkscreen&display=swap"
-      rel="stylesheet"
-    />
+        <!-- Styling -->
+        <link href="/source/styles/page.css" rel="stylesheet" />
+        <link href="/source/styles/header.css" rel="stylesheet" />
+        <link href="/source/styles/footer.css" rel="stylesheet" />
+        <link href="/source/styles/index.css" rel="stylesheet" />
+        <link
+            href="/source/styles/mobile.css"
+            rel="stylesheet"
+            media="only screen and (max-width: 720px)"
+        />
+        <!-- Font -->
+        <link
+            href="https://fonts.googleapis.com/css2?family=Abel&family=Rajdhani&family=Silkscreen&display=swap"
+            rel="stylesheet"
+        />
 
-    <!-- Main Script -->
-    <script src="/source/scripts/add.js" type="module"></script>
-    <script src="/source/scripts/edit.js" type="module"></script>
-    <script src="/source/scripts/delete.js" type="module"></script>
-  </head>
-  <body>
-    <header>
-      <!-- Navigation for the page -->
-      <nav>
-        <a href="index.html"
-          ><img src="/source/images/team21-nobg.png" alt="Team Ursula's Logo"
-        /></a>
-        <ul>
-          <li><a href="log.html">Log</a></li>
-          <li><a href="analytics.html">Analytics</a></li>
-        </ul>
-      </nav>
-    </header>
+        <!-- Main Script -->
+        <script src="/source/scripts/add.js" type="module"></script>
+        <script src="/source/scripts/edit.js" type="module"></script>
+        <script src="/source/scripts/delete.js" type="module"></script>
+    </head>
+    <body>
+        <header>
+            <!-- Navigation for the page -->
+            <nav>
+                <a href="index.html"
+                    ><img
+                        src="/source/images/team21-nobg.png"
+                        alt="Team Ursula's Logo"
+                /></a>
+                <ul>
+                    <li><a href="log.html">Log</a></li>
+                    <li><a href="analytics.html">Analytics</a></li>
+                </ul>
+            </nav>
+        </header>
 
-    <main>
-      <!-- Page Identifier Name and Add Button-->
-      <section id="pageIdentifier">
-        <h1>To Do List</h1>
-        <button id="addButton">Add</button>
-      </section>
-      <!-- Too Many Tasks Warning Popup -->
-      <div id="maxLimitPopup">
-        <h2>WARNING</h2>
-        <p>You have currently reached the maximum number of tasks. 
-          Please delete the existing tasks to add new ones.</p>
-        <button type="button" id="okLimitPopup">Ok</button>
-      </div>
-      <!-- Create Form that will be hidden initially but will show when add button clicked-->
-      <div id="popupForm">
-        <form>
-          <h2 id="addNewTask">Add New To Do Task</h2>
-          <label class="formLabel" for="taskNameField">Task Name:</label>
-          <input
-            class="formInput"
-            type="text"
-            id="taskNameField"
-            name="name"
-            required
-          /><br />
-          <label class="formLabel" >Estimated time required:</label>
-          <input
-            class="formInput"
-            type="number"
-            id="hourField"
-            name="hours"
-            required
-          />
-          <label for="hourField">hours</label>
-          <input
-            class="formInput"
-            type="number"
-            id="minField"
-            name="minutes"
-            required
-          />
-          <label for="minField">minutes</label> <br />
-          <label class="formLabel" for="typeTaskField">Type of Task (optional)</label>
-          <input
-            class="formInput"
-            type="text"
-            id="typeTaskField"
-            name="type"
-          /><br />
-          <div class="textArea">
-            <label class="formLabel" for="noteField">Notes: </label>
-            <textarea id="noteField" name="notes" required></textarea><br />
-          </div>
-          <button class="submitButton" id="subButton">Submit</button>
-          <button type="button" id="cancelButton">Cancel</button>
-        </form>
-      </div>
-      <!-- End Add Popup Form -->
+        <main>
+            <!-- Page Identifier Name and Add Button-->
+            <section id="pageIdentifier">
+                <h1>To Do List</h1>
+                <button id="addButton">Add</button>
+            </section>
+            <!-- Too Many Tasks Warning Popup -->
+            <div id="maxLimitPopup">
+                <h2>WARNING</h2>
+                <p>
+                    You have currently reached the maximum number of tasks.
+                    Please delete the existing tasks to add new ones.
+                </p>
+                <button type="button" id="okLimitPopup">Ok</button>
+            </div>
+            <!-- Create Form that will be hidden initially but will show when add button clicked-->
+            <div id="popupForm">
+                <form>
+                    <h2 id="addNewTask">Add New To Do Task</h2>
+                    <label class="formLabel" for="taskNameField"
+                        >Task Name:</label
+                    >
+                    <input
+                        class="formInput"
+                        type="text"
+                        id="taskNameField"
+                        name="name"
+                        required
+                    /><br />
+                    <label class="formLabel">Estimated time required:</label>
+                    <input
+                        class="formInput"
+                        type="number"
+                        id="hourField"
+                        name="hours"
+                        required
+                    />
+                    <label for="hourField">hours</label>
+                    <input
+                        class="formInput"
+                        type="number"
+                        id="minField"
+                        name="minutes"
+                        required
+                    />
+                    <label for="minField">minutes</label> <br />
+                    <label class="formLabel" for="typeTaskField"
+                        >Type of Task (optional)</label
+                    >
+                    <input
+                        class="formInput"
+                        type="text"
+                        id="typeTaskField"
+                        name="type"
+                    /><br />
+                    <div class="textArea">
+                        <label class="formLabel" for="noteField">Notes: </label>
+                        <textarea
+                            id="noteField"
+                            name="notes"
+                            required
+                        ></textarea
+                        ><br />
+                    </div>
+                    <button class="submitButton" id="subButton">Submit</button>
+                    <button type="button" id="cancelButton">Cancel</button>
+                </form>
+            </div>
+            <!-- End Add Popup Form -->
 
-      <!-- Edit Popup Form -->
-      <div id="editForm">
-        <form>
-          <h2 id="editTask">Editing TODO specific Name</h2>
-          <label class="formLabel" for="taskNameFieldEdit">Task Name:</label>
-          <input
-            class="formInput"
-            type="text"
-            id="taskNameFieldEdit"
-            name="taskName"
-            required
-          /><br />
-          <label class="formLabel" >Estimated time required:</label>
-          <input
-            class="formInput"
-            type="number"
-            id="hourFieldEdit"
-            name="minute"
-            required
-          />
-          <label class="hourInput" for="hourFieldEdit">hours</label>
-          <input
-            class="formInput"
-            type="number"
-            id="minFieldEdit"
-            name="hour"
-            required
-          />
-          <label for="minFieldEdit">minutes</label> <br />
-          <label class="formLabel" for="typeTaskFieldEdit">Type of Task (optional)</label>
-          <input
-            class="formInput"
-            type="text"
-            id="typeTaskFieldEdit"
-            name="typeTaskName"
-          /><br />
-          <div class="textArea">
-            <label class="formLabel" for="noteFieldEdit">Notes: </label>
-            <textarea id="noteFieldEdit" name="note" required></textarea><br />
-          </div>
-          <button type="button" id="cancelEditButton">Cancel</button>
-          <button class="submitEditButton">Save</button>
-          <button type="button" class="deleteEditButton">Delete</button>
-          <button type="button" id="resetButton">Reset</button>
-        </form>
-      </div>
-      <!-- End Edit Popup Form -->
+            <!-- Edit Popup Form -->
+            <div id="editForm">
+                <form>
+                    <h2 id="editTask">Editing TODO specific Name</h2>
+                    <label class="formLabel" for="taskNameFieldEdit"
+                        >Task Name:</label
+                    >
+                    <input
+                        class="formInput"
+                        type="text"
+                        id="taskNameFieldEdit"
+                        name="taskName"
+                        required
+                    /><br />
+                    <label class="formLabel">Estimated time required:</label>
+                    <input
+                        class="formInput"
+                        type="number"
+                        id="hourFieldEdit"
+                        name="minute"
+                        required
+                    />
+                    <label class="hourInput" for="hourFieldEdit">hours</label>
+                    <input
+                        class="formInput"
+                        type="number"
+                        id="minFieldEdit"
+                        name="hour"
+                        required
+                    />
+                    <label for="minFieldEdit">minutes</label> <br />
+                    <label class="formLabel" for="typeTaskFieldEdit"
+                        >Type of Task (optional)</label
+                    >
+                    <input
+                        class="formInput"
+                        type="text"
+                        id="typeTaskFieldEdit"
+                        name="typeTaskName"
+                    /><br />
+                    <div class="textArea">
+                        <label class="formLabel" for="noteFieldEdit"
+                            >Notes:
+                        </label>
+                        <textarea
+                            id="noteFieldEdit"
+                            name="note"
+                            required
+                        ></textarea
+                        ><br />
+                    </div>
+                    <button type="button" id="cancelEditButton">Cancel</button>
+                    <button class="submitEditButton">Save</button>
+                    <button type="button" class="deleteEditButton">
+                        Delete
+                    </button>
+                    <button type="button" id="resetButton">Reset</button>
+                </form>
+            </div>
+            <!-- End Edit Popup Form -->
 
-      <!-- Main Table Where Data Will Go In-->
-      <section>
-        <table>
-          <!-- DO NOT TOUCH -->
-          <thead>
-            <tr>
-              <th id="theadName">Name</th>
-              <th id="theadTime">Est. Time</th>
-              <th id="theadStatus">Status</th>
-              <th id="theadAction">Action</th>
-            </tr>
-          </thead>
-          <!-- DO NOT TOUCH -->
-          <tbody>
-            <!-- Data Goes Here-->
-            <!-- POPULATE DATA INTO THIS TBODY -->
-            <!-- TR FOLLOWED BY TD -->
+            <!-- Main Table Where Data Will Go In-->
+            <section>
+                <table>
+                    <!-- DO NOT TOUCH -->
+                    <thead>
+                        <tr>
+                            <th id="theadName">Name</th>
+                            <th id="theadTime">Est. Time</th>
+                            <th id="theadStatus">Status</th>
+                            <th id="theadAction">Action</th>
+                        </tr>
+                    </thead>
+                    <!-- DO NOT TOUCH -->
+                    <tbody>
+                        <!-- Data Goes Here-->
+                        <!-- POPULATE DATA INTO THIS TBODY -->
+                        <!-- TR FOLLOWED BY TD -->
 
-            <!-- COMMENTED OUT FOR NOW AS IT IS THE MODEL AND DOES NOT WORK -->
-            <!-- <tr>
+                        <!-- COMMENTED OUT FOR NOW AS IT IS THE MODEL AND DOES NOT WORK -->
+                        <!-- <tr>
               <td>Task 1</td>
               <td>2 hr 30 min</td>
               <td>In Progress</td>
@@ -183,20 +213,21 @@
                 </button>
               </td>
             </tr> -->
-            <!-- END OF MODEL TEST -->
-            
-          </tbody>
-        </table>
-      </section>
-    </main>
-    <!-- Footer information if neccessary -->
-    <footer>
-      <ul>
-        <li>
-          Contact us:
-          <a href="mailto:ursula4triton@gmail.com">Ursula4Triton@gmail.com</a>
-        </li>
-      </ul>
-    </footer>
-  </body>
+                        <!-- END OF MODEL TEST -->
+                    </tbody>
+                </table>
+            </section>
+        </main>
+        <!-- Footer information if neccessary -->
+        <footer>
+            <ul>
+                <li>
+                    Contact us:
+                    <a href="mailto:ursula4triton@gmail.com"
+                        >Ursula4Triton@gmail.com</a
+                    >
+                </li>
+            </ul>
+        </footer>
+    </body>
 </html>

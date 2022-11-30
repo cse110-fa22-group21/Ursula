@@ -1,5 +1,5 @@
 // Import functions from add.js
-import { getTasksFromStorage, saveTaskToStorage } from "./add.js";
+import { getTasksFromStorage, saveTaskToStorage } from './add.js'
 
 /**
  * Reads 'to-do-tasks' from localStorage, removes the task with the given ID
@@ -7,20 +7,20 @@ import { getTasksFromStorage, saveTaskToStorage } from "./add.js";
  * Then, it reloads the page to refresh the task list
  * @param {number} id ID of the task to be removed from local storage
  */
-function deleteTaskById(id){
+function deleteTaskById(id) {
     // Obtain tasks from storage
-    const taskList = getTasksFromStorage();
+    const taskList = getTasksFromStorage()
     // iterate until we find the ID
     for (var i = 0; i < taskList.length; i++) {
         // delete the ID and decrement currentTasks
-        if (taskList[i].id == id){
-            taskList.splice(i, 1);
+        if (taskList[i].id == id) {
+            taskList.splice(i, 1)
         }
     }
     // Save all other tasks back to storage
-    saveTaskToStorage(taskList);
+    saveTaskToStorage(taskList)
     // Reload the page with the new contents
-    location.reload();
+    location.reload()
 }
 
-export { deleteTaskById };
+export { deleteTaskById }

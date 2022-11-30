@@ -1,7 +1,6 @@
 /*Specific CSS overwrites for mobile devices (low width screens)*/
 /*We should not change general elements in here, just positioning and flows*/
 @media only screen and (max-width: 720px) {
-
     header img {
         margin-top: 0.5rem;
         margin-left: 1rem;
@@ -38,7 +37,8 @@
         padding: 0.5rem;
     }
 
-    #popupForm, #editForm{
+    #popupForm,
+    #editForm {
         left: 5px;
         right: 5px;
     }
