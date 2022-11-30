@@ -85,11 +85,11 @@ function generateUniqueID() {
  * @param {Array<Object>} tasks An array of recipes
  */
 function addTaskToDocument(tasks) {
-  for (let i = 0; i < tasks.length; i++) {
-	if (tasks[i].difference < 0) {
-		addTask(tasks[i]);
+	for (let i = 0; i < tasks.length; i++) {
+		if (tasks[i].difference < 0) {
+			addTask(tasks[i]);
+		}
 	}
-  }
 }
 
 /**
@@ -212,23 +212,23 @@ function startSwitch(id) {
  */
 // Change the ID and Classname of the start button to be endButton
 function endSwitch(id) {
-  // Obtain tasks from storage
-  const taskList = getTasksFromStorage();
-  // Iterate until we find the ID
-  for (var i = 0; i < taskList.length; i++) {
-    // If ID matches, set to be new status
-    if (taskList[i].id == id) {
-      taskList[i].end = new Date();
-	  taskList[i].status = "Completed";
-	  taskList[i].finished = true;
-      // dates are stringified as JSON into local storage differently, so we need to call
-      // Date.parse() to get the correct start time form.
-      // Divide by 1000 to get the answer in seconds (instead of milliseconds by default).
-      taskList[i].difference = (taskList[i].end - Date.parse(taskList[i].start))/1000;
-    }
-  }
-  saveTaskToStorage(taskList);
-  location.reload();
+	// Obtain tasks from storage
+	const taskList = getTasksFromStorage();
+	// Iterate until we find the ID
+	for (var i = 0; i < taskList.length; i++) {
+		// If ID matches, set to be new status
+		if (taskList[i].id == id) {
+			taskList[i].end = new Date();
+			taskList[i].status = "Completed";
+			taskList[i].finished = true;
+			// dates are stringified as JSON into local storage differently, so we need to call
+			// Date.parse() to get the correct start time form.
+			// Divide by 1000 to get the answer in seconds (instead of milliseconds by default).
+			taskList[i].difference = (taskList[i].end - Date.parse(taskList[i].start)) / 1000;
+		}
+	}
+	saveTaskToStorage(taskList);
+	location.reload();
 }
 
 /**
