@@ -1,5 +1,7 @@
 # cse110-fa22-group21
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/f92d376c6c854e069a5cf767521277ad)](https://app.codacy.com/gh/cse110-fa22-group21/cse110-fa22-group21?utm_source=github.com&utm_medium=referral&utm_content=cse110-fa22-group21/cse110-fa22-group21&utm_campaign=Badge_Grade_Settings)
+
 ## Welcome To Our Repo
 
 We are a 10 member team working on a CRUD application using HTML, CSS and JavaScript. The team consists of 2 team leads and 8 developers. Our mentor is Navya Shetty. Here is a link to the [team page](admin/team.md).
