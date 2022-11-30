@@ -81,7 +81,6 @@ function addTask(data) {
 	// Each note will have its own ID
 	tableRowNotes.className = "notes";
 	tableRowNotes.id = `notes${data.id}`;
-	// tableRow.append(tableRowNotes);
 	document.body.querySelector("tbody").append(tableRowNotes);
 
 	// Display notes when clicked, hide when clicked again
