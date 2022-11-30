@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>edit.js - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading"><a href="global.html">Globals</a></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#addLog">addLog</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#addTask">addTask</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#addTaskToDocument">addTaskToDocument</a></span></li><li class="nav-item"><span class="nav-item-type type-member">M</span><span class="nav-item-name"><a href="global.html#count">count</a></span></li><li class="nav-item"><span class="nav-item-type type-member">M</span><span class="nav-item-name"><a href="global.html#data">data</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#deleteTaskById">deleteTaskById</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#endSwitch">endSwitch</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#generateUniqueID">generateUniqueID</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#getTasksFromStorage">getTasksFromStorage</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#initFormHandler">initFormHandler</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#openEditForm">openEditForm</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#saveData">saveData</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#saveTaskToStorage">saveTaskToStorage</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#startSwitch">startSwitch</a></span></li>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">edit.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>// Import functions from add.js and delete.js
+import { getTasksFromStorage, saveTaskToStorage } from "./add.js";
+import { deleteTaskById } from "./delete.js";
+// --------------------------edit popup window--------------------------------------
+
+/* add functions to the edit button on-click */
+// document.getElementById("editButton").addEventListener("click", () => {openEditForm(0);});
+
+/**
+ * Open Edit button function
+ * Once the user clicks on the add button, the edit popup form should pop up.
+ * Since we are given the id, the data is extracted from local storage using the id
+ * and the input fields are populated. Opening the edit form will allow us access to 3 buttons
+ * a save button which has been given an event listener to call the saveData function to save the
+ * newly updated data back into local storage. A cancel button that has been given an add event listerner
+ * to hide the edit popup form. A delete button that removes the task from local storage and does not
+ * display it anymore on the home page.
+ * The ID of the current task is also passed onto the deleteEditButton to reference the task upon deletion
+ * as well as upon saving new data
+ * @param {number} id ID of the task to be edited
+ */
+function openEditForm(id) {
+    document.getElementById("editForm").style.display = "block";
+    // Obtain tasks from storage
+    const taskList = getTasksFromStorage();
+    // Iterate until we find the ID
+    for (var i = 0; i &lt; taskList.length; i++) {
+      // If ID matches, extract that data and populate the edit form input fields
+      // Also customises the edit title to be "Editing Specific Task Name"
+      if (taskList[i].id == id) {
+        document.getElementById("editTask").innerText = "Editing " + taskList[i].name;
+        document.getElementById("taskNameFieldEdit").value = taskList[i].name;
+        document.getElementById("hourFieldEdit").value = taskList[i].hours;
+        document.getElementById("minFieldEdit").value = taskList[i].minutes;
+        document.getElementById("typeTaskFieldEdit").value = taskList[i].type;
+        document.getElementById("noteFieldEdit").value = taskList[i].notes;
+      }
+    }
+
+    // When resetButton is clicked, call resetData, written in edit.js
+    document.getElementById("resetButton").addEventListener("click", () => {
+      resetData(id);
+    });
+
+
+    // When deletEditButton is clicked, call deleteTaskById, written in delete.js
+    document.getElementsByClassName("deleteEditButton")[0].addEventListener("click", () => {
+      deleteTaskById(id);
+    });
+
+    // When submitEditButton is clicked, call saveData, written in edit.js
+    document.getElementsByClassName("submitEditButton")[0].addEventListener("click", () => {
+      saveData(id);
+    });
+
+    // When cancelEditButton is clicked, call closeEditForm, written in edit.js
+    document.getElementById("cancelEditButton").addEventListener("click", () => {
+      closeEditForm();
+    });
+}
+
+/*
+ * Close Edit button function
+ * Once the use click on the button, the edit popup form should be closed
+ */
+function closeEditForm() {
+  document.getElementById("editForm").style.display = "none";
+}
+
+/*
+ * Cancel Edit button function
+ * Once the use click on the button, the edit popup form should be closed
+ */
+function resetData(id) {
+  const taskList = getTasksFromStorage();
+  for (var i = 0; i &lt; taskList.length; i++) {
+    // If ID matches, extract that data and populate edit form input field
+    if (taskList[i].id == id) {
+      taskList[i].start = "";
+      taskList[i].status = "Planned";
+      taskList[i].started = false;
+    }
+  }
+  saveTaskToStorage(taskList);
+  location.reload();
+}
+
+/**
+ * Open Edit Button to save data.
+ * Once the user clicks on edit save button, The ID of the current task is also passed to 
+ * find the data in local storage. Once the task is found based on the id,
+ * it sets the data of the local storage to be the new data given in the form. 
+ * Save the new data to storage and then reload the page.
+ * @param {number} id ID of the task to be edited
+ */
+function saveData(id) {
+  const taskList = getTasksFromStorage();
+  // Extract data from the input fields and populate it to the json file
+  for (var i = 0; i &lt; taskList.length; i++) {
+    // If ID matches, extract that data and populate edit form input field
+    if (taskList[i].id == id) {
+      // Once id matches, set the data to be the input field value
+      taskList[i].name = document.getElementById("taskNameFieldEdit").value;
+      taskList[i].hours = document.getElementById("hourFieldEdit").value;
+      taskList[i].minutes = document.getElementById("minFieldEdit").value;
+      taskList[i].type = document.getElementById("typeTaskFieldEdit").value;
+      taskList[i].notes = document.getElementById("noteFieldEdit").value;
+    }
+  }
+  // Save all other tasks back to storage
+  saveTaskToStorage(taskList);
+  // Reload the page with the new contents
+  location.reload();
+}
+
+export { openEditForm, closeEditForm };</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a> on Wed Nov 30 2022  GMT+0000 (Coordinated Universal Time) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>

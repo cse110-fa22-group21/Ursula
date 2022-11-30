@@ -1,4 +1,45 @@
-// Import functions from edit.js
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>add.js - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading"><a href="global.html">Globals</a></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#addLog">addLog</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#addTask">addTask</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#addTaskToDocument">addTaskToDocument</a></span></li><li class="nav-item"><span class="nav-item-type type-member">M</span><span class="nav-item-name"><a href="global.html#count">count</a></span></li><li class="nav-item"><span class="nav-item-type type-member">M</span><span class="nav-item-name"><a href="global.html#data">data</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#deleteTaskById">deleteTaskById</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#endSwitch">endSwitch</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#generateUniqueID">generateUniqueID</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#getTasksFromStorage">getTasksFromStorage</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#initFormHandler">initFormHandler</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#openEditForm">openEditForm</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#saveData">saveData</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#saveTaskToStorage">saveTaskToStorage</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#startSwitch">startSwitch</a></span></li>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">add.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>// Import functions from edit.js
 import { openEditForm } from "./edit.js";
 
 // Global Variables
@@ -15,13 +56,13 @@ window.addEventListener("DOMContentLoaded", init);
 function init() {
   let tasks = getTasksFromStorage();
   // Count the number of tasks in the table, make sure the tasks "finished" are false
-  for (let i = 0; i < tasks.length; i++) {
+  for (let i = 0; i &lt; tasks.length; i++) {
     if (!tasks[i].finished) {
       currentTasks++;
     }
   }
   console.log(currentTasks);
-  // Add each task to the <tbody> element
+  // Add each task to the &lt;tbody> element
   addTaskToDocument(tasks);
   // Add the event listeners to the form elements
   initFormHandler();
@@ -51,7 +92,7 @@ document.getElementById("cancelButton").addEventListener("click", closeForm);
  */
 function openForm() {
   // Change how many tasks can be displayed
-  if (currentTasks < MAX_TASKS) {
+  if (currentTasks &lt; MAX_TASKS) {
     document.getElementById("popupForm").style.display = "block";
   }
   else {
@@ -79,13 +120,13 @@ function generateUniqueID() {
 
 /**
  * Takes in an array of tasks and for each task creates a
- * new <to-do-task> element, adds the task data to that item
+ * new &lt;to-do-task> element, adds the task data to that item
  * using element.data = {...}, and then appends that new task
- * to <tbody>
- * @param {Array<Object>} tasks An array of recipes
+ * to &lt;tbody>
+ * @param {Array&lt;Object>} tasks An array of recipes
  */
 function addTaskToDocument(tasks) {
-  for (let i = 0; i < tasks.length; i++) {
+  for (let i = 0; i &lt; tasks.length; i++) {
     addTask(tasks[i]);
   }
 }
@@ -93,7 +134,7 @@ function addTaskToDocument(tasks) {
 /**
  * Populate the table using the data object.
  *
- * @param {Object} data - The data to pass into the <task>, must be of the
+ * @param {Object} data - The data to pass into the &lt;task>, must be of the
  *                        following format:
  *                        {
  *                          "id": "number",
@@ -115,15 +156,15 @@ function addTask(data) {
   const tableRow = document.createElement("tr");
 
   // The information from data is added following the below format
-  tableRow.innerHTML = `<td>${data.name}</td>
-  <td>${data.hours} hr ${data.minutes} min</td>
-  <td>${data.status}</td>
-  <td>
-  <button class="startButton" id="startButton${data.id}">Start</button>
-  <button class="editButton" id="editButton${data.id}">
-  <img id="editIcon" src="../source/images/edit-icon.svg" alt="Edit icon button for task ${data.id}">
-  </button>
-  </td>`;
+  tableRow.innerHTML = `&lt;td>${data.name}&lt;/td>
+  &lt;td>${data.hours} hr ${data.minutes} min&lt;/td>
+  &lt;td>${data.status}&lt;/td>
+  &lt;td>
+  &lt;button class="startButton" id="startButton${data.id}">Start&lt;/button>
+  &lt;button class="editButton" id="editButton${data.id}">
+  &lt;img id="editIcon" src="../source/images/edit-icon.svg" alt="Edit icon button for task ${data.id}">
+  &lt;/button>
+  &lt;/td>`;
   tableRow.id = `task${data.id}`;
   tableRow.className = "task";
   document.body.querySelector("tbody").append(tableRow);
@@ -131,7 +172,7 @@ function addTask(data) {
   // On Click Task Name, Show the Task Notes
   // Create another task row tag and put the notes into it
   const tableRowNotes = document.createElement("tr");
-  tableRowNotes.innerHTML = `<td COLSPAN="4">${data.notes}</td>`;
+  tableRowNotes.innerHTML = `&lt;td COLSPAN="4">${data.notes}&lt;/td>`;
   // Each note will have its own ID
   tableRowNotes.className = "notes";
   tableRowNotes.id = `notes${data.id}`;
@@ -191,7 +232,7 @@ function startSwitch(id) {
   // Obtain tasks from storage
   const taskList = getTasksFromStorage();
   // Iterate until we find the ID
-  for (var i = 0; i < taskList.length; i++) {
+  for (var i = 0; i &lt; taskList.length; i++) {
     // If ID matches, set to be new status
     if (taskList[i].id == id) {
       taskList[i].started = true;
@@ -213,7 +254,7 @@ function endSwitch(id) {
   // Obtain tasks from storage
   let taskList = getTasksFromStorage();
   // Iterate until we find the ID
-  for (var i = 0; i < taskList.length; i++) {
+  for (var i = 0; i &lt; taskList.length; i++) {
     // If ID matches, set to be new status
     if (taskList[i].id == id) {
       taskList[i].status = "Completed";
@@ -229,7 +270,7 @@ function endSwitch(id) {
  * Reads 'tasks' from localStorage and returns an array of
  * all of the tasks found. If nothing is found in localStorage for
  * 'tasks', an empty array is returned.
- * @returns {Array<Object>} An array of recipes found in localStorage
+ * @returns {Array&lt;Object>} An array of recipes found in localStorage
  */
 function getTasksFromStorage() {
   return JSON.parse(localStorage.getItem("tasks")) || [];
@@ -238,7 +279,7 @@ function getTasksFromStorage() {
 /**
  * Takes in an array of tasks, converts it to a string, and then
  * saves that string to 'tasks' in localStorage
- * @param {Array<Object>} tasks An array of recipes
+ * @param {Array&lt;Object>} tasks An array of recipes
  */
 function saveTaskToStorage(tasks) {
   localStorage.setItem("tasks", JSON.stringify(tasks));
@@ -280,4 +321,22 @@ function initFormHandler() {
   });
 
 }
-export { getTasksFromStorage, saveTaskToStorage, startSwitch };
+export { getTasksFromStorage, saveTaskToStorage, startSwitch };</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a> on Wed Nov 30 2022  GMT+0000 (Coordinated Universal Time) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>
