@@ -17,4 +17,5 @@ jobs:
       - name: Prettify code
         uses: creyD/prettier_action@v4.2
         with:
-          prettier_options: --write **/*.{js,md,css,html} --trailing-comma es5 --tab-width 4 --no-semi --single-quote
+          prettier_options: --write **/*.{js,md,css,html}
+          dry: True
