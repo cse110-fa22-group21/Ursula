@@ -31,7 +31,7 @@ jobs:
           sed -i 's/\/source/.\/source/' *.html
       - name: Update paths in js files
         run: |
-          sed -i 's/\/source/.\/source/' source/scripts/*.js
+          sed -i 's/\"\/source/\".\/source/' source/scripts/*.js
       - name: JSDocs Generation
         uses: andstor/jsdoc-action@v1
         with:
