@@ -8,6 +8,8 @@ We are a 10 member team working on a CRUD application using HTML, CSS and JavaSc
 
 We will create a CRUD application using HTML, CSS and JavaScript that will allow users to create, read, update and delete items of their choosing. We are hosting the application on GitHub Pages, view it [here](https://cse110-fa22-group21.github.io/cse110-fa22-group21/)
 
+[Link to docs](https://cse110-fa22-group21.github.io/cse110-fa22-group21/out)
+
 ## Team
 
 - Team Leader - Ji Hoon Kim
