@@ -146,11 +146,11 @@ function addTask(data) {
 		//document.getElementById(`task${data.id}`).childNodes.forEach(x => {if(x.localName == "td") x.style.backgroundColor = (document.getElementById(`notes${data.id}`).style.display=="none") ? "none" : "#e8e0e2"});
 	});
 
-  // Checks each data.started and chagnes the innerText of the startButton to Finish or Start
-  // Set the button inner to End
-  if (data.started) {
-    document.getElementById(`startButton${data.id}`).innerText = "Finish";
-  }
+	// Checks each data.started and chagnes the innerText of the startButton to Finish or Start
+	// Set the button inner to End
+	if (data.started) {
+		document.getElementById(`startButton${data.id}`).innerText = "Finish";
+	}
 
 	// Else set button inner to Start
 	else {
@@ -271,7 +271,7 @@ function initFormHandler() {
 		taskData.status = "Planned";
 		taskData.started = false;
 		taskData.finished = false;
-    	taskData.difference = -1;
+		taskData.difference = -1;
 		taskData.id = generateUniqueID();
 
 		// populate the table
