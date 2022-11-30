@@ -12,7 +12,7 @@ function deleteTaskById(id){
     const taskList = getTasksFromStorage();
     // iterate until we find the ID
     for (var i = 0; i < taskList.length; i++) {
-        // delete the ID
+        // delete the ID and decrement currentTasks
         if (taskList[i].id == id){
             taskList.splice(i, 1);
         }

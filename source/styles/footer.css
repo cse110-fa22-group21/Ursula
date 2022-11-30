@@ -5,10 +5,11 @@ footer {
   bottom: 0;
   width: 100%;
   text-align: center;
-  height: fit-content; /* Height of the footer */
+  height: fit-content;
   background-color: var(--tableBackgroundColor);
   padding: 0.5rem 0;
   font-size: 1rem;
+  z-index: -1;
 }
 
 footer a {
