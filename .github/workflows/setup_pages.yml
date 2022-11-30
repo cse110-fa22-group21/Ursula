@@ -55,6 +55,9 @@ jobs:
           ref: gh-pages
       - name: Copy html files
         run: cp ./source/html/* ./
+      - name: Update paths in html files
+        run: |
+          sed -i 's/\/source/.\/source/' *.html
       - name: commit and push changes to gh-pages branch
         run: |
           git config --global user.name 'Github pages action'
