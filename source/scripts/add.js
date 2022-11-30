@@ -20,7 +20,6 @@ function init() {
 			currentTasks++;
 		}
 	}
-	console.log(currentTasks);
 	// Add each task to the <tbody> element
 	addTaskToDocument(tasks);
 	// Add the event listeners to the form elements
@@ -81,13 +80,15 @@ function generateUniqueID() {
  * new <to-do-task> element, adds the task data to that item
  * using element.data = {...}, and then appends that new task
  * to <tbody>
- * Doesn't add a new dask once a time difference is calculated,
+ * Doesn't add a new task once a time difference is calculated,
  * e.g. if the Task is finished
  * @param {Array<Object>} tasks An array of recipes
  */
 function addTaskToDocument(tasks) {
   for (let i = 0; i < tasks.length; i++) {
-    addTask(tasks[i]);
+	if (tasks[i].difference < 0) {
+		addTask(tasks[i]);
+	}
   }
 }
 
@@ -224,9 +225,10 @@ function endSwitch(id) {
       // Date.parse() to get the correct start time form.
       // Divide by 1000 to get the answer in seconds (instead of milliseconds by default).
       taskList[i].difference = (taskList[i].end - Date.parse(taskList[i].start))/1000;
-      deleteTaskById(id);
     }
   }
+  saveTaskToStorage(taskList);
+  location.reload();
 }
 
 /**
