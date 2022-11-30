@@ -45,25 +45,25 @@
 /**
  * @type {Array}
  */
- var count = 0;
- var maxFull = false;
+var count = 0;
+var maxFull = false;
 
 window.addEventListener("DOMContentLoaded", init);
 
 // Starts the task program, all function calls trace back here
 function init() {
-  let taskList = getTasksFromStorage();
-  for (let i = 0; i &lt; taskList.length; i++) {
-    if (taskList[i].status == "Completed") {
-      addLog(taskList[i]);
-      if ( count &lt; 100 ) {  //max value of stack : 99
-        count++;
-      } 
-      else {
-        maxFull = true;
-      }
-    }
-  }
+	let taskList = getTasksFromStorage();
+	for (let i = 0; i &lt; taskList.length; i++) {
+		if (taskList[i].status == "Completed") {
+			addLog(taskList[i]);
+			if (count &lt; 100) {
+				//max value of stack : 99
+				count++;
+			} else {
+				maxFull = true;
+			}
+		}
+	}
 }
 
 /**
@@ -72,10 +72,9 @@ function init() {
  * 'tasks', an empty array is returned.
  * @returns {Array&lt;Object>} An array of recipes found in localStorage
  */
- function getTasksFromStorage() {
-    return JSON.parse(localStorage.getItem("tasks")) || [];
-  }
-  
+function getTasksFromStorage() {
+	return JSON.parse(localStorage.getItem("tasks")) || [];
+}
 
 /**
  * Populate the table using the data object.
@@ -97,34 +96,32 @@ function init() {
  *                        }
  */
 function addLog(data) {
-    // Extract end date which is in milliseconds, change to date
-    let endTime = Date.parse(data.end);
-    let endDate = new Date(endTime);
-    // if there are not 100 tasks yet, display on the page
-    if (!maxFull) {
-        // populate data in the table
-        const tableRow = document.createElement("tr");
-        // The information from data is added following the below format
-        tableRow.innerHTML = 
-        `&lt;td>${data.name}&lt;/td>
+	// Extract end date which is in milliseconds, change to date
+	let endTime = Date.parse(data.end);
+	let endDate = new Date(endTime);
+	// if there are not 100 tasks yet, display on the page
+	if (!maxFull) {
+		// populate data in the table
+		const tableRow = document.createElement("tr");
+		// The information from data is added following the below format
+		tableRow.innerHTML = `&lt;td>${data.name}&lt;/td>
         &lt;td>${data.type}&lt;/td>
         &lt;td>${endDate}&lt;/td>
         &lt;/td>`;
-        document.body.querySelector("tbody").append(tableRow);
-    }
-    // if there are more than 100 tasks, delete the first old tasks
-    else {
-        const tableRow = document.createElement("tr");
-        // The information from data is added following the below format
-        tableRow.innerHTML = 
-        `&lt;td>${data.name}&lt;/td>
+		document.body.querySelector("tbody").append(tableRow);
+	}
+	// if there are more than 100 tasks, delete the first old tasks
+	else {
+		const tableRow = document.createElement("tr");
+		// The information from data is added following the below format
+		tableRow.innerHTML = `&lt;td>${data.name}&lt;/td>
         &lt;td>${data.type}&lt;/td>
         &lt;td>${endDate}&lt;/td>
         &lt;/td>`;
-        document.body.querySelector("tbody").append(tableRow);
-        // delete old tasks
-        document.body.querySelector("tbody").querySelector("tr").remove();
-    }
+		document.body.querySelector("tbody").append(tableRow);
+		// delete old tasks
+		document.body.querySelector("tbody").querySelector("tr").remove();
+	}
 }
 </code></pre>
         </article>
