@@ -7,7 +7,7 @@
         "pretty-quick": "pretty-quick",
         "doc": "jsdoc -c jsdoc.json",
         "prepare": "husky install",
-        "test": "jest"
+        "test": "jest --coverage"
     },
     "repository": {
         "type": "git",
