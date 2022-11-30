@@ -86,6 +86,5 @@ function addTask(data) {
 	// Display notes when clicked, hide when clicked again
 	tableRow.addEventListener("click", () => {
 		document.getElementById(`notes${data.id}`).style.display = document.getElementById(`notes${data.id}`).style.display == "none" ? "table-row" : "none";
-		//document.getElementById(`task${data.id}`).childNodes.forEach(x => {if(x.localName == "td") x.style.backgroundColor = (document.getElementById(`notes${data.id}`).style.display=="none") ? "none" : "#e8e0e2"});
 	});
 }
