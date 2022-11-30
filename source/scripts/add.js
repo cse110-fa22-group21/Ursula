@@ -120,7 +120,7 @@ function addTask(data) {
   <td>
   <button class="startButton" id="startButton${data.id}">Start</button>
   <button class="editButton" id="editButton${data.id}">
-  <img id="editIcon" src="..../source/images/edit-icon.svg" alt="Edit icon button for task ${data.id}">
+  <img id="editIcon" src="./source/images/edit-icon.svg" alt="Edit icon button for task ${data.id}">
   </button>
   </td>`;
 	tableRow.id = `task${data.id}`;
