@@ -1,5 +1,7 @@
 # cse110-fa22-group21
 
+[![codecov](https://codecov.io/gh/cse110-fa22-group21/cse110-fa22-group21/branch/main/graph/badge.svg?token=8037F7TUAR)](https://codecov.io/gh/cse110-fa22-group21/cse110-fa22-group21)
+
 ## Welcome To Our Repo
 
 We are a 10 member team working on a CRUD application using HTML, CSS and JavaScript. The team consists of 2 team leads and 8 developers. Our mentor is Navya Shetty. Here is a link to the [team page](admin/team.md).
@@ -10,13 +12,13 @@ We will create a CRUD application using HTML, CSS and JavaScript that will allow
 
 ## Team
 
-- Team Leader - Ji Hoon Kim
-- Team Leader - Michael Ruddy
-- Developer - Linh Ngyuen
-- Developer - Joyce Weng
-- Developer - Moritz Wagner
-- Developer - Nikki Rejai
-- Developer - Tianya Zhan
-- Developer - Vicky Chou
-- Developer - Ziting Xiong
-- Developer - Melvyn Tan
+-   Team Leader - Ji Hoon Kim
+-   Team Leader - Michael Ruddy
+-   Developer - Linh Ngyuen
+-   Developer - Joyce Weng
+-   Developer - Moritz Wagner
+-   Developer - Nikki Rejai
+-   Developer - Tianya Zhan
+-   Developer - Vicky Chou
+-   Developer - Ziting Xiong
+-   Developer - Melvyn Tan
