@@ -20,7 +20,6 @@ function init() {
 			currentTasks++;
 		}
 	}
-	console.log(currentTasks);
 	// Add each task to the <tbody> element
 	addTaskToDocument(tasks);
 	// Add the event listeners to the form elements
@@ -77,20 +76,23 @@ function generateUniqueID() {
 }
 
 /**
- * Takes in an array of tasks and for each task creates a
- * new <to-do-task> element, adds the task data to that item
- * using element.data = {...}, and then appends that new task
- * to <tbody>
+ * Iterates through each task in tasks. For each task, if the difference
+ * is less than 0, then call addTask and add it to the table.
+ * Doesn't add a new task once a time difference is calculated,
+ * e.g. if the Task is finished
  * @param {Array<Object>} tasks An array of recipes
  */
 function addTaskToDocument(tasks) {
 	for (let i = 0; i < tasks.length; i++) {
-		addTask(tasks[i]);
+		if (tasks[i].difference < 0) {
+			addTask(tasks[i]);
+		}
 	}
 }
 
 /**
- * Populate the table using the data object.
+ * Populate the table using the data object. This function is specific for
+ * the home page.
  *
  * @param {Object} data - The data to pass into the <task>, must be of the
  *                        following format:
@@ -210,18 +212,22 @@ function startSwitch(id) {
 // Change the ID and Classname of the start button to be endButton
 function endSwitch(id) {
 	// Obtain tasks from storage
-	let taskList = getTasksFromStorage();
+	const taskList = getTasksFromStorage();
 	// Iterate until we find the ID
 	for (var i = 0; i < taskList.length; i++) {
 		// If ID matches, set to be new status
 		if (taskList[i].id == id) {
-			taskList[i].status = "Completed";
 			taskList[i].end = new Date();
+			taskList[i].status = "Completed";
 			taskList[i].finished = true;
+			// dates are stringified as JSON into local storage differently, so we need to call
+			// Date.parse() to get the correct start time form.
+			// Divide by 1000 to get the answer in seconds (instead of milliseconds by default).
+			taskList[i].difference = (taskList[i].end - Date.parse(taskList[i].start)) / 1000;
 		}
-		saveTaskToStorage(taskList);
-		location.reload();
 	}
+	saveTaskToStorage(taskList);
+	location.reload();
 }
 
 /**
@@ -264,6 +270,7 @@ function initFormHandler() {
 		taskData.status = "Planned";
 		taskData.started = false;
 		taskData.finished = false;
+		taskData.difference = -1;
 		taskData.id = generateUniqueID();
 
 		// populate the table
