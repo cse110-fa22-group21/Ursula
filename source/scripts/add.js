@@ -1,25 +1,40 @@
 // Import functions from edit.js
 import { openEditForm } from "./edit.js";
-import { deleteTaskById } from "./delete.js";
 
 // Global Variables
 /**
  * @type {Array}
  */
 var data = [];
-// TODO: consider another array to store deleted tasks
-// var deleted = [];
-
+var currentTasks = 0;
+const MAX_TASKS = 100;
 // Run the init() function when the page has loaded
 window.addEventListener("DOMContentLoaded", init);
 
 // Starts the task program, all function calls trace back here
 function init() {
-  let tasks = getTasksFromStorage();
-  // Add each task to the <tbody> element
-  addTaskToDocument(tasks);
-  // Add the event listeners to the form elements
-  initFormHandler();
+	let tasks = getTasksFromStorage();
+	// Count the number of tasks in the table, make sure the tasks "finished" are false
+	for (let i = 0; i < tasks.length; i++) {
+		if (!tasks[i].finished) {
+			currentTasks++;
+		}
+	}
+	console.log(currentTasks);
+	// Add each task to the <tbody> element
+	addTaskToDocument(tasks);
+	// Add the event listeners to the form elements
+	initFormHandler();
+}
+// -------------------------- MAX LIMIT TASK POPUP --------------------------------------
+document.getElementById("okLimitPopup").addEventListener("click", hideMaxPopup);
+
+/*
+ * Max Limit Popup function
+ * Once the user clicks on ok button, it will hide the maxLimitPopup display.
+ */
+function hideMaxPopup() {
+	document.getElementById("maxLimitPopup").style.display = "none";
 }
 
 // -------------------------- ADD TASK POPUP --------------------------------------
@@ -30,10 +45,17 @@ document.getElementById("cancelButton").addEventListener("click", closeForm);
 
 /*
  * Add button function
- * Once the user clicks on the add button, the popup form should pop up
+ * Once the user clicks on the add button, it will check to see if the limit of
+ * the number of tasks being displayed has been reached. If yes, then it will
+ * display the maxLimitPopup display. If no, the popup form will pop up.
  */
 function openForm() {
-  document.getElementById("popupForm").style.display = "block";
+	// Change how many tasks can be displayed
+	if (currentTasks < MAX_TASKS) {
+		document.getElementById("popupForm").style.display = "block";
+	} else {
+		document.getElementById("maxLimitPopup").style.display = "block";
+	}
 }
 
 /*
@@ -41,7 +63,7 @@ function openForm() {
  * Once the user clicks on the button, the popup form should be closed
  */
 function closeForm() {
-  document.getElementById("popupForm").style.display = "none";
+	document.getElementById("popupForm").style.display = "none";
 }
 
 // -------------------------- ADD DATA STORAGE --------------------------------------
@@ -51,7 +73,7 @@ function closeForm() {
  * @returns {string} A unique string ID to represent each task.
  */
 function generateUniqueID() {
-  return crypto.randomUUID();
+	return crypto.randomUUID();
 }
 
 /**
@@ -65,7 +87,7 @@ function generateUniqueID() {
  */
 function addTaskToDocument(tasks) {
   for (let i = 0; i < tasks.length; i++) {
-    if(tasks[i].difference < 0) addTask(tasks[i]);
+    addTask(tasks[i]);
   }
 }
 
@@ -85,15 +107,16 @@ function addTaskToDocument(tasks) {
  *                          "start": "object",
  *                          "end": "object",
  *                          "difference": "number",
- *                          "started" : "boolean"
+ *                          "started" : "boolean",
+ *                          "finished" : "boolean"
  *                        }
  */
 function addTask(data) {
-  // populate data in the table
-  const tableRow = document.createElement("tr");
+	// populate data in the table
+	const tableRow = document.createElement("tr");
 
-  // The information from data is added following the below format
-  tableRow.innerHTML = `<td>${data.name}</td>
+	// The information from data is added following the below format
+	tableRow.innerHTML = `<td>${data.name}</td>
   <td>${data.hours} hr ${data.minutes} min</td>
   <td>${data.status}</td>
   <td>
@@ -102,25 +125,25 @@ function addTask(data) {
   <img id="editIcon" src="/source/images/edit-icon.svg" alt="Edit icon button for task ${data.id}">
   </button>
   </td>`;
-  tableRow.id = `task${data.id}`;
-  tableRow.className = "task";
-  document.body.querySelector("tbody").append(tableRow);
+	tableRow.id = `task${data.id}`;
+	tableRow.className = "task";
+	document.body.querySelector("tbody").append(tableRow);
 
-  // On Click Task Name, Show the Task Notes
-  // Create another task row tag and put the notes into it
-  const tableRowNotes = document.createElement("tr");
-  tableRowNotes.innerHTML = `<td COLSPAN="4">${data.notes}</td>`;
-  // Each note will have its own ID
-  tableRowNotes.className = "notes";
-  tableRowNotes.id = `notes${data.id}`;
-  // tableRow.append(tableRowNotes);
-  document.body.querySelector("tbody").append(tableRowNotes);
+	// On Click Task Name, Show the Task Notes
+	// Create another task row tag and put the notes into it
+	const tableRowNotes = document.createElement("tr");
+	tableRowNotes.innerHTML = `<td COLSPAN="4">${data.notes}</td>`;
+	// Each note will have its own ID
+	tableRowNotes.className = "notes";
+	tableRowNotes.id = `notes${data.id}`;
+	// tableRow.append(tableRowNotes);
+	document.body.querySelector("tbody").append(tableRowNotes);
 
-  // Display notes when clicked, hide when clicked again
-  tableRow.addEventListener("click", () => {
-    document.getElementById(`notes${data.id}`).style.display = (document.getElementById(`notes${data.id}`).style.display == "none") ? "table-row" : "none";
-    //document.getElementById(`task${data.id}`).childNodes.forEach(x => {if(x.localName == "td") x.style.backgroundColor = (document.getElementById(`notes${data.id}`).style.display=="none") ? "none" : "#e8e0e2"});
-  });
+	// Display notes when clicked, hide when clicked again
+	tableRow.addEventListener("click", () => {
+		document.getElementById(`notes${data.id}`).style.display = document.getElementById(`notes${data.id}`).style.display == "none" ? "table-row" : "none";
+		//document.getElementById(`task${data.id}`).childNodes.forEach(x => {if(x.localName == "td") x.style.backgroundColor = (document.getElementById(`notes${data.id}`).style.display=="none") ? "none" : "#e8e0e2"});
+	});
 
   // Checks each data.started and chagnes the innerText of the startButton to Finish or Start
   // Set the button inner to End
@@ -128,30 +151,35 @@ function addTask(data) {
     document.getElementById(`startButton${data.id}`).innerText = "Finish";
   }
 
-  // Else set button inner to Start
-  else {
-    document.getElementById(`startButton${data.id}`).innerText = "Start";
-  }
+	// Else set button inner to Start
+	else {
+		document.getElementById(`startButton${data.id}`).innerText = "Start";
+	}
 
-  // When startButton is clicked, check to see if started or not
-  document.getElementById(`startButton${data.id}`).addEventListener("click", () => {
-    // If started is true 
-    if (data.started) {
-      // Call endSwitch
-      endSwitch(data.id);
-      // TODO Team2: Add to Log here, pass in ID
-    }
-    // If started is false
-    else {
-      // Call startSwitch to set the data accordingly
-      startSwitch(data.id);
-    }
-  });
+	// Checks to see if the data has already "finished" (data.finished) if so, hide the table row
+	if (data.finished) {
+		// Hide the current row from the table
+		document.getElementById(`task${data.id}`).style.display = "none";
+	}
 
-  // When editbutton is clicked, it will call openEditForm to open the form with the populated data
-  document.getElementById(`editButton${data.id}`).addEventListener("click", () => {
-    openEditForm(data.id);
-  });
+	// When startButton is clicked, check to see if started or not
+	document.getElementById(`startButton${data.id}`).addEventListener("click", () => {
+		// If started is true
+		if (data.started) {
+			// Call endSwitch
+			endSwitch(data.id);
+		}
+		// If started is false
+		else {
+			// Call startSwitch to set the data accordingly
+			startSwitch(data.id);
+		}
+	});
+
+	// When editbutton is clicked, it will call openEditForm to open the form with the populated data
+	document.getElementById(`editButton${data.id}`).addEventListener("click", () => {
+		openEditForm(data.id);
+	});
 }
 
 /**
@@ -161,19 +189,19 @@ function addTask(data) {
  */
 // Change the ID and Classname of the start button to be endButton
 function startSwitch(id) {
-  // Obtain tasks from storage
-  const taskList = getTasksFromStorage();
-  // Iterate until we find the ID
-  for (var i = 0; i < taskList.length; i++) {
-    // If ID matches, set to be new status
-    if (taskList[i].id == id) {
-      taskList[i].started = true;
-      taskList[i].status = "In-Progress";
-      taskList[i].start = new Date();
-    }
-  }
-  saveTaskToStorage(taskList);
-  location.reload();
+	// Obtain tasks from storage
+	const taskList = getTasksFromStorage();
+	// Iterate until we find the ID
+	for (var i = 0; i < taskList.length; i++) {
+		// If ID matches, set to be new status
+		if (taskList[i].id == id) {
+			taskList[i].started = true;
+			taskList[i].status = "In-Progress";
+			taskList[i].start = new Date();
+		}
+	}
+	saveTaskToStorage(taskList);
+	location.reload();
 }
 
 /**
@@ -190,17 +218,15 @@ function endSwitch(id) {
     // If ID matches, set to be new status
     if (taskList[i].id == id) {
       taskList[i].end = new Date();
+	  taskList[i].status = "Completed";
+	  taskList[i].finished = true;
       // dates are stringified as JSON into local storage differently, so we need to call
       // Date.parse() to get the correct start time form.
       // Divide by 1000 to get the answer in seconds (instead of milliseconds by default).
       taskList[i].difference = (taskList[i].end - Date.parse(taskList[i].start))/1000;
-      //deleteTaskById(id);
+      deleteTaskById(id);
     }
   }
-
-  saveTaskToStorage(taskList);
-
-  location.reload(); 
 }
 
 /**
@@ -210,7 +236,7 @@ function endSwitch(id) {
  * @returns {Array<Object>} An array of recipes found in localStorage
  */
 function getTasksFromStorage() {
-  return JSON.parse(localStorage.getItem("tasks")) || [];
+	return JSON.parse(localStorage.getItem("tasks")) || [];
 }
 
 /**
@@ -219,7 +245,7 @@ function getTasksFromStorage() {
  * @param {Array<Object>} tasks An array of recipes
  */
 function saveTaskToStorage(tasks) {
-  localStorage.setItem("tasks", JSON.stringify(tasks));
+	localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
 /** STORE DATA FROM TASK POPUP
@@ -229,33 +255,33 @@ function saveTaskToStorage(tasks) {
  * assigned the initial status. The new task is then added into local storage.
  */
 function initFormHandler() {
-  // Get data from task popup form
-  const form = document.querySelector("form");
+	// Get data from task popup form
+	const form = document.querySelector("form");
 
-  form.addEventListener("submit", () => {
-    let formData = new FormData(form);
-    let taskData = new Object();
-    for (const key of formData.keys()) {
-      taskData[key] = formData.get(key);
-    }
+	form.addEventListener("submit", () => {
+		let formData = new FormData(form);
+		let taskData = new Object();
+		for (const key of formData.keys()) {
+			taskData[key] = formData.get(key);
+		}
 
-    // Initially set status to be planned and started to be false, generate unique ID for the task
-    taskData.status = "Planned";
-    taskData.started = false;
-    taskData.difference = -1;
-    taskData.id = generateUniqueID();
+		// Initially set status to be planned and started to be false, generate unique ID for the task
+		taskData.status = "Planned";
+		taskData.started = false;
+		taskData.finished = false;
+    	taskData.difference = -1;
+		taskData.id = generateUniqueID();
 
-    // populate the table
-    addTask(taskData);
+		// populate the table
+		addTask(taskData);
 
-    // save data to global variable
-    data.push(taskData);
+		// save data to global variable
+		data.push(taskData);
 
-    // Extract data from storage, add the new data then save it to storage
-    let tasks = getTasksFromStorage();
-    tasks.push(taskData);
-    saveTaskToStorage(tasks);
-  });
+		// Extract data from storage, add the new data then save it to storage
+		let tasks = getTasksFromStorage();
+		tasks.push(taskData);
+		saveTaskToStorage(tasks);
+	});
 }
-
 export { getTasksFromStorage, saveTaskToStorage, startSwitch };

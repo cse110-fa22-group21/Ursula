@@ -1,5 +1,7 @@
 # cse110-fa22-group21
 
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/f56e0d60dad14c19aa3529e30eb0c4f7)](https://www.codacy.com/gh/cse110-fa22-group21/cse110-fa22-group21/dashboard?utm_source=github.com&utm_medium=referral&utm_content=cse110-fa22-group21/cse110-fa22-group21&utm_campaign=Badge_Grade)
+
 ## Welcome To Our Repo
 
 We are a 10 member team working on a CRUD application using HTML, CSS and JavaScript. The team consists of 2 team leads and 8 developers. Our mentor is Navya Shetty. Here is a link to the [team page](admin/team.md).
@@ -10,13 +12,18 @@ We will create a CRUD application using HTML, CSS and JavaScript that will allow
 
 ## Team
 
-- Team Leader - Ji Hoon Kim
-- Team Leader - Michael Ruddy
-- Developer - Linh Ngyuen
-- Developer - Joyce Weng
-- Developer - Moritz Wagner
-- Developer - Nikki Rejai
-- Developer - Tianya Zhan
-- Developer - Vicky Chou
-- Developer - Ziting Xiong
-- Developer - Melvyn Tan
+-   Team Leader - Ji Hoon Kim
+-   Team Leader - Michael Ruddy
+-   Developer - Linh Ngyuen
+-   Developer - Joyce Weng
+-   Developer - Moritz Wagner
+-   Developer - Nikki Rejai
+-   Developer - Tianya Zhan
+-   Developer - Vicky Chou
+-   Developer - Ziting Xiongw
+-   Developer - Melvyn Tan
+
+## Documentation
+
+Documentation can be found at
+https://cse110-fa22-group21.github.io/cse110-fa22-group21/docs/index.html

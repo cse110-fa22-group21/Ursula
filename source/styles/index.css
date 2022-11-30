@@ -2,155 +2,190 @@
 @import "colors.css";
 
 /* Page Identifier*/
-#pageIdentifier > *  {
-    /* Font size of page identifier + button */
-    display: inline;
-    margin-left: 5vw;
+#pageIdentifier > * {
+	/* Font size of page identifier + button */
+	display: inline;
+	margin-left: 5vw;
 }
 /* End of Page Identifier*/
 
 /* Button Styling */
 button {
-    color: var(--btnTextColor);
-    border: 1px solid var(--btnBorderColor);
-    border-radius: 6px;
-    box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, 
-      rgba(255, 255, 255, 0.25) 0 1px 0 inset;
-    box-sizing: border-box;
-    cursor: pointer;
-    display: inline-block;
-    padding: 6px 16px;
-    position: relative;
-    transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    vertical-align: middle;
-    white-space: nowrap;
-    word-wrap: break-word;
+	color: var(--btnTextColor);
+	border: 1px solid var(--btnBorderColor);
+	border-radius: 6px;
+	box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+	box-sizing: border-box;
+	cursor: pointer;
+	display: inline-block;
+	padding: 6px 16px;
+	position: relative;
+	transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+	user-select: none;
+	-webkit-user-select: none;
+	touch-action: manipulation;
+	vertical-align: middle;
+	white-space: nowrap;
+	word-wrap: break-word;
 }
 
 button:hover {
-    background-color: var(--btnHoverBackgroundColor);
-    text-decoration: none;
-    transition-duration: 0.1s;
+	background-color: var(--btnHoverBackgroundColor);
+	text-decoration: none;
+	transition-duration: 0.1s;
 }
 
 .editButton {
-    background-color: transparent;
-    background-repeat: no-repeat;
-    border: none;
-    cursor: pointer;
-    overflow: hidden;
-    outline: none;
+	background-color: transparent;
+	background-repeat: no-repeat;
+	border: none;
+	cursor: pointer;
+	overflow: hidden;
+	outline: none;
 }
 
 #addButton {
-    border: 1px solid var(--btnBorderColor);
-    border-radius: 6px;
-    box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, 
-      rgba(255, 255, 255, 0.25) 0 1px 0 inset;
-    box-sizing: border-box;
-    cursor: pointer;
-    display: inline-block;
-    padding: 6px 16px;
-    position: relative;
-    transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    vertical-align: middle;
-    white-space: nowrap;
-    word-wrap: break-word;
-    margin-left: 10vw;
+	border: 1px solid var(--btnBorderColor);
+	border-radius: 6px;
+	box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+	box-sizing: border-box;
+	cursor: pointer;
+	display: inline-block;
+	padding: 6px 16px;
+	position: relative;
+	transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+	user-select: none;
+	-webkit-user-select: none;
+	touch-action: manipulation;
+	vertical-align: middle;
+	white-space: nowrap;
+	word-wrap: break-word;
+	margin-left: 10vw;
 }
 /* End of Button Styling */
 /* IMPORTANT EDIT FORM AND ADD FORM ARE USING THE SAME CSS FOR CONSISTENCY */
 /* Popup Form Styling */
-#popupForm, #editForm{
-    display: none;
-    background-color: var(--tableBackgroundColor);
-    position: fixed;
-    margin-left: auto;
-    margin-right: auto;
-    right: 15%;
-    left: 15%;
-    top : 5%;
-    border: 2px solid black;
-    /* Changed z-index to have priority over header */
-    z-index: 100;
-  }
-
-#popupForm > *, #editForm > * {
-    padding: 2%;
-    font-size: medium;
-    padding-top: 2%;
+#popupForm,
+#editForm {
+	display: none;
+	background-color: var(--tableBackgroundColor);
+	position: fixed;
+	margin-left: auto;
+	margin-right: auto;
+	right: 15%;
+	left: 15%;
+	top: 5%;
+	border: 2px solid black;
+	/* Changed z-index to have priority over header */
+	z-index: 100;
 }
 
-.formInput, #noteField, #noteFieldEdit {
-    margin: 2%;
-    padding: 1%;
+#popupForm > *,
+#editForm > * {
+	padding: 2%;
+	font-size: medium;
+	padding-top: 2%;
 }
 
-#hourField, #minField, #hourFieldEdit, #minFieldEdit {
-    max-width: 5%;
-    min-width: 40px;
+.formInput,
+#noteField,
+#noteFieldEdit {
+	margin: 2%;
+	padding: 1%;
 }
 
-#addNewTask, #editTask {
-    text-align: center;
+#hourField,
+#minField,
+#hourFieldEdit,
+#minFieldEdit {
+	max-width: 5%;
+	min-width: 40px;
 }
 
-#cancelButton, #subButton, #cancelEditButton, .submitEditButton, #resetButton {
-    float: right;
-    margin: 1.5%;
-    padding: 2%;
+#addNewTask,
+#editTask {
+	text-align: center;
+}
+
+#cancelButton,
+#subButton,
+#cancelEditButton,
+.submitEditButton,
+#resetButton {
+	float: right;
+	margin: 1.5%;
+	padding: 2%;
 }
 
 .deleteEditButton {
-    float: left;
-    margin: 1.5%;
-    padding: 2%;
+	float: left;
+	margin: 1.5%;
+	padding: 2%;
 }
 
 /* Sets the input box to be center to the Notes label */
 .textArea * {
-    vertical-align: middle;
+	vertical-align: middle;
 }
 
 /* Set size of textarea using min-width and min-height */
 textarea {
-    min-width: 50%;
+	min-width: 50%;
 }
 
 .formLabel {
-    width: 20%;
-    display: inline-block;
+	width: 20%;
+	display: inline-block;
 }
 /* Popup Form Styling Completed */
 
 /* Start of Edit Feature Styling */
 #statusField {
-    margin: 2%;
-    padding: 1%;
+	margin: 2%;
+	padding: 1%;
 }
 /* End of Edit Feature Styling */
 
 /* Task Notes DropDown Styling */
 .notes {
-    display: none;
-    background-color: var(--tableHoverColor);
+	display: none;
+	background-color: var(--tableHoverColor);
 }
 
 .notes td {
-    text-align: left;
+	text-align: left;
 }
 
 .task {
-    cursor: pointer;
+	cursor: pointer;
 }
 
 .task:hover {
-    background-color: var(--tableHoverColor);
+	background-color: var(--tableHoverColor);
 }
 /* End of Task Notes DropDown Styling */
+
+/* Styling for Max Limit Warning Popup */
+#maxLimitPopup {
+	display: none;
+	text-align: center;
+	background-color: var(--tableBackgroundColor);
+	border: 2px solid black;
+	margin-left: 25%;
+	margin-right: 25%;
+	position: fixed;
+	top: 25%;
+	z-index: 100;
+}
+
+#maxLimitPopup > * {
+	padding: 2%;
+	text-align: center;
+}
+
+#okLimitPopup {
+	margin-bottom: 2%;
+	padding-left: 5%;
+	padding-right: 5%;
+}
+/* End of Styling for Max Limit Warning Popup */
