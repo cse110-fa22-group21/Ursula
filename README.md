@@ -1,5 +1,6 @@
 # cse110-fa22-group21
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/f56e0d60dad14c19aa3529e30eb0c4f7)](https://www.codacy.com/gh/cse110-fa22-group21/cse110-fa22-group21/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=cse110-fa22-group21/cse110-fa22-group21&amp;utm_campaign=Badge_Grade)
+
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/f56e0d60dad14c19aa3529e30eb0c4f7)](https://www.codacy.com/gh/cse110-fa22-group21/cse110-fa22-group21/dashboard?utm_source=github.com&utm_medium=referral&utm_content=cse110-fa22-group21/cse110-fa22-group21&utm_campaign=Badge_Grade)
 
 ## Welcome To Our Repo
 
