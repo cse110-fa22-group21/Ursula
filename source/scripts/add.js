@@ -76,10 +76,8 @@ function generateUniqueID() {
 }
 
 /**
- * Takes in an array of tasks and for each task creates a
- * new <to-do-task> element, adds the task data to that item
- * using element.data = {...}, and then appends that new task
- * to <tbody>
+ * Iterates through each task in tasks. For each task, if the difference
+ * is less than 0, then call addTask and add it to the table.
  * Doesn't add a new task once a time difference is calculated,
  * e.g. if the Task is finished
  * @param {Array<Object>} tasks An array of recipes
@@ -93,7 +91,8 @@ function addTaskToDocument(tasks) {
 }
 
 /**
- * Populate the table using the data object.
+ * Populate the table using the data object. This function is specific for
+ * the home page.
  *
  * @param {Object} data - The data to pass into the <task>, must be of the
  *                        following format:

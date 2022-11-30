@@ -6,24 +6,28 @@ function init() {
 	let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 	// Add each task to the <tbody> element
 	addTaskToDocument(tasks);
-	// Add the event listeners to the form elements
 }
 
 /**
- * Takes in an array of tasks and for each task creates a
- * new <to-do-task> element, adds the task data to that item
- * using element.data = {...}, and then appends that new task
- * to <tbody>
+ * Iterates through each task in tasks. For each task, if the difference
+ * is more than 0, then call addTask and add it to the table.
+ * Doesn't add a new task once a time difference is calculated,
+ * e.g. if the Task is finished. This function is different to the one in
+ * add.js as the difference must be more than 0 in order for the task to be
+ * added to the table.
  * @param {Array<Object>} tasks An array of recipes
  */
 function addTaskToDocument(tasks) {
 	for (let i = 0; i < tasks.length; i++) {
-		if (tasks[i].difference > 0) addTask(tasks[i]);
+		if (tasks[i].difference > 0) {
+            addTask(tasks[i]);
+        }
 	}
 }
 
 /**
- * Populate the table using the data object.
+ * Populate the table using the data object. This function is specific for
+ * the analytics page.
  *
  * @param {Object} data - The data to pass into the <task>, must be of the
  *                        following format:
@@ -38,21 +42,18 @@ function addTaskToDocument(tasks) {
  *                          "start": "object",
  *                          "end": "object",
  *                          "difference": "number",
- *                          "started" : "boolean"
+ *                          "started" : "boolean",
+ *                          "finished" : "boolean"
  *                        }
  */
 function addTask(data) {
-	// populate data in the table
-	const tableRow = document.createElement("tr");
-
-	let minbuf = data.difference < 60 ? 1 : Math.round((data.difference / 60) % 60);
-	let hrbuf = Math.round(data.difference / 60 / 60);
-
-	let predictedDiff = data.minutes * 60 + data.hours * 60 * 60;
-	//predictedDiff = 60;
-
-	let reaction = "happy";
-	if (predictedDiff + 5 * 60 - data.difference < 0) reaction = "sad";
+    // populate data in the table
+    const tableRow = document.createElement("tr");
+    let minbuf = (data.difference < 60) ? 1 : Math.round((data.difference/60)%60);
+    let hrbuf = Math.round((data.difference/60)/60);
+    let predictedDiff = data.minutes*60 + data.hours*60*60; 
+    let reaction = "happy"; 
+    if ((predictedDiff+(5*60)-data.difference) < 0) reaction = "sad";
 
 	// The information from data is added following the below format
 	tableRow.innerHTML = `<td>${data.name}</td>
