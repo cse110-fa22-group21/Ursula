@@ -2,22 +2,38 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Global</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Global - Documentation</title>
 
-    <script src="scripts/prettify/prettify.js"> </script>
-    <script src="scripts/prettify/lang-css.js"> </script>
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
     <!--[if lt IE 9]>
       <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
     <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
 </head>
-
 <body>
 
-<div id="main">
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
 
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading"><a href="global.html">Globals</a></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#addTask">addTask</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#addTaskToDocument">addTaskToDocument</a></span></li><li class="nav-item"><span class="nav-item-type type-member">M</span><span class="nav-item-name"><a href="global.html#data">data</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#deleteTaskById">deleteTaskById</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#generateUniqueID">generateUniqueID</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#getTasksFromStorage">getTasksFromStorage</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#initStartsthetaskprogram,allfunctioncallstracebackhere">init
+Starts the task program, all function calls trace back here</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#initFormHandler">initFormHandler</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#openEditForm">openEditForm</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#openFormAddbuttonfunctionOncetheuserclicksontheaddbutton,thepopupformshouldpopup">openForm
+Add button function
+Once the user clicks on the add button, the popup form should pop up</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#saveData">saveData</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#saveTaskToStorage">saveTaskToStorage</a></span></li>
+</nav>
+
+<div id="main">
+    
     <h1 class="page-title">Global</h1>
+    
 
     
 
@@ -28,7 +44,9 @@
 
 <header>
     
-        <h2></h2>
+        <h2>
+        
+        </h2>
         
     
 </header>
@@ -87,9 +105,7 @@
 
     
 
-    
-
-    
+     
 
     
 
@@ -98,22 +114,11 @@
 
         
             
+<div class="section-members">
 <h4 class="name" id="data"><span class="type-signature"></span>data<span class="type-signature"> :Array</span></h4>
 
 
 
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">Array</span>
-
-
-        </li>
-    </ul>
 
 
 
@@ -161,8 +166,21 @@
 
 
 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><code>Array</code></span>
 
 
+        </li>
+    </ul>
+
+
+
+
+
+</div>
 
         
     
@@ -172,20 +190,63 @@
 
         
             
+<div class="section-method">
 
     
 
-    
     <h4 class="name" id="addTask"><span class="type-signature"></span>addTask<span class="signature">(data)</span><span class="type-signature"></span></h4>
-    
 
     
 
 
 
 <div class="description">
-    <p>Populate the table using the data object.</p>
+    Populate the table using the data object.
 </div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="add.js.html">add.js</a>, <a href="add.js.html#line88">line 88</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
 
 
 
@@ -226,7 +287,7 @@
             <td class="type">
             
                 
-<span class="param-type">Object</span>
+<span class="param-type"><code>Object</code></span>
 
 
             
@@ -236,17 +297,20 @@
 
             
 
-            <td class="description last"><p>The data to pass into the <task>, must be of the
-following format:
-{
-&quot;id&quot;: &quot;number&quot;,
-&quot;name&quot;: &quot;string&quot;,
-&quot;hours&quot;: &quot;number&quot;,
-&quot;minutes&quot;: &quot;number&quot;,
-&quot;type&quot;: &quot;string&quot;,
-&quot;status&quot;: &quot;string&quot;,
-&quot;notes&quot;: &quot;string&quot;
-}</p></td>
+            <td class="description last">
+                The data to pass into the <task>, must be of the
+                       following format:
+                       {
+                         "id": "number",
+                         "name": "string",
+                         "hours": "number",
+                         "minutes": "number",
+                         "type": "string",
+                         "status": "string",
+                         "notes": "string"
+                       }
+                
+            </td>
         </tr>
 
     
@@ -258,45 +322,6 @@ following format:
 
 
 
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="add.js.html">add.js</a>, <a href="add.js.html#line84">line 84</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
 
 
 
@@ -307,35 +332,69 @@ following format:
 
 
 
-
-
-
-
-
-
-
-
-
-
+</div>
         
             
+<div class="section-method">
 
     
 
-    
     <h4 class="name" id="addTaskToDocument"><span class="type-signature"></span>addTaskToDocument<span class="signature">(tasks)</span><span class="type-signature"></span></h4>
-    
 
     
 
 
 
 <div class="description">
-    <p>Takes in an array of tasks and for each task creates a
+    Takes in an array of tasks and for each task creates a
 new <to-do-task> element, adds the task data to that item
 using element.data = {...}, and then appends that new task
-to <tbody></p>
+to <tbody>
 </div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="add.js.html">add.js</a>, <a href="add.js.html#line67">line 67</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
 
 
 
@@ -376,7 +435,7 @@ to <tbody></p>
             <td class="type">
             
                 
-<span class="param-type">Array.&lt;Object></span>
+<span class="param-type"><code>Array.&lt;Object></code></span>
 
 
             
@@ -386,13 +445,49 @@ to <tbody></p>
 
             
 
-            <td class="description last"><p>An array of recipes</p></td>
+            <td class="description last">
+                An array of recipes
+                
+            </td>
         </tr>
 
     
     </tbody>
 </table>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="deleteTaskById"><span class="type-signature"></span>deleteTaskById<span class="signature">(id)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Reads 'to-do-tasks' from localStorage, removes the task with the given ID
+And then rewrites the updated list of Tasks back to local storage.
+Then, it reloads the page to refresh the task list
+</div>
 
 
 
@@ -427,7 +522,7 @@ to <tbody></p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="add.js.html">add.js</a>, <a href="add.js.html#line63">line 63</a>
+        <a href="delete.js.html">delete.js</a>, <a href="delete.js.html#line10">line 10</a>
     </li></ul></dd>
     
 
@@ -446,42 +541,89 @@ to <tbody></p>
 
 
 
+    <h5>Parameters:</h5>
+    
 
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
 
-
-
-
-
-
-
-
-
+        <th>Type</th>
 
         
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
             
 
-    
+            <td class="type">
+            
+                
+<span class="param-type"><code>number</code></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                ID of the task to be removed from local storage
+                
+            </td>
+        </tr>
 
     
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
     <h4 class="name" id="generateUniqueID"><span class="type-signature"></span>generateUniqueID<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span></h4>
-    
 
     
 
 
 
 <div class="description">
-    <p>Generates a unique ID using crypto.randomUUID.
-https://stackoverflow.com/questions/1155008/how-unique-is-uuid</p>
+    Generates a unique ID using crypto.randomUUID.
+https://stackoverflow.com/questions/1155008/how-unique-is-uuid
 </div>
-
-
-
-
-
-
-
-
 
 
 
@@ -516,7 +658,7 @@ https://stackoverflow.com/questions/1155008/how-unique-is-uuid</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="add.js.html">add.js</a>, <a href="add.js.html#line52">line 52</a>
+        <a href="add.js.html">add.js</a>, <a href="add.js.html#line56">line 56</a>
     </li></ul></dd>
     
 
@@ -541,59 +683,57 @@ https://stackoverflow.com/questions/1155008/how-unique-is-uuid</p>
 
 
 
+
+
+
+
+
+
+<div class="section-returns">
 <h5>Returns:</h5>
 
         
-<div class="param-desc">
-    <p>A unique string ID to represent each task.</p>
-</div>
 
-
-
-<dl>
+<dl class="param-type">
     <dt>
-        Type
+        Type:
     </dt>
     <dd>
         
-<span class="param-type">string</span>
+<span class="param-type"><code>string</code></span>
 
 
     </dd>
 </dl>
 
+
+<div class="param-desc">
+    A unique string ID to represent each task.
+</div>
+
     
+</div>
 
 
 
-
-
+</div>
         
             
+<div class="section-method">
 
     
 
-    
     <h4 class="name" id="getTasksFromStorage"><span class="type-signature"></span>getTasksFromStorage<span class="signature">()</span><span class="type-signature"> &rarr; {Array.&lt;Object>}</span></h4>
-    
 
     
 
 
 
 <div class="description">
-    <p>Reads 'tasks' from localStorage and returns an array of
+    Reads 'tasks' from localStorage and returns an array of
 all of the tasks found. If nothing is found in localStorage for
-'tasks', an empty array is returned.</p>
+'tasks', an empty array is returned.
 </div>
-
-
-
-
-
-
-
-
 
 
 
@@ -628,7 +768,7 @@ all of the tasks found. If nothing is found in localStorage for
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="add.js.html">add.js</a>, <a href="add.js.html#line105">line 105</a>
+        <a href="add.js.html">add.js</a>, <a href="add.js.html#line135">line 135</a>
     </li></ul></dd>
     
 
@@ -653,58 +793,50 @@ all of the tasks found. If nothing is found in localStorage for
 
 
 
+
+
+
+
+
+
+<div class="section-returns">
 <h5>Returns:</h5>
 
         
-<div class="param-desc">
-    <p>An array of recipes found in localStorage</p>
-</div>
 
-
-
-<dl>
+<dl class="param-type">
     <dt>
-        Type
+        Type:
     </dt>
     <dd>
         
-<span class="param-type">Array.&lt;Object></span>
+<span class="param-type"><code>Array.&lt;Object></code></span>
 
 
     </dd>
 </dl>
 
-    
 
-
-
-
-
-        
-            
+<div class="param-desc">
+    An array of recipes found in localStorage
+</div>
 
     
-
-    
-    <h4 class="name" id="initFormHandler"><span class="type-signature"></span>initFormHandler<span class="signature">()</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    <p>STORE DATA FROM TASK POPUP
-Initializes the handler function when the task form is submitted.</p>
-<p>Task data is populated from each input in the form, generated with a unique ID, and
-assigned the initial status. The new task is then added into local storage.</p>
 </div>
 
 
 
+</div>
+        
+            
+<div class="section-method">
 
+    
 
+    <h4 class="name" id="initStartsthetaskprogram,allfunctioncallstracebackhere"><span class="type-signature"></span>init
+Starts the task program, all function calls trace back here<span class="signature">()</span><span class="type-signature"></span></h4>
 
+    
 
 
 
@@ -741,7 +873,7 @@ assigned the initial status. The new task is then added into local storage.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="add.js.html">add.js</a>, <a href="add.js.html#line124">line 124</a>
+        <a href="add.js.html">add.js</a>, <a href="add.js.html#line15">line 15</a>
     </li></ul></dd>
     
 
@@ -771,23 +903,521 @@ assigned the initial status. The new task is then added into local storage.</p>
 
 
 
+
+
+
+</div>
         
             
+<div class="section-method">
 
     
 
-    
-    <h4 class="name" id="saveTaskToStorage"><span class="type-signature"></span>saveTaskToStorage<span class="signature">(tasks)</span><span class="type-signature"></span></h4>
-    
+    <h4 class="name" id="initFormHandler"><span class="type-signature"></span>initFormHandler<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
 
 
 
 <div class="description">
-    <p>Takes in an array of tasks, converts it to a string, and then
-saves that string to 'tasks' in localStorage</p>
+    STORE DATA FROM TASK POPUP
+Initializes the handler function when the task form is submitted.
+
+Task data is populated from each input in the form, generated with a unique ID, and
+assigned the initial status. The new task is then added into local storage.
 </div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="add.js.html">add.js</a>, <a href="add.js.html#line154">line 154</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="openEditForm"><span class="type-signature"></span>openEditForm<span class="signature">(id)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Open Edit button function
+Once the user clicks on the add button, the edit popup form should pop up.
+Since we are given the id, the data is extracted from local storage using the id
+and the input fields are populated. Opening the edit form will allow us access to 3 buttons
+a save button which has been given an event listener to call the saveData function to save the
+newly updated data back into local storage. A cancel button that has been given an add event listerner
+to hide the edit popup form. A delete button that removes the task from local storage and does not
+display it anymore on the home page.
+The ID of the current task is also passed onto the deleteEditButton to reference the task upon deletion
+as well as upon saving new data
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="edit.js.html">edit.js</a>, <a href="edit.js.html#line22">line 22</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>number</code></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                ID of the task to be edited
+                
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="openFormAddbuttonfunctionOncetheuserclicksontheaddbutton,thepopupformshouldpopup"><span class="type-signature"></span>openForm
+Add button function
+Once the user clicks on the add button, the popup form should pop up<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="add.js.html">add.js</a>, <a href="add.js.html#line33">line 33</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="saveData"><span class="type-signature"></span>saveData<span class="signature">(id)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Open Edit Button to save data.
+Once the user clicks on edit save button, The ID of the current task is also passed to 
+find the data in local storage. Once the task is found based on the id,
+it sets the data of the local storage to be the new data given in the form. 
+Save the new data to storage and then reload the page.
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="edit.js.html">edit.js</a>, <a href="edit.js.html#line71">line 71</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>number</code></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                ID of the task to be edited
+                
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="saveTaskToStorage"><span class="type-signature"></span>saveTaskToStorage<span class="signature">(tasks)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Takes in an array of tasks, converts it to a string, and then
+saves that string to 'tasks' in localStorage
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="add.js.html">add.js</a>, <a href="add.js.html#line144">line 144</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
 
 
 
@@ -828,7 +1458,7 @@ saves that string to 'tasks' in localStorage</p>
             <td class="type">
             
                 
-<span class="param-type">Array.&lt;Object></span>
+<span class="param-type"><code>Array.&lt;Object></code></span>
 
 
             
@@ -838,7 +1468,10 @@ saves that string to 'tasks' in localStorage</p>
 
             
 
-            <td class="description last"><p>An array of recipes</p></td>
+            <td class="description last">
+                An array of recipes
+                
+            </td>
         </tr>
 
     
@@ -850,45 +1483,6 @@ saves that string to 'tasks' in localStorage</p>
 
 
 
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="add.js.html">add.js</a>, <a href="add.js.html#line114">line 114</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
 
 
 
@@ -899,16 +1493,7 @@ saves that string to 'tasks' in localStorage</p>
 
 
 
-
-
-
-
-
-
-
-
-
-
+</div>
         
     
 
@@ -924,17 +1509,13 @@ saves that string to 'tasks' in localStorage</p>
 
 </div>
 
-<nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addTask">addTask</a></li><li><a href="global.html#addTaskToDocument">addTaskToDocument</a></li><li><a href="global.html#data">data</a></li><li><a href="global.html#generateUniqueID">generateUniqueID</a></li><li><a href="global.html#getTasksFromStorage">getTasksFromStorage</a></li><li><a href="global.html#initFormHandler">initFormHandler</a></li><li><a href="global.html#saveTaskToStorage">saveTaskToStorage</a></li></ul>
-</nav>
-
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Fri Nov 18 2022 20:12:37 GMT-0800 (Pacific Standard Time)
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a> on Wed Nov 30 2022  GMT+0000 (Coordinated Universal Time) using the Minami theme.
 </footer>
 
-<script> prettyPrint(); </script>
-<script src="scripts/linenumber.js"> </script>
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
 </body>
 </html>
