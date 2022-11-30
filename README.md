@@ -13,17 +13,18 @@ We will create a CRUD application using HTML, CSS and JavaScript that will allow
 
 ## Team
 
-- Team Leader - Ji Hoon Kim
-- Team Leader - Michael Ruddy
-- Developer - Linh Ngyuen
-- Developer - Joyce Weng
-- Developer - Moritz Wagner
-- Developer - Nikki Rejai
-- Developer - Tianya Zhan
-- Developer - Vicky Chou
-- Developer - Ziting Xiongw
-- Developer - Melvyn Tan
+-   Team Leader - Ji Hoon Kim
+-   Team Leader - Michael Ruddy
+-   Developer - Linh Ngyuen
+-   Developer - Joyce Weng
+-   Developer - Moritz Wagner
+-   Developer - Nikki Rejai
+-   Developer - Tianya Zhan
+-   Developer - Vicky Chou
+-   Developer - Ziting Xiongw
+-   Developer - Melvyn Tan
 
 ## Documentation
+
 Documentation can be found at
 https://cse110-fa22-group21.github.io/cse110-fa22-group21/docs/index.html
