@@ -1,0 +1,8 @@
+build
+coverage
+.package-lock.json
+*.min.*
+docs/
+admin/
+template/
+specs/
