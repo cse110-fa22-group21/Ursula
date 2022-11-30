@@ -86,9 +86,9 @@ function generateUniqueID() {
  * @param {Array<Object>} tasks An array of recipes
  */
 function addTaskToDocument(tasks) {
-  for (let i = 0; i < tasks.length; i++) {
-    addTask(tasks[i]);
-  }
+	for (let i = 0; i < tasks.length; i++) {
+		addTask(tasks[i]);
+	}
 }
 
 /**
@@ -145,11 +145,11 @@ function addTask(data) {
 		//document.getElementById(`task${data.id}`).childNodes.forEach(x => {if(x.localName == "td") x.style.backgroundColor = (document.getElementById(`notes${data.id}`).style.display=="none") ? "none" : "#e8e0e2"});
 	});
 
-  // Checks each data.started and chagnes the innerText of the startButton to Finish or Start
-  // Set the button inner to End
-  if (data.started) {
-    document.getElementById(`startButton${data.id}`).innerText = "Finish";
-  }
+	// Checks each data.started and chagnes the innerText of the startButton to Finish or Start
+	// Set the button inner to End
+	if (data.started) {
+		document.getElementById(`startButton${data.id}`).innerText = "Finish";
+	}
 
 	// Else set button inner to Start
 	else {
@@ -211,22 +211,22 @@ function startSwitch(id) {
  */
 // Change the ID and Classname of the start button to be endButton
 function endSwitch(id) {
-  // Obtain tasks from storage
-  const taskList = getTasksFromStorage();
-  // Iterate until we find the ID
-  for (var i = 0; i < taskList.length; i++) {
-    // If ID matches, set to be new status
-    if (taskList[i].id == id) {
-      taskList[i].end = new Date();
-	  taskList[i].status = "Completed";
-	  taskList[i].finished = true;
-      // dates are stringified as JSON into local storage differently, so we need to call
-      // Date.parse() to get the correct start time form.
-      // Divide by 1000 to get the answer in seconds (instead of milliseconds by default).
-      taskList[i].difference = (taskList[i].end - Date.parse(taskList[i].start))/1000;
-      deleteTaskById(id);
-    }
-  }
+	// Obtain tasks from storage
+	const taskList = getTasksFromStorage();
+	// Iterate until we find the ID
+	for (var i = 0; i < taskList.length; i++) {
+		// If ID matches, set to be new status
+		if (taskList[i].id == id) {
+			taskList[i].end = new Date();
+			taskList[i].status = "Completed";
+			taskList[i].finished = true;
+			// dates are stringified as JSON into local storage differently, so we need to call
+			// Date.parse() to get the correct start time form.
+			// Divide by 1000 to get the answer in seconds (instead of milliseconds by default).
+			taskList[i].difference = (taskList[i].end - Date.parse(taskList[i].start)) / 1000;
+			deleteTaskById(id);
+		}
+	}
 }
 
 /**
@@ -269,7 +269,7 @@ function initFormHandler() {
 		taskData.status = "Planned";
 		taskData.started = false;
 		taskData.finished = false;
-    	taskData.difference = -1;
+		taskData.difference = -1;
 		taskData.id = generateUniqueID();
 
 		// populate the table
