@@ -16,7 +16,7 @@
 - [x] Nikki Rejai
 - [ ] Tianya Zhan
 - [ ] Vicky Chou
-- [ ]  Ziting Xiong 
+- [ ] Ziting Xiong 
 - [x] Melvyn Tan
 
 ## Team Number
