@@ -2,7 +2,7 @@ name: Generate Documentation and Refactor the page for gh-pages branch
 run-name: Generating Documentation and Refactoring the page for gh-pages branch 🚀
 on: 
   push:
-    branches: ["main"]
+    branches: ["main","WIP-jsdocs"]
 jobs:
   compile_JSDocs:
     runs-on: ubuntu-latest
