@@ -20,8 +20,8 @@ function init() {
 function addTaskToDocument(tasks) {
 	for (let i = 0; i < tasks.length; i++) {
 		if (tasks[i].difference > 0) {
-            addTask(tasks[i]);
-        }
+			addTask(tasks[i]);
+		}
 	}
 }
 
@@ -47,13 +47,13 @@ function addTaskToDocument(tasks) {
  *                        }
  */
 function addTask(data) {
-    // populate data in the table
-    const tableRow = document.createElement("tr");
-    let minbuf = (data.difference < 60) ? 1 : Math.round((data.difference/60)%60);
-    let hrbuf = Math.round((data.difference/60)/60);
-    let predictedDiff = data.minutes*60 + data.hours*60*60; 
-    let reaction = "happy"; 
-    if ((predictedDiff+(5*60)-data.difference) < 0) reaction = "sad";
+	// populate data in the table
+	const tableRow = document.createElement("tr");
+	let minbuf = data.difference < 60 ? 1 : Math.round((data.difference / 60) % 60);
+	let hrbuf = Math.round(data.difference / 60 / 60);
+	let predictedDiff = data.minutes * 60 + data.hours * 60 * 60;
+	let reaction = "happy";
+	if (predictedDiff + 5 * 60 - data.difference < 0) reaction = "sad";
 
 	// The information from data is added following the below format
 	tableRow.innerHTML = `<td>${data.name}</td>
