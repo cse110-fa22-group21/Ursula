@@ -4,36 +4,7 @@ on:
   push:
     branches: ["main"]
 jobs:
-  compile_JSDocs:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: JSDocs Generation
-        uses: andstor/jsdoc-action@v1
-        with:
-          source_dir: source
-          output_dir: docs
-          template: minami
-          recurse: true
-
-      - name: Remove Timestamps
-        run: |
-          sed -i -E 's/[0-9]{2}:[0-9]{2}:[0-9]{2}//' docs/*.html
-
-      - name: commit and push updated docs to the branch if changes were made
-        run: |
-          if [[ `git status --porcelain` ]]; then
-            git config --global user.name 'JSDocs action'
-            git config --global user.email 'jsdocs@users.noreply.github.com'
-            git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
-            git add .
-            git commit -m "Updated JSDocs"
-            git push
-          fi
   merge_main:
-    needs: compile_JSDocs
     runs-on: ubuntu-latest
     steps:
       - name: Check out main branch
@@ -45,12 +16,12 @@ jobs:
           from_branch: main
           target_branch: gh-pages
           github_token: ${{ github.token }}
-  move_html_files:
+  move_html_files-compile_JSDocs:
     needs: merge_main
     runs-on: ubuntu-latest
     steps:
-      - name: Check out gh-pages branch
-        uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v3
         with:
           ref: gh-pages
       - name: Copy html files
@@ -58,11 +29,23 @@ jobs:
       - name: Update paths in html files
         run: |
           sed -i 's/\/source/.\/source/' *.html
+      - name: JSDocs Generation
+        uses: andstor/jsdoc-action@v1
+        with:
+          source_dir: source
+          output_dir: docs
+          template: minami
+          recurse: true
+      - name: Remove Timestamps
+        run: |
+          sed -i -E 's/[0-9]{2}:[0-9]{2}:[0-9]{2}//' docs/*.html
       - name: commit and push changes to gh-pages branch
         run: |
-          git config --global user.name 'Github pages action'
-          git config --global user.email 'pages@users.noreply.github.com'
-          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
-          git add .
-          git commit --allow-empty -m "Updated html files in root"
-          git push
+          if [[ `git status --porcelain` ]]; then
+            git config --global user.name 'Github pages action'
+            git config --global user.email 'pages@users.noreply.github.com'
+            git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
+            git add .
+            git commit --allow-empty -m "Updated html files in root and generated Docs"
+            git push
+          fi
