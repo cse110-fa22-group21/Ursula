@@ -253,10 +253,10 @@ function saveTaskToStorage(tasks) {
  * Customized error class to handle invalid input when the form is submitted
  * Invalid input corresponds to negative minutes/hours or minutes greater than 60
  */
-class invalidTime extends Error{
+class InvalidTime extends Error{
   constructor(message){
     super(message);
-    this.name = "invalidTime";
+    this.name = "InvalidTime";
   }
 }
 
@@ -280,10 +280,10 @@ function initFormHandler() {
     try{
       //check for invalid input (negative or go over 60)
       if (hours < 0 || mins < 0){
-        throw new invalidTime("Invalid Input! Cannot have Negative Hours/Minutes!");
+        throw new InvalidTime("Invalid Input! Cannot have Negative Hours/Minutes!");
       }
       else if(mins > 60){
-        throw new invalidTime("Invalid Input! Minutes cannot be greater than 60!");
+        throw new InvalidTime("Invalid Input! Minutes cannot be greater than 60!");
       }
 
       // populate taskData with data from the popup form
