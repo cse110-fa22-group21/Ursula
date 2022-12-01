@@ -316,24 +316,4 @@ function initFormHandler() {
   });
 }
 
-
-		// Initially set status to be planned and started to be false, generate unique ID for the task
-		taskData.status = "Planned";
-		taskData.started = false;
-		taskData.finished = false;
-		taskData.difference = -1;
-		taskData.id = generateUniqueID();
-
-		// populate the table
-		addTask(taskData);
-
-		// save data to global variable
-		data.push(taskData);
-
-		// Extract data from storage, add the new data then save it to storage
-		let tasks = getTasksFromStorage();
-		tasks.push(taskData);
-		saveTaskToStorage(tasks);
-	});
-}
 export { getTasksFromStorage, saveTaskToStorage, startSwitch };
