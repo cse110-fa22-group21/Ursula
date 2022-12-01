@@ -24,7 +24,7 @@
 <label for="nav-trigger" class="overlay"></label>
 
 <nav>
-    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading"><a href="global.html">Globals</a></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#addLog">addLog</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#addTask">addTask</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#addTaskToDocument">addTaskToDocument</a></span></li><li class="nav-item"><span class="nav-item-type type-member">M</span><span class="nav-item-name"><a href="global.html#count">count</a></span></li><li class="nav-item"><span class="nav-item-type type-member">M</span><span class="nav-item-name"><a href="global.html#data">data</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#deleteTaskById">deleteTaskById</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#endSwitch">endSwitch</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#generateUniqueID">generateUniqueID</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#getTasksFromStorage">getTasksFromStorage</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#initFormHandler">initFormHandler</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#openEditForm">openEditForm</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#saveData">saveData</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#saveTaskToStorage">saveTaskToStorage</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#startSwitch">startSwitch</a></span></li>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="InvalidTime.html">InvalidTime</a></span></li><li class="nav-heading"><a href="global.html">Globals</a></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#addLog">addLog</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#addTask">addTask</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#addTaskToDocument">addTaskToDocument</a></span></li><li class="nav-item"><span class="nav-item-type type-member">M</span><span class="nav-item-name"><a href="global.html#count">count</a></span></li><li class="nav-item"><span class="nav-item-type type-member">M</span><span class="nav-item-name"><a href="global.html#data">data</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#deleteTaskById">deleteTaskById</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#endSwitch">endSwitch</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#generateUniqueID">generateUniqueID</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#getTasksFromStorage">getTasksFromStorage</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#initFormHandler">initFormHandler</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#openEditForm">openEditForm</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#saveData">saveData</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#saveTaskToStorage">saveTaskToStorage</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#startSwitch">startSwitch</a></span></li>
 </nav>
 
 <div id="main">
@@ -290,6 +290,17 @@ function saveTaskToStorage(tasks) {
 	localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
+/**
+ * Customized error class to handle invalid input when the form is submitted
+ * Invalid input corresponds to negative minutes/hours or minutes greater than 60
+ */
+class InvalidTime extends Error {
+	constructor(message) {
+		super(message);
+		this.name = "InvalidTime";
+	}
+}
+
 /** STORE DATA FROM TASK POPUP
  * Initializes the handler function when the task form is submitted.
  *
@@ -302,30 +313,46 @@ function initFormHandler() {
 
 	form.addEventListener("submit", () => {
 		let formData = new FormData(form);
-		let taskData = new Object();
-		for (const key of formData.keys()) {
-			taskData[key] = formData.get(key);
+
+		const hours = formData.get("hours");
+		const mins = formData.get("minutes");
+
+		try {
+			//check for invalid input (negative or go over 60)
+			if (hours &lt; 0 || mins &lt; 0) {
+				throw new InvalidTime("Invalid Input! Cannot have Negative Hours/Minutes!");
+			} else if (mins > 60) {
+				throw new InvalidTime("Invalid Input! Minutes cannot be greater than 60!");
+			}
+
+			// populate taskData with data from the popup form
+			let taskData = new Object();
+			for (const key of formData.keys()) {
+				taskData[key] = formData.get(key);
+			}
+
+			// Initially set status to be planned and started to be false, generate unique ID for the task
+			taskData.status = "Planned";
+			taskData.started = false;
+			taskData.id = generateUniqueID();
+
+			// populate the table
+			addTask(taskData);
+
+			// save data to global variable
+			data.push(taskData);
+
+			// Extract data from storage, add the new data then save it to storage
+			let tasks = getTasksFromStorage();
+			tasks.push(taskData);
+			saveTaskToStorage(tasks);
+		} catch (err) {
+			//message to the user
+			alert(err.message);
 		}
-
-		// Initially set status to be planned and started to be false, generate unique ID for the task
-		taskData.status = "Planned";
-		taskData.started = false;
-		taskData.finished = false;
-		taskData.difference = -1;
-		taskData.id = generateUniqueID();
-
-		// populate the table
-		addTask(taskData);
-
-		// save data to global variable
-		data.push(taskData);
-
-		// Extract data from storage, add the new data then save it to storage
-		let tasks = getTasksFromStorage();
-		tasks.push(taskData);
-		saveTaskToStorage(tasks);
 	});
 }
+
 export { getTasksFromStorage, saveTaskToStorage, startSwitch };
 </code></pre>
         </article>
@@ -339,7 +366,7 @@ export { getTasksFromStorage, saveTaskToStorage, startSwitch };
 <br class="clear">
 
 <footer>
-    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a> on Wed Nov 30 2022  GMT+0000 (Coordinated Universal Time) using the Minami theme.
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a> on Thu Dec 01 2022  GMT+0000 (Coordinated Universal Time) using the Minami theme.
 </footer>
 
 <script>prettyPrint();</script>

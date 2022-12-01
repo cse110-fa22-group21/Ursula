@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>delete.js - Documentation</title>
+    <title>InvalidTime - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,45 +29,134 @@
 
 <div id="main">
     
-    <h1 class="page-title">delete.js</h1>
+    <h1 class="page-title">InvalidTime</h1>
     
 
     
 
 
 
+
+<section>
+
+<header>
     
-    <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>// Import functions from add.js
-import { getTasksFromStorage, saveTaskToStorage } from "./add.js";
+        <h2>
+        InvalidTime
+        </h2>
+        
+            <div class="class-description">Customized error class to handle invalid input when the form is submitted
+Invalid input corresponds to negative minutes/hours or minutes greater than 60</div>
+        
+    
+</header>
 
-/**
- * Reads 'to-do-tasks' from localStorage, removes the task with the given ID
- * And then rewrites the updated list of Tasks back to local storage.
- * Then, it reloads the page to refresh the task list
- * @param {number} id ID of the task to be removed from local storage
- */
-function deleteTaskById(id) {
-	// Obtain tasks from storage
-	const taskList = getTasksFromStorage();
-	// iterate until we find the ID
-	for (var i = 0; i &lt; taskList.length; i++) {
-		// delete the ID and decrement currentTasks
-		if (taskList[i].id == id) {
-			taskList.splice(i, 1);
-		}
-	}
-	// Save all other tasks back to storage
-	saveTaskToStorage(taskList);
-	// Reload the page with the new contents
-	location.reload();
-}
+<article>
+    <div class="container-overview">
+    
+        
+<div class="section-method">
 
-export { deleteTaskById };
-</code></pre>
-        </article>
-    </section>
+    
+    <h2>Constructor</h2>
+    
+
+    <h4 class="name" id="InvalidTime"><span class="type-signature"></span>new InvalidTime<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="add.js.html">add.js</a>, <a href="add.js.html#line256">line 256</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
 
 
 
