@@ -290,9 +290,12 @@ function initFormHandler() {
 				taskData[key] = formData.get(key);
 			}
 
-			// Initially set status to be planned and started to be false, generate unique ID for the task
+			// Initially set status to be planned, started and finished to be false, generate unique ID for the task
+			// set difference to -1
 			taskData.status = "Planned";
 			taskData.started = false;
+			taskData.finished = false;
+			taskData.difference = -1;
 			taskData.id = generateUniqueID();
 
 			// populate the table
