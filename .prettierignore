@@ -4,3 +4,5 @@ coverage
 *.min.*
 docs/
 admin/
+template/
+specs/
