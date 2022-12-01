@@ -249,6 +249,17 @@ function saveTaskToStorage(tasks) {
 	localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
+/**
+ * Customized error class to handle invalid input when the form is submitted
+ * Invalid input corresponds to negative minutes/hours or minutes greater than 60
+ */
+class InvalidTime extends Error {
+	constructor(message) {
+		super(message);
+		this.name = "InvalidTime";
+	}
+}
+
 /** STORE DATA FROM TASK POPUP
  * Initializes the handler function when the task form is submitted.
  *
@@ -261,28 +272,44 @@ function initFormHandler() {
 
 	form.addEventListener("submit", () => {
 		let formData = new FormData(form);
-		let taskData = new Object();
-		for (const key of formData.keys()) {
-			taskData[key] = formData.get(key);
+
+		const hours = formData.get("hours");
+		const mins = formData.get("minutes");
+
+		try {
+			//check for invalid input (negative or go over 60)
+			if (hours < 0 || mins < 0) {
+				throw new InvalidTime("Invalid Input! Cannot have Negative Hours/Minutes!");
+			} else if (mins > 60) {
+				throw new InvalidTime("Invalid Input! Minutes cannot be greater than 60!");
+			}
+
+			// populate taskData with data from the popup form
+			let taskData = new Object();
+			for (const key of formData.keys()) {
+				taskData[key] = formData.get(key);
+			}
+
+			// Initially set status to be planned and started to be false, generate unique ID for the task
+			taskData.status = "Planned";
+			taskData.started = false;
+			taskData.id = generateUniqueID();
+
+			// populate the table
+			addTask(taskData);
+
+			// save data to global variable
+			data.push(taskData);
+
+			// Extract data from storage, add the new data then save it to storage
+			let tasks = getTasksFromStorage();
+			tasks.push(taskData);
+			saveTaskToStorage(tasks);
+		} catch (err) {
+			//message to the user
+			alert(err.message);
 		}
-
-		// Initially set status to be planned and started to be false, generate unique ID for the task
-		taskData.status = "Planned";
-		taskData.started = false;
-		taskData.finished = false;
-		taskData.difference = -1;
-		taskData.id = generateUniqueID();
-
-		// populate the table
-		addTask(taskData);
-
-		// save data to global variable
-		data.push(taskData);
-
-		// Extract data from storage, add the new data then save it to storage
-		let tasks = getTasksFromStorage();
-		tasks.push(taskData);
-		saveTaskToStorage(tasks);
 	});
 }
+
 export { getTasksFromStorage, saveTaskToStorage, startSwitch };
