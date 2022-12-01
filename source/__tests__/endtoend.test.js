@@ -1,13 +1,4 @@
-// const { it } = require("node:test");
-
 // const puppeteer = require('puppeteer');
-
-// TESTING DELETE LATER
-function delay(time) {
-  return new Promise(function(resolve) { 
-      setTimeout(resolve, time)
-  });
-}
 
 describe('Basic user flow for Website', () => {
     // First, the website
@@ -18,7 +9,6 @@ describe('Basic user flow for Website', () => {
   
     // Check to see that there are 0 tasks
     it('Initial Home Page - Check for 0 task names', async () => {
-      console.log("In the home page now");
       const storage = await page.evaluate(() => {
         return window.localStorage.getItem('tasks')
       });
@@ -28,53 +18,48 @@ describe('Basic user flow for Website', () => {
 
     // Add Team Testing
     it('Add Team - Testing add Button', async () => {
-
-
-
-      // Grab the addButton
-      let addButton = await page.$('#addButton');
-      // Click the addButton
+      // Grab the add button to click
+      const addButton = await page.$('#addButton');
       await addButton.click();
 
-      // Populate the data in the input fields
-      // TaskName Field
-      // Set sample task
-      // const testTask = {
-      //   "name": "Task 1",
-      //   "hour": 10,
-      //   "min": 50,
-      //   "type": "CSE 110",
-      //   "note": "My name is kaiserschmarren"
-      // }
-      // console.log(testTask);
-      // console.log(testTask.name);
-      // console.log(typeof testTask.name);
+      // Create a task to test against localStorage data
+      let tasks = [{
+        "name": "Task 1",
+        "hours": "10",
+        "minutes": "50",
+        "type": "CSE 110",
+        "notes": "My name is kaiserschmarren"
+      }]
+      const task = tasks[0];
+
+      // create JSHandle for task variable to be passed into pageFunction in evaluate()
+      // returns value wrapped as in-page object
+      const testTask = await page.evaluateHandle((task) => task, task); 
+
+      // Populate task data in input fields, starting w/ TaskName field
       const taskName = await page.$('#taskNameField');
-      await page.evaluate((taskName) => { taskName.setAttribute('value', 'Task 1'); }, taskName);
-      let myAnswer = await taskName.getProperty('value');
-      let parsed = await myAnswer.jsonValue();
-      console.log(parsed);
+      await page.evaluate((taskName, testTask) => { 
+        taskName.setAttribute('value', testTask.name); 
+      }, taskName, testTask);
 
       // Hour Field
       const hour = await page.$('#hourField');
-      await page.evaluate(hour => { hour.setAttribute('value', '2'); }, hour);
+      await page.evaluate((hour, task) => { hour.setAttribute('value', task.hours); }, hour, testTask);
 
       // Minute Field
       const min = await page.$('#minField');
-      await page.evaluate(min => { min.setAttribute('value', '50'); }, min);
+      await page.evaluate((min, task) => { min.setAttribute('value', task.minutes); }, min, testTask);
 
       // Type of Task Field
       const typeTask = await page.$('#typeTaskField');
-      await page.evaluate(typeTask => { typeTask.setAttribute('value', 'CSE 110'); }, typeTask);
+      await page.evaluate((typeTask, task) => { typeTask.setAttribute('value', task.type); }, typeTask, testTask);
 
-      // Text Area Field
+      // Note Field
       const textArea = await page.$('#noteField');
-      await page.evaluate(textArea => { textArea.innerText = 'My name is kaiserschmarren'; }, textArea);
+      await page.evaluate((textArea, task) => { textArea.innerText = task.notes; }, textArea, testTask);
 
-      // Get The Save Button
+      // Get the submit button and save task entry
       let submitButton = await page.$('#subButton');
-
-      // Click the Save Button
       await submitButton.click();
       
       // IMPORTANT THE PAGE RELOADS AND SO NAVIGATION BREAKS, 
@@ -82,12 +67,23 @@ describe('Basic user flow for Website', () => {
       
       // Get the Item from local Storage
       const localStorage = await page.evaluate(() => localStorage.getItem('tasks'));
-      
-      // Check if localStorage length is 1
-      var arrayFromStorage = await JSON.parse(localStorage);
+      const storageData = JSON.parse(localStorage);
+
+      // Check if localStorage only has one task added
+      var arrayFromStorage = await storageData;
       var arrayLength = await arrayFromStorage.length;
       expect(arrayLength).toBe(1);
 
+      // Check if task inputs are stored correctly
+      // Essentially only checks the first entry in the json
+      for (let index in storageData) {
+        let entry = storageData[index];
+        Object.entries(task).forEach((pair) => {
+          let key = pair[0];
+          let value = pair[1];
+          expect(entry[key]).toBe(value);
+        })
+      }
     });
     
     // Edit Team Testing 
@@ -95,6 +91,5 @@ describe('Basic user flow for Website', () => {
       let myStorage = await page.evaluate(() => {
         return localStorage.getItem('tasks');
       });
-      console.log(myStorage);
     });
   });
