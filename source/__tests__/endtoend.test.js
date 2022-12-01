@@ -62,7 +62,7 @@ describe('Basic user flow for Website', () => {
       let submitButton = await page.$('#subButton');
       await submitButton.click();
       
-      // IMPORTANT THE PAGE RELOADS AND SO NAVIGATION BREAKS, 
+      // IMPORTANT THE PAGE RELOADS AND SO NAVIGATION BREAKS
       await page.waitForNavigation();
       
       // Get the Item from local Storage
@@ -87,9 +87,42 @@ describe('Basic user flow for Website', () => {
     });
     
     // Edit Team Testing 
+
+    // Test #1 Checking that edit form brings up correct data when edit button is clicked
     it('Edit Team - Testing add Button', async () => {
-      let myStorage = await page.evaluate(() => {
-        return localStorage.getItem('tasks');
-      });
+      // Click on Edit Button of the newly added Task
+      let editButton = await page.$('.editButton');
+      await editButton.click();
+
+      // Check to make sure fields are correct
+      // Task Name Field
+      const taskNameEdit = await page.$('#taskNameFieldEdit');
+      let taskNameEditValue = await taskNameEdit.getProperty('value');
+      let taskNameAnswer = await taskNameEditValue.jsonValue();
+      expect(taskNameAnswer).toBe('Task 1');
+
+      // Hour Field
+      const hourEdit = await page.$('#hourFieldEdit');
+      let hourEditValue = await hourEdit.getProperty('value');
+      let hourEditAnswer = await hourEditValue.jsonValue();
+      expect(hourEditAnswer).toBe('10');
+
+      // Minute Field
+      const minEdit = await page.$('#minFieldEdit');
+      let minEditValue = await minEdit.getProperty('value');
+      let minEditAnswer = await minEditValue.jsonValue();
+      expect(minEditAnswer).toBe('50');
+
+      // Type of Task Field
+      const typeTaskEdit = await page.$('#typeTaskFieldEdit');
+      let typeTaskEditValue = await typeTaskEdit.getProperty('value');
+      let typeTaskEditAnswer = await typeTaskEditValue.jsonValue();
+      expect(typeTaskEditAnswer).toBe('CSE 110');
+
+      // Text Area Field
+      const noteFieldEdit = await page.$('#noteFieldEdit');
+      let noteFieldEditValue = await noteFieldEdit.getProperty('value');
+      let noteFieldEditAnswer = await noteFieldEditValue.jsonValue();
+      expect(noteFieldEditAnswer).toBe('My name is kaiserschmarren');
     });
   });
