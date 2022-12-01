@@ -267,8 +267,8 @@ class InvalidTime extends Error{
  * assigned the initial status. The new task is then added into local storage.
  */
 function initFormHandler() {
-  // Get data from task popup form
-  const form = document.querySelector("form");
+	// Get data from task popup form
+	const form = document.querySelector("form");
 
   form.addEventListener("submit", () => {
     let formData = new FormData(form);
@@ -286,34 +286,32 @@ function initFormHandler() {
         throw new InvalidTime("Invalid Input! Minutes cannot be greater than 60!");
       }
 
-      // populate taskData with data from the popup form
-      let taskData = new Object();
-      for (const key of formData.keys()) {
-        taskData[key] = formData.get(key);
-      }
+			// populate taskData with data from the popup form
+			let taskData = new Object();
+			for (const key of formData.keys()) {
+				taskData[key] = formData.get(key);
+			}
 
-      // Initially set status to be planned and started to be false, generate unique ID for the task
-      taskData.status = "Planned";
-      taskData.started = false;
-      taskData.id = generateUniqueID();
+			// Initially set status to be planned and started to be false, generate unique ID for the task
+			taskData.status = "Planned";
+			taskData.started = false;
+			taskData.id = generateUniqueID();
 
-      // populate the table
-      addTask(taskData);
+			// populate the table
+			addTask(taskData);
 
-      // save data to global variable
-      data.push(taskData);
+			// save data to global variable
+			data.push(taskData);
 
-      // Extract data from storage, add the new data then save it to storage
-      let tasks = getTasksFromStorage();
-      tasks.push(taskData);
-      saveTaskToStorage(tasks);
-    }catch(err){
-      //message to the user
-      alert(err.message);
-    }
-    
-    
-  });
+			// Extract data from storage, add the new data then save it to storage
+			let tasks = getTasksFromStorage();
+			tasks.push(taskData);
+			saveTaskToStorage(tasks);
+		} catch (err) {
+			//message to the user
+			alert(err.message);
+		}
+	});
 }
 
 export { getTasksFromStorage, saveTaskToStorage, startSwitch };
