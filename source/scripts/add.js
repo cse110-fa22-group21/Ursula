@@ -253,11 +253,11 @@ function saveTaskToStorage(tasks) {
  * Customized error class to handle invalid input when the form is submitted
  * Invalid input corresponds to negative minutes/hours or minutes greater than 60
  */
-class invalidTime extends Error{
-  constructor(message){
-    super(message);
-    this.name = "invalidTime";
-  }
+class invalidTime extends Error {
+	constructor(message) {
+		super(message);
+		this.name = "invalidTime";
+	}
 }
 
 /** STORE DATA FROM TASK POPUP
@@ -267,53 +267,49 @@ class invalidTime extends Error{
  * assigned the initial status. The new task is then added into local storage.
  */
 function initFormHandler() {
-  // Get data from task popup form
-  const form = document.querySelector("form");
+	// Get data from task popup form
+	const form = document.querySelector("form");
 
-  form.addEventListener("submit", () => {
-    let formData = new FormData(form);
+	form.addEventListener("submit", () => {
+		let formData = new FormData(form);
 
-    
-    const hours = formData.get("hours");
-    const mins = formData.get("minutes");
-    
-    try{
-      //check for invalid input (negative or go over 60)
-      if (hours < 0 || mins < 0){
-        throw new invalidTime("Invalid Input! Cannot have Negative Hours/Minutes!");
-      }
-      else if(mins > 60){
-        throw new invalidTime("Invalid Input! Minutes cannot be greater than 60!");
-      }
+		const hours = formData.get("hours");
+		const mins = formData.get("minutes");
 
-      // populate taskData with data from the popup form
-      let taskData = new Object();
-      for (const key of formData.keys()) {
-        taskData[key] = formData.get(key);
-      }
+		try {
+			//check for invalid input (negative or go over 60)
+			if (hours < 0 || mins < 0) {
+				throw new invalidTime("Invalid Input! Cannot have Negative Hours/Minutes!");
+			} else if (mins > 60) {
+				throw new invalidTime("Invalid Input! Minutes cannot be greater than 60!");
+			}
 
-      // Initially set status to be planned and started to be false, generate unique ID for the task
-      taskData.status = "Planned";
-      taskData.started = false;
-      taskData.id = generateUniqueID();
+			// populate taskData with data from the popup form
+			let taskData = new Object();
+			for (const key of formData.keys()) {
+				taskData[key] = formData.get(key);
+			}
 
-      // populate the table
-      addTask(taskData);
+			// Initially set status to be planned and started to be false, generate unique ID for the task
+			taskData.status = "Planned";
+			taskData.started = false;
+			taskData.id = generateUniqueID();
 
-      // save data to global variable
-      data.push(taskData);
+			// populate the table
+			addTask(taskData);
 
-      // Extract data from storage, add the new data then save it to storage
-      let tasks = getTasksFromStorage();
-      tasks.push(taskData);
-      saveTaskToStorage(tasks);
-    }catch(err){
-      //message to the user
-      alert(err.message);
-    }
-    
-    
-  });
+			// save data to global variable
+			data.push(taskData);
+
+			// Extract data from storage, add the new data then save it to storage
+			let tasks = getTasksFromStorage();
+			tasks.push(taskData);
+			saveTaskToStorage(tasks);
+		} catch (err) {
+			//message to the user
+			alert(err.message);
+		}
+	});
 }
 
 export { getTasksFromStorage, saveTaskToStorage, startSwitch };
