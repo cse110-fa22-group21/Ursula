@@ -1,5 +1,5 @@
 // Import functions from add.js and delete.js
-import { getTasksFromStorage, saveTaskToStorage } from "./add.js";
+import { getTasksFromStorage, saveTaskToStorage, InvalidTime } from "./add.js";
 import { deleteTaskById } from "./delete.js";
 // --------------------------edit popup window--------------------------------------
 
@@ -93,23 +93,35 @@ function resetData(id) {
  * @param {number} id ID of the task to be edited
  */
 function saveData(id) {
-	const taskList = getTasksFromStorage();
-	// Extract data from the input fields and populate it to the json file
-	for (var i = 0; i < taskList.length; i++) {
-		// If ID matches, extract that data and populate edit form input field
-		if (taskList[i].id == id) {
-			// Once id matches, set the data to be the input field value
-			taskList[i].name = document.getElementById("taskNameFieldEdit").value;
-			taskList[i].hours = document.getElementById("hourFieldEdit").value;
-			taskList[i].minutes = document.getElementById("minFieldEdit").value;
-			taskList[i].type = document.getElementById("typeTaskFieldEdit").value;
-			taskList[i].notes = document.getElementById("noteFieldEdit").value;
+	// Check for invalid input (negative or go over 60)
+	try {
+		if (document.getElementById("hourFieldEdit").value < 0 
+		|| document.getElementById("minFieldEdit").value < 0) {
+			throw new InvalidTime("Invalid Input! Cannot have Negative Hours/Minutes!");
+		} else if (document.getElementById("minFieldEdit").value > 60) {
+			throw new InvalidTime("Invalid Input! Minutes cannot be greater than 60!");
 		}
+		const taskList = getTasksFromStorage();
+		// Extract data from the input fields and populate it to the json file
+		for (var i = 0; i < taskList.length; i++) {
+			// If ID matches, extract that data and populate edit form input field
+			if (taskList[i].id == id) {
+				// Once id matches, set the data to be the input field value
+				taskList[i].name = document.getElementById("taskNameFieldEdit").value;
+				taskList[i].hours = document.getElementById("hourFieldEdit").value;
+				taskList[i].minutes = document.getElementById("minFieldEdit").value;
+				taskList[i].type = document.getElementById("typeTaskFieldEdit").value;
+				taskList[i].notes = document.getElementById("noteFieldEdit").value;
+			}
+		}
+		// Save all other tasks back to storage
+		saveTaskToStorage(taskList);
+		// Reload the page with the new contents
+		location.reload();
+	}catch(err){
+		//message to the user
+		alert(err.message);
 	}
-	// Save all other tasks back to storage
-	saveTaskToStorage(taskList);
-	// Reload the page with the new contents
-	location.reload();
 }
 
 export { openEditForm, closeEditForm };
