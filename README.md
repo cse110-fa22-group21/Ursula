@@ -10,6 +10,9 @@ We are a 10 member team working on a CRUD application using HTML, CSS and JavaSc
 
 We will create a CRUD application using HTML, CSS and JavaScript that will allow users to create, read, update and delete items of their choosing. We are hosting the application on GitHub Pages, view it [here](https://cse110-fa22-group21.github.io/cse110-fa22-group21/)
 
+As aspiring software developers, we strive for our work to be professional, high quality and accessible. We will be making use of the lighthouse developer tool as a way to track and measure the quality of our code. Here is the latest [lighthouse report](admin/other/lighthousereport.pdf) of our completed website.
+![LightHouse Report](admin/other/lighthouse.png)
+
 ## Team
 
 -   Team Leader - Ji Hoon Kim
