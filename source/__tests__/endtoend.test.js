@@ -216,4 +216,92 @@ describe('Basic user flow for Website', () => {
       // Check that there are only 5 elements in the td now
       expect(data.length).toBe(5);
     });
+
+    // Test #3 Edit data in the form, click cancel and check data in local storage did not change, 
+    // check if data in table did not change
+    it('Edit data in the form, click cancel then check if local storage and data in table did not change', async() => {
+      // Click on Edit Button of the newly added Task
+      let editButton = await page.$('.editButton');
+      await editButton.click();
+
+      // Change the data for each input field
+      // Task Name Field, change value to Task 2
+      const taskNameEdit = await page.$('#taskNameFieldEdit');
+      await page.$eval('#taskNameFieldEdit', el => el.value = 'I Love Christmas');
+      let taskNameEditValue = await taskNameEdit.getProperty('value');
+      let taskNameAnswer = await taskNameEditValue.jsonValue();
+      expect(taskNameAnswer).toBe('I Love Christmas');
+
+      // Hour Field
+      const hourEdit = await page.$('#hourFieldEdit');
+      await page.$eval('#hourFieldEdit', el => el.value = '5');
+      let hourEditValue = await hourEdit.getProperty('value');
+      let hourEditAnswer = await hourEditValue.jsonValue();
+      expect(hourEditAnswer).toBe('5');
+
+      // Minute Field
+      const minEdit = await page.$('#minFieldEdit');
+      await page.$eval('#minFieldEdit', el => el.value = '10');
+      let minEditValue = await minEdit.getProperty('value');
+      let minEditAnswer = await minEditValue.jsonValue();
+      expect(minEditAnswer).toBe('10');
+
+      // Type of Task Field
+      const typeTaskEdit = await page.$('#typeTaskFieldEdit');
+      await page.$eval('#typeTaskFieldEdit', el => el.value = 'Chrstimas Eve');
+      let typeTaskEditValue = await typeTaskEdit.getProperty('value');
+      let typeTaskEditAnswer = await typeTaskEditValue.jsonValue();
+      expect(typeTaskEditAnswer).toBe('Chrstimas Eve');
+
+      // Text Area Field
+      const noteFieldEdit = await page.$('#noteFieldEdit');
+      await page.$eval('#noteFieldEdit', el => el.value = 'Christmas is near!');
+      let noteFieldEditValue = await noteFieldEdit.getProperty('value');
+      let noteFieldEditAnswer = await noteFieldEditValue.jsonValue();
+      expect(noteFieldEditAnswer).toBe('Christmas is near!');
+
+      // Click Cancel Button
+      let cancelButton = await page.$('#cancelEditButton');
+
+      // Had to use special click here
+      await cancelButton.evaluate(b => b.click());
+
+      // IMPORTANT THE PAGE RELOADS AND SO NAVIGATION BREAKS
+      // This line is not needed as cancel does not reload the page
+      // await page.waitForNavigation();
+
+      // Get the Item from local Storage
+      const localStorage = await page.evaluate(() => localStorage.getItem('tasks'));
+      const storageData = JSON.parse(localStorage);
+
+      // Check if localStorage only has one task added
+      var arrayFromStorage = await storageData;
+      var arrayLength = await arrayFromStorage.length;
+      expect(arrayLength).toBe(1);
+
+      // Check if the localStorage contains new correct JSON data
+      expect(arrayFromStorage[0].name).toBe('Task 2');
+      expect(arrayFromStorage[0].hours).toBe('1');
+      expect(arrayFromStorage[0].minutes).toBe('25');
+      expect(arrayFromStorage[0].type).toBe('CSE 101');
+      expect(arrayFromStorage[0].notes).toBe('I love E2E Testing');
+
+      // Check if the data being displayed in table is the new data
+      // Grab the ID of the data
+      let taskID = arrayFromStorage[0].id;
+
+      // Grab the data in the table row
+      const data = await page.$$eval('table tr td', tds => tds.map((td) => {
+        return td.innerText;
+      }));
+
+      // Check if the data in each td is correct
+      expect(data[0]).toBe('Task 2');
+      expect(data[1]).toBe('1 hr 25 min');
+      expect(data[2]).toBe('Planned');
+      expect(data[4]).toBe('I love E2E Testing');
+
+      // Check that there are only 5 elements in the td now
+      expect(data.length).toBe(5);
+    });
   });
