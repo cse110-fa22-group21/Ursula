@@ -95,8 +95,7 @@ function resetData(id) {
 function saveData(id) {
 	// Check for invalid input (negative or go over 60)
 	try {
-		if (document.getElementById("hourFieldEdit").value < 0 
-		|| document.getElementById("minFieldEdit").value < 0) {
+		if (document.getElementById("hourFieldEdit").value < 0 || document.getElementById("minFieldEdit").value < 0) {
 			throw new InvalidTime("Invalid Input! Cannot have Negative Hours/Minutes!");
 		} else if (document.getElementById("minFieldEdit").value > 60) {
 			throw new InvalidTime("Invalid Input! Minutes cannot be greater than 60!");
@@ -118,7 +117,7 @@ function saveData(id) {
 		saveTaskToStorage(taskList);
 		// Reload the page with the new contents
 		location.reload();
-	}catch(err){
+	} catch (err) {
 		//message to the user
 		alert(err.message);
 	}
