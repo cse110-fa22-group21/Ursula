@@ -277,14 +277,14 @@ function initFormHandler() {
 		const mins = formData.get("minutes");
 
 		try {
-			//check for invalid input (negative or go over 60)
+			// Check for invalid input (negative or go over 60)
 			if (hours < 0 || mins < 0) {
 				throw new InvalidTime("Invalid Input! Cannot have Negative Hours/Minutes!");
 			} else if (mins > 60) {
 				throw new InvalidTime("Invalid Input! Minutes cannot be greater than 60!");
 			}
 
-			// populate taskData with data from the popup form
+			// Populate taskData with data from the popup form
 			let taskData = new Object();
 			for (const key of formData.keys()) {
 				taskData[key] = formData.get(key);
@@ -315,4 +315,4 @@ function initFormHandler() {
 	});
 }
 
-export { getTasksFromStorage, saveTaskToStorage, startSwitch };
+export { getTasksFromStorage, saveTaskToStorage, startSwitch, InvalidTime };
