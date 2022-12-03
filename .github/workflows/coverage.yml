@@ -1,6 +1,6 @@
 name: E2E and unit testing code
 
-on: [pull_request]
+on: [push, pull_request]
 
 jobs:
     build:
