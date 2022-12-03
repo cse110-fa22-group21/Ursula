@@ -1,25 +1,22 @@
 name: E2E and unit testing code
 
-on: [push, pull_request]
+run-name: E2E and unit testing code
+
+on:
+  pull_request:
+    branches: [main]
 
 jobs:
-    build:
+    test:
         runs-on: ubuntu-latest
-
-        strategy:
-            matrix:
-                node-version: [14.x]
-
         steps:
             - name: Checkout repository
               uses: actions/checkout@v2
-              with:
-                  fetch-depth: 2
 
-            - name: Set up Node.js ${{ matrix.node-version }}
+            - name: Set up Node.js
               uses: actions/setup-node@v1
               with:
-                  node-version: ${{ matrix.node-version }}
+                  node-version: 14.x
 
             - name: Install dependencies
               run: npm install
