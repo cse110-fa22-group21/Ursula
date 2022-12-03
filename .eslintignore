@@ -5,3 +5,4 @@ coverage
 docs/
 admin/
 template/
+source/__tests__/*
