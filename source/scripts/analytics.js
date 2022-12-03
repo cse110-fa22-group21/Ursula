@@ -1,3 +1,6 @@
+// Global Variables
+var maxFull = false;
+
 // Run the init() function when the page has loaded
 window.addEventListener("DOMContentLoaded", init);
 
@@ -21,6 +24,9 @@ function addTaskToDocument(tasks) {
 	for (let i = 0; i < tasks.length; i++) {
 		if (tasks[i].difference > 0) {
 			addTask(tasks[i]);
+			if (i >= 99) {
+				maxFull = true;
+			}
 		}
 	}
 }
@@ -60,7 +66,7 @@ function addTask(data) {
     <td>${data.hours} hr ${data.minutes} min</td>
     <td>${hrbuf} hr ${minbuf} min</td>
     <td>
-    <img id="reactEmoji" src="./source/images/${reaction}.png" alt="Reaction emoji for task ${data.id}">
+    <img id="reactEmoji" src="/source/images/${reaction}.png" alt="Reaction emoji for task ${data.id}">
     </td>`;
 	tableRow.id = `task${data.id}`;
 	tableRow.className = "task";
@@ -72,8 +78,8 @@ function addTask(data) {
     #reactEmoji {
         height: 35px;
       }`;
-
 	document.body.querySelector("tbody").append(style);
+
 	// On Click Task Name, Show the Task Notes
 	// Create another task row tag and put the notes into it
 	const tableRowNotes = document.createElement("tr");
@@ -87,4 +93,10 @@ function addTask(data) {
 	tableRow.addEventListener("click", () => {
 		document.getElementById(`notes${data.id}`).style.display = document.getElementById(`notes${data.id}`).style.display == "none" ? "table-row" : "none";
 	});
+
+	// deleting oldest task
+	if (maxFull) {
+		document.body.querySelector("tbody").querySelector("tr").remove();
+		document.body.querySelector("tbody").querySelector("tr").remove();
+	}
 }
