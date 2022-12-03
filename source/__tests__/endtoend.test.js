@@ -522,4 +522,124 @@ describe("Basic user flow for Website", () => {
 		// // IMPORTANT THE PAGE RELOADS AND SO NAVIGATION BREAKS
 		// await page.waitForNavigation();
 	});
+
+	//-------------------------------------------------------------------------------------------------------------------------DELETE TEAM
+	// Clear local storage, add a task, remove it, and check if the local storage is empty
+	it("Edit data in the form, click submit then check if localstorage is correct and table is correct", async () => {
+        // Clear local storage
+        await page.evaluate(() => {
+			return window.localStorage.clear();
+		});
+        
+		// Grab the add button to click
+		const addButton = await page.$("#addButton");
+		await addButton.click();
+
+		// create JSHandle for task variable to be passed into pageFunction in evaluate()
+		// returns value wrapped as in-page object
+		const testTask = await page.evaluateHandle((task) => task, task);
+
+		// Populate task data in input fields, starting w/ TaskName field
+		const taskName = await page.$("#taskNameField");
+		await page.evaluate(
+			(taskName, testTask) => {
+				taskName.setAttribute("value", testTask.name);
+			},
+			taskName,
+			testTask
+		);
+
+		// Hour Field
+		const hour = await page.$("#hourField");
+		await page.evaluate(
+			(hour, task) => {
+				hour.setAttribute("value", task.hours);
+			},
+			hour,
+			testTask
+		);
+
+		// Minute Field
+		const min = await page.$("#minField");
+		await page.evaluate(
+			(min, task) => {
+				min.setAttribute("value", task.minutes);
+			},
+			min,
+			testTask
+		);
+
+		// Type of Task Field
+		const typeTask = await page.$("#typeTaskField");
+		await page.evaluate(
+			(typeTask, task) => {
+				typeTask.setAttribute("value", task.type);
+			},
+			typeTask,
+			testTask
+		);
+
+		// Note Field
+		const textArea = await page.$("#noteField");
+		await page.evaluate(
+			(textArea, task) => {
+				textArea.innerText = task.notes;
+			},
+			textArea,
+			testTask
+		);
+
+		// Get the submit button and save task entry
+		let submitButton = await page.$("#subButton");
+		await submitButton.click();
+
+		// IMPORTANT THE PAGE RELOADS AND SO NAVIGATION BREAKS
+		await page.waitForNavigation();
+
+		// Check that there is one task in the table
+		const dataPop = await page.$$eval("table tr td", (tds) =>
+			tds.map((td) => {
+				return td.innerText;
+			})
+		);
+		expect(dataPop.length).toBe(5);
+
+		// Get tasks from local Storage
+		let localStorage = await page.evaluate(() => localStorage.getItem("tasks"));
+		let storageData = JSON.parse(localStorage);
+
+		// Check if there is one task localStorage
+		var arrayFromStorage = await storageData;
+		var arrayLength = await arrayFromStorage.length;
+		expect(arrayLength).toBe(1);
+
+		// Click on Edit Button of the newly added Task
+		let editButton = await page.$(".editButton");
+		await editButton.click();
+
+		// Click delete Button
+        await page.evaluate(() => {
+            document.getElementsByClassName('deleteEditButton')[0].click();
+        });
+
+		// IMPORTANT THE PAGE RELOADS AND SO NAVIGATION BREAKS
+		await page.waitForNavigation();
+
+		// Get tasks from local Storage
+		localStorage = await page.evaluate(() => localStorage.getItem("tasks"));
+		storageData = JSON.parse(localStorage);
+
+		// Check that there is no data in the table
+		const data = await page.$$eval("table tr td", (tds) =>
+			tds.map((td) => {
+				return td.innerText;
+			})
+		);
+		expect(data.length).toBe(0);
+
+		// Check if localStorage is empty
+		var arrayFromStorage = await storageData;
+		var arrayLength = await arrayFromStorage.length;
+		expect(arrayLength).toBe(0);
+	});
 });
