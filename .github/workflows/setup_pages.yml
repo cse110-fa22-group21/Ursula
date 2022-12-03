@@ -27,7 +27,6 @@ jobs:
           git merge origin/gh-pages
 
           git merge -X theirs --allow-unrelated-histories main
-          git commit --allow-empty -m "Merged main branch to gh-pages"
 
           git push origin gh-pages
   move_html_files-compile_JSDocs:
