@@ -1,5 +1,6 @@
+// Global Variables
 var maxFull = false;
-var count = 0;
+
 // Run the init() function when the page has loaded
 window.addEventListener("DOMContentLoaded", init);
 
