@@ -11,7 +11,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           ref: gh-pages
-          
+
       - name: Merge main to gh-pages
         run: |
           git config --global user.name 'Github pages action'
@@ -26,7 +26,7 @@ jobs:
           git checkout gh-pages
           git merge origin/gh-pages
 
-          git merge -X theirs main
+          git merge -X --allow-unrelated-histories theirs main
           git commit --allow-empty -m "Merged main branch to gh-pages"
 
           git push origin gh-pages
