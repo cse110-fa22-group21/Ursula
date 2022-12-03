@@ -7,7 +7,7 @@ import { openEditForm } from "./edit.js";
  */
 var data = [];
 var currentTasks = 0;
-const MAX_TASKS = 100;
+const MAX_TASKS = 100; // Change this to set the max number of tasks, currently set to 100 tasks
 // Run the init() function when the page has loaded
 window.addEventListener("DOMContentLoaded", init);
 
@@ -117,14 +117,14 @@ function addTask(data) {
 
 	// The information from data is added following the below format
 	tableRow.innerHTML = `<td>${data.name}</td>
-  <td>${data.hours} hr ${data.minutes} min</td>
-  <td>${data.status}</td>
-  <td>
-  <button class="startButton" id="startButton${data.id}">Start</button>
-  <button class="editButton" id="editButton${data.id}">
-  <img id="editIcon" src="/source/images/edit-icon.svg" alt="Edit icon button for task ${data.id}">
-  </button>
-  </td>`;
+	<td>${data.hours} hr ${data.minutes} min</td>
+	<td>${data.status}</td>
+	<td>
+	<button class="startButton" id="startButton${data.id}">Start</button>
+	<button class="editButton" id="editButton${data.id}">
+	<img id="editIcon" src="/source/images/edit-icon.svg" alt="Edit icon button for task ${data.id}">
+	</button>
+	</td>`;
 	tableRow.id = `task${data.id}`;
 	tableRow.className = "task";
 	document.body.querySelector("tbody").append(tableRow);
@@ -271,46 +271,50 @@ function initFormHandler() {
 	const form = document.querySelector("form");
 
 	form.addEventListener("submit", () => {
-		let formData = new FormData(form);
+		// Only addTask to local storage if the currentTasks is less than MAX_TASKS
+		// This is to help with E2E tests
+		if (currentTasks < MAX_TASKS) {
+			let formData = new FormData(form);
 
-		const hours = formData.get("hours");
-		const mins = formData.get("minutes");
+			const hours = formData.get("hours");
+			const mins = formData.get("minutes");
 
-		try {
-			// Check for invalid input (negative or go over 60)
-			if (hours < 0 || mins < 0) {
-				throw new InvalidTime("Invalid Input! Cannot have Negative Hours/Minutes!");
-			} else if (mins > 60) {
-				throw new InvalidTime("Invalid Input! Minutes cannot be greater than 60!");
+			try {
+				// Check for invalid input (negative or go over 60)
+				if (hours < 0 || mins < 0) {
+					throw new InvalidTime("Invalid Input! Cannot have Negative Hours/Minutes!");
+				} else if (mins > 60) {
+					throw new InvalidTime("Invalid Input! Minutes cannot be greater than 60!");
+				}
+
+				// Populate taskData with data from the popup form
+				let taskData = new Object();
+				for (const key of formData.keys()) {
+					taskData[key] = formData.get(key);
+				}
+
+				// Initially set status to be planned, started and finished to be false, generate unique ID for the task
+				// set difference to -1
+				taskData.status = "Planned";
+				taskData.started = false;
+				taskData.finished = false;
+				taskData.difference = -1;
+				taskData.id = generateUniqueID();
+
+				// populate the table
+				addTask(taskData);
+
+				// save data to global variable
+				data.push(taskData);
+
+				// Extract data from storage, add the new data then save it to storage
+				let tasks = getTasksFromStorage();
+				tasks.push(taskData);
+				saveTaskToStorage(tasks);
+			} catch (err) {
+				//message to the user
+				alert(err.message);
 			}
-
-			// Populate taskData with data from the popup form
-			let taskData = new Object();
-			for (const key of formData.keys()) {
-				taskData[key] = formData.get(key);
-			}
-
-			// Initially set status to be planned, started and finished to be false, generate unique ID for the task
-			// set difference to -1
-			taskData.status = "Planned";
-			taskData.started = false;
-			taskData.finished = false;
-			taskData.difference = -1;
-			taskData.id = generateUniqueID();
-
-			// populate the table
-			addTask(taskData);
-
-			// save data to global variable
-			data.push(taskData);
-
-			// Extract data from storage, add the new data then save it to storage
-			let tasks = getTasksFromStorage();
-			tasks.push(taskData);
-			saveTaskToStorage(tasks);
-		} catch (err) {
-			//message to the user
-			alert(err.message);
 		}
 	});
 }
