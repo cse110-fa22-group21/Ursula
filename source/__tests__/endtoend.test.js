@@ -1,3 +1,4 @@
+
 // const puppeteer = require('puppeteer');
 function delay(time) {
   return new Promise(function(resolve) { 
@@ -304,4 +305,99 @@ describe('Basic user flow for Website', () => {
       // Check that there are only 5 elements in the td now
       expect(data.length).toBe(5);
     });
+
+    // Test delete button
+    it('Delete the task, check if local storage is empty', async() => {
+      // Click on Edit Button of the newly added Task
+      let editButton = await page.$('.editButton');
+      await editButton.click();
+
+      // Click Cancel Button
+      let deleteButton = await page.$('.deleteEditButton');
+
+      // Had to use special click here
+      await deleteButton.click();
+
+      // IMPORTANT THE PAGE RELOADS AND SO NAVIGATION BREAKS
+      await page.waitForNavigation();
+
+      const storage = await page.evaluate(() => {
+        return window.localStorage.getItem('tasks')
+      });
+      expected = [];
+      expect(storage).toBe(expected);
+    })
+
+    // Test adding 100 tasks
+    it('Add 100 tasks, check if local storage and html are correct', async() => {
+
+      for (let i = 0; i < 100; i += 1){
+        // Grab the add button to click
+        const addButton = await page.$('#addButton');
+        await addButton.click();
+        // selecting input fields
+        const nameAdd = await page.$('#taskNameField');
+        const hourAdd = await page.$('#hourField');
+        const minAdd = await page.$('#minField');
+        const typeAdd = await page.$('#typeTaskField');
+        const noteAdd = await page.$('#noteField');
+
+        // assigning input fields
+        // adding name
+        await page.$eval('#taskNameField', el => el.value = 'task');
+        let nameAddValue = await nameAdd.getProperty('value');
+        let nameAddAnswer = await nameAddValue.jsonValue();
+        expect(nameAddAnswer).toBe('task');
+
+        // adding hour
+        await page.$eval('#hourField', el => el.value = '1');
+        let hourAddValue = await hourAdd.getProperty('value');
+        let hourAddAnswer = await hourAddValue.jsonValue();
+        expect(hourAddAnswer).toBe('1');
+
+        // adding minutes
+        await page.$eval('#minField', el => el.value = '60');
+        let minAddValue = await minAdd.getProperty('value');
+        let minAddAnswer = await minAddValue.jsonValue();
+        expect(minAddAnswer).toBe('60');
+
+        // adding type
+        await page.$eval('#typeTaskField', el => el.value = 'type');
+        let typeAddValue = await typeAdd.getProperty('value');
+        let typeAddAnswer = await typeAddValue.jsonValue();
+        expect(typeAddAnswer).toBe('type');
+
+        // adding note
+        await page.$eval('#noteField', el => el.value = 'notes');
+        let noteAddValue = await noteAdd.getProperty('value');
+        let noteAddAnswer = await noteAddValue.jsonValue();
+        expect(noteAddAnswer).toBe('notes');
+
+        // Get the submit button and save task entry
+        let submitButton = await page.$('#subButton');
+        await submitButton.evaluate(b => b.click());
+        
+        // IMPORTANT THE PAGE RELOADS AND SO NAVIGATION BREAKS
+        await page.waitForNavigation();
+      }
+
+      for (let i = 0; i < 100; i += 1){
+        // Get the Item from local Storage
+        const localStorage = await page.evaluate(() => localStorage.getItem('tasks'));
+        const storageData = JSON.parse(localStorage);
+
+        // Check if localStorage only has one task added
+        var arrayFromStorage = await storageData;
+        var arrayLength = await arrayFromStorage.length;
+        expect(arrayLength).toBe(120);
+
+        // Check if the localStorage contains new correct JSON data
+        expect(arrayFromStorage[i].name).toBe('task');
+        expect(arrayFromStorage[i].hours).toBe('1');
+        expect(arrayFromStorage[i].minutes).toBe('60');
+        expect(arrayFromStorage[i].type).toBe('type');
+        expect(arrayFromStorage[i].notes).toBe('notes');
+      }
+    }, 1000000)
+
   });
