@@ -3,6 +3,7 @@ name: Prettier
 on:
   pull_request:
     branches: [main]
+    types: [synchronize, opened, reopened, edited]
 
 jobs:
   prettier:
