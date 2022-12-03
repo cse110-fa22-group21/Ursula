@@ -15,7 +15,7 @@ function init() {
 	for (let i = 0; i < taskList.length; i++) {
 		if (taskList[i].status == "Completed") {
 			addLog(taskList[i]);
-			if (count < 100) {
+			if (count < 99) {
 				//max value of stack : 99
 				count++;
 			} else {

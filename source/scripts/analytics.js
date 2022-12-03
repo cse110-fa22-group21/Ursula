@@ -1,3 +1,5 @@
+var maxFull = false;
+var count = 0;
 // Run the init() function when the page has loaded
 window.addEventListener("DOMContentLoaded", init);
 
@@ -21,6 +23,10 @@ function addTaskToDocument(tasks) {
 	for (let i = 0; i < tasks.length; i++) {
 		if (tasks[i].difference > 0) {
 			addTask(tasks[i]);
+			if (i >= 99 ){
+				maxFull = true;
+			}
+			
 		}
 	}
 }
@@ -72,8 +78,8 @@ function addTask(data) {
     #reactEmoji {
         height: 35px;
       }`;
-
 	document.body.querySelector("tbody").append(style);
+
 	// On Click Task Name, Show the Task Notes
 	// Create another task row tag and put the notes into it
 	const tableRowNotes = document.createElement("tr");
@@ -87,4 +93,10 @@ function addTask(data) {
 	tableRow.addEventListener("click", () => {
 		document.getElementById(`notes${data.id}`).style.display = document.getElementById(`notes${data.id}`).style.display == "none" ? "table-row" : "none";
 	});
+
+	// deleting oldest task
+	if (maxFull){
+		document.body.querySelector("tbody").querySelector("tr").remove();
+		document.body.querySelector("tbody").querySelector("tr").remove();
+	}
 }
