@@ -60,7 +60,7 @@ function addTask(data) {
     <td>${data.hours} hr ${data.minutes} min</td>
     <td>${hrbuf} hr ${minbuf} min</td>
     <td>
-    <img id="reactEmoji" src="/source/images/${reaction}.png" alt="Reaction emoji for task ${data.id}">
+    <img id="reactEmoji" src="./source/images/${reaction}.png" alt="Reaction emoji for task ${data.id}">
     </td>`;
 	tableRow.id = `task${data.id}`;
 	tableRow.className = "task";
