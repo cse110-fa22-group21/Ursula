@@ -7,15 +7,19 @@ jobs:
   merge_main:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out main branch
+      - name: Check out gh-pages branch
         uses: actions/checkout@v3
-      - name: Merge main to gh-pages
-        uses: devmasx/merge-branch@master
         with:
-          type: now
-          from_branch: main
-          target_branch: gh-pages
-          github_token: ${{ github.token }}
+          ref: gh-pages
+
+      - name: Merge main to gh-pages
+        run: |
+          git config --global user.name 'Github pages action'
+          git config --global user.email 'pages@users.noreply.github.com'
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
+          git merge -X theirs main
+          git commit --allow-empty -m "Merged main branch to gh-pages"
+          git push
   move_html_files-compile_JSDocs:
     needs: merge_main
     runs-on: ubuntu-latest
