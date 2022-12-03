@@ -39,7 +39,10 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>// Run the init() function when the page has loaded
+            <pre class="prettyprint source linenums"><code>// Global Variables
+var maxFull = false;
+
+// Run the init() function when the page has loaded
 window.addEventListener("DOMContentLoaded", init);
 
 // Starts the task program, all function calls trace back here
@@ -62,6 +65,9 @@ function addTaskToDocument(tasks) {
 	for (let i = 0; i &lt; tasks.length; i++) {
 		if (tasks[i].difference > 0) {
 			addTask(tasks[i]);
+			if (i >= 99) {
+				maxFull = true;
+			}
 		}
 	}
 }
@@ -113,8 +119,8 @@ function addTask(data) {
     #reactEmoji {
         height: 35px;
       }`;
-
 	document.body.querySelector("tbody").append(style);
+
 	// On Click Task Name, Show the Task Notes
 	// Create another task row tag and put the notes into it
 	const tableRowNotes = document.createElement("tr");
@@ -128,6 +134,12 @@ function addTask(data) {
 	tableRow.addEventListener("click", () => {
 		document.getElementById(`notes${data.id}`).style.display = document.getElementById(`notes${data.id}`).style.display == "none" ? "table-row" : "none";
 	});
+
+	// deleting oldest task
+	if (maxFull) {
+		document.body.querySelector("tbody").querySelector("tr").remove();
+		document.body.querySelector("tbody").querySelector("tr").remove();
+	}
 }
 </code></pre>
         </article>
