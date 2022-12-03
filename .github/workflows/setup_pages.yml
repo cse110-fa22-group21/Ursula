@@ -7,19 +7,24 @@ jobs:
   merge_main:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out gh-pages branch
-        uses: actions/checkout@v3
-        with:
-          ref: gh-pages
-
       - name: Merge main to gh-pages
         run: |
           git config --global user.name 'Github pages action'
           git config --global user.email 'pages@users.noreply.github.com'
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
+
+          git fetch origin
+          
+          git checkout main
+          git merge origin/main
+
+          git checkout gh-pages
+          git merge origin/gh-pages
+
           git merge -X theirs main
           git commit --allow-empty -m "Merged main branch to gh-pages"
-          git push
+
+          git push origin gh-pages
   move_html_files-compile_JSDocs:
     needs: merge_main
     runs-on: ubuntu-latest
