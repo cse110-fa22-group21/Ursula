@@ -1,6 +1,8 @@
 name: E2E and unit testing code
 
 on:
+  push:
+    branches: ["main"]
   pull_request:
     branches: ["main"]
 
