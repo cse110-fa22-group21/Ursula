@@ -324,7 +324,7 @@ describe('Basic user flow for Website', () => {
       const storage = await page.evaluate(() => {
         return window.localStorage.getItem('tasks')
       });
-      expected = [];
+      expected = "[]";
       expect(storage).toBe(expected);
     })
 
@@ -389,7 +389,7 @@ describe('Basic user flow for Website', () => {
         // Check if localStorage only has one task added
         var arrayFromStorage = await storageData;
         var arrayLength = await arrayFromStorage.length;
-        expect(arrayLength).toBe(120);
+        expect(arrayLength).toBe(100);
 
         // Check if the localStorage contains new correct JSON data
         expect(arrayFromStorage[i].name).toBe('task');
@@ -399,5 +399,84 @@ describe('Basic user flow for Website', () => {
         expect(arrayFromStorage[i].notes).toBe('notes');
       }
     }, 1000000)
+    
+    // Testing for clicking start button
+    it('Click start button for each task, check if field .started changed', async() => {
+      // Get the Item from local Storage
+      let localStorage = await page.evaluate(() => localStorage.getItem('tasks'));
+      let storageData = JSON.parse(localStorage);
 
+      // Check if localStorage only has one task added
+      var arrayFromStorage = await storageData;
+      var arrayLength = await arrayFromStorage.length;
+      expect(arrayLength).toBe(100);
+
+      // clicking start button for every task
+      for (let i = 0; i < 100; i++){
+        const id = arrayFromStorage[i].id;
+        const startButton = await page.$(`#startButton${id}`);
+        await startButton.click();
+
+        // IMPORTANT THE PAGE RELOADS AND SO NAVIGATION BREAKS
+        await page.waitForNavigation();
+      }
+
+      // Get the Item from local Storage
+      localStorage = await page.evaluate(() => localStorage.getItem('tasks'));
+      storageData = JSON.parse(localStorage);
+
+      // Check if localStorage only has one task added
+      arrayFromStorage = await storageData;
+      arrayLength = await arrayFromStorage.length;
+      expect(arrayLength).toBe(100);
+
+      // checking if the field .started for each task changed
+      for (let i = 0; i < 100; i++){
+        const startStatus = arrayFromStorage[i].started;
+        const finishStatus = arrayFromStorage[i].finished;
+
+        expect(startStatus).toBe(true);
+        expect(finishStatus).toBe(false);
+      }
+    }, 1000000)
+
+    // Testing for clicking finish button
+    it('Click finish button for each task, check if field .fnished changed', async() => {
+      // Get the Item from local Storage
+      let localStorage = await page.evaluate(() => localStorage.getItem('tasks'));
+      let storageData = JSON.parse(localStorage);
+
+      // Check if localStorage only has one task added
+      var arrayFromStorage = await storageData;
+      var arrayLength = await arrayFromStorage.length;
+      expect(arrayLength).toBe(100);
+
+      // clicking start button for every task
+      for (let i = 0; i < 100; i++){
+        const id = arrayFromStorage[i].id;
+        const finishButton = await page.$(`#startButton${id}`);
+        await finishButton.click();
+
+        // IMPORTANT THE PAGE RELOADS AND SO NAVIGATION BREAKS
+        await page.waitForNavigation();
+      }
+
+      // Get the Item from local Storage
+      localStorage = await page.evaluate(() => localStorage.getItem('tasks'));
+      storageData = JSON.parse(localStorage);
+
+      // Check if localStorage only has one task added
+      arrayFromStorage = await storageData;
+      arrayLength = await arrayFromStorage.length;
+      expect(arrayLength).toBe(100);
+
+      // checking if the field .started for each task changed
+      for (let i = 0; i < 100; i++){
+        const startStatus = arrayFromStorage[i].started;
+        const finishStatus = arrayFromStorage[i].finished;
+
+        expect(startStatus).toBe(true);
+        expect(finishStatus).toBe(true);
+      }
+    }, 1000000)
   });
