@@ -526,12 +526,12 @@ describe("Basic user flow for Website", () => {
 	//-------------------------------------------------------------------------------------------------------------------------DELETE TEAM
 	// Clear local storage, add a task, remove it, and check if the local storage is empty
 	it("Edit data in the form, click submit then check if localstorage is correct and table is correct", async () => {
-        // Clear local storage
-        await page.evaluate(() => {
+		// Clear local storage
+		await page.evaluate(() => {
 			return window.localStorage.clear();
 		});
-        
-		for(let i = 0; i < 4; i++){
+
+		for (let i = 0; i < 4; i++) {
 			// Grab the add button to click
 			const addButton = await page.$("#addButton");
 			await addButton.click();
@@ -618,13 +618,13 @@ describe("Basic user flow for Website", () => {
 		const idToBeDeleted = arrayFromStorage[0].id;
 
 		// Click on Edit Button of the newly added Task
-		let editButton = await page.$("#editButton"+idToBeDeleted);
+		let editButton = await page.$("#editButton" + idToBeDeleted);
 		await editButton.click();
 
 		// Click delete Button
-        await page.evaluate(() => {
-            document.getElementsByClassName('deleteEditButton')[0].click();
-        });
+		await page.evaluate(() => {
+			document.getElementsByClassName("deleteEditButton")[0].click();
+		});
 
 		// IMPORTANT THE PAGE RELOADS AND SO NAVIGATION BREAKS
 		await page.waitForNavigation();
@@ -646,6 +646,6 @@ describe("Basic user flow for Website", () => {
 		var arrayLength = await arrayFromStorage.length;
 		expect(arrayLength).toBe(3);
 
-		expect(arrayFromStorage.some(x => x.id == idToBeDeleted)).toBe(false);
+		expect(arrayFromStorage.some((x) => x.id == idToBeDeleted)).toBe(false);
 	});
 });
