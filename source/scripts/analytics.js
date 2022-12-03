@@ -23,10 +23,9 @@ function addTaskToDocument(tasks) {
 	for (let i = 0; i < tasks.length; i++) {
 		if (tasks[i].difference > 0) {
 			addTask(tasks[i]);
-			if (i >= 99 ){
+			if (i >= 99) {
 				maxFull = true;
 			}
-			
 		}
 	}
 }
@@ -95,7 +94,7 @@ function addTask(data) {
 	});
 
 	// deleting oldest task
-	if (maxFull){
+	if (maxFull) {
 		document.body.querySelector("tbody").querySelector("tr").remove();
 		document.body.querySelector("tbody").querySelector("tr").remove();
 	}
