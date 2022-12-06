@@ -251,7 +251,7 @@ describe("Basic user flow for Website", () => {
 		expect(noteFieldAnswer).toBe("I love E2E Testing");
 
 		// Warning popup will show, click ok
-		page.on('dialog', async dialog => {
+		page.on("dialog", async (dialog) => {
 			await dialog.accept();
 		});
 
@@ -602,9 +602,9 @@ describe("Basic user flow for Website", () => {
 	});
 
 	// TEAM 1 - MAIN PAGE 1 - Click reset button task hasnt been started , check that data.status has correct value, start, finish tiemstamp empty
-	it('TEAM 1 - MAIN PAGE 1 - Click Reset Button (Task Not Started), check JSON fields are correct.', async () => {
+	it("TEAM 1 - MAIN PAGE 1 - Click Reset Button (Task Not Started), check JSON fields are correct.", async () => {
 		// Get the Item from local Storage
-		let localStorage = await page.evaluate(() => localStorage.getItem('tasks'));
+		let localStorage = await page.evaluate(() => localStorage.getItem("tasks"));
 		let storageData = JSON.parse(localStorage);
 		var arrayFromStorage = await storageData;
 
@@ -613,14 +613,14 @@ describe("Basic user flow for Website", () => {
 		expect(arrayFromStorage[0].started).toBe(false);
 		expect(arrayFromStorage[0].start).toBe(undefined);
 		expect(arrayFromStorage[0].status).toBe("Planned");
-		let editButton = await page.$('.editButton');
+		let editButton = await page.$(".editButton");
 		await editButton.click();
 
 		// await page.waitForNavigation();
 		let resetButton = await page.$(`#resetButton`);
 		await resetButton.click();
 		await page.waitForNavigation();
-		localStorage = await page.evaluate(() => localStorage.getItem('tasks'));
+		localStorage = await page.evaluate(() => localStorage.getItem("tasks"));
 		storageData = JSON.parse(localStorage);
 		arrayFromStorage = await storageData;
 
@@ -628,12 +628,12 @@ describe("Basic user flow for Website", () => {
 		expect(arrayFromStorage[0].started).toBe(false);
 		expect(arrayFromStorage[0].start).toBe("");
 		expect(arrayFromStorage[0].status).toBe("Planned");
-	})
+	});
 
 	// TEAM 1 - MAIN PAGE 2 - Click reset button when task has beeen started , check that data.status has correct value, start,finish timestamp empty
-	it('TEAM 1 - MAIN PAGE 2 - Click Reset Button (Task Started), check JSON fields are correct.', async () => {
+	it("TEAM 1 - MAIN PAGE 2 - Click Reset Button (Task Started), check JSON fields are correct.", async () => {
 		// Get the Item from local Storage
-		let localStorage = await page.evaluate(() => localStorage.getItem('tasks'));
+		let localStorage = await page.evaluate(() => localStorage.getItem("tasks"));
 		let storageData = JSON.parse(localStorage);
 		var arrayFromStorage = await storageData;
 		console.log(arrayFromStorage);
@@ -642,7 +642,7 @@ describe("Basic user flow for Website", () => {
 		let startButton = await page.$(`#startButton${arrayFromStorage[0].id}`);
 		await startButton.click();
 		await page.waitForNavigation();
-		localStorage = await page.evaluate(() => localStorage.getItem('tasks'));
+		localStorage = await page.evaluate(() => localStorage.getItem("tasks"));
 		storageData = JSON.parse(localStorage);
 		arrayFromStorage = await storageData;
 
@@ -652,14 +652,14 @@ describe("Basic user flow for Website", () => {
 		expect(arrayFromStorage[0].status).toBe("In-Progress");
 
 		// click edit to bring up menu then click reset
-		let editButton = await page.$('.editButton');
+		let editButton = await page.$(".editButton");
 		await editButton.click();
 		let resetButton = await page.$(`#resetButton`);
 		await resetButton.click();
 		await page.waitForNavigation();
 
 		// Get the Item from local Storage
-		localStorage = await page.evaluate(() => localStorage.getItem('tasks'));
+		localStorage = await page.evaluate(() => localStorage.getItem("tasks"));
 		storageData = JSON.parse(localStorage);
 		arrayFromStorage = await storageData;
 
@@ -737,39 +737,41 @@ describe("Basic user flow for Website", () => {
 	});
 
 	// TEAM 3 - ANALYTICS PAGE 1 - Clear local storage, add and complete one task, check if it appear in analytics
-	it('TEAM 3 - ANALYTICS PAGE 1 - Clear local storage, add and complete one task, check if it appear in analytics.', async () => {
+	it("TEAM 3 - ANALYTICS PAGE 1 - Clear local storage, add and complete one task, check if it appear in analytics.", async () => {
 		//clear local storage
-		await page.evaluate(() => { window.localStorage.clear(); });
+		await page.evaluate(() => {
+			window.localStorage.clear();
+		});
 
 		// Grab the add button to click
-		const addButton = await page.$('#addButton');
+		const addButton = await page.$("#addButton");
 		await addButton.click();
 
 		// assigning input fields
 		// adding name
-		await page.$eval('#taskNameField', el => el.value = 'AnalyticTask');
+		await page.$eval("#taskNameField", (el) => (el.value = "AnalyticTask"));
 
 		// adding hour
-		await page.$eval('#hourField', el => el.value = '4');
+		await page.$eval("#hourField", (el) => (el.value = "4"));
 
 		// adding minutes
-		await page.$eval('#minField', el => el.value = '30');
+		await page.$eval("#minField", (el) => (el.value = "30"));
 
 		// adding type
-		await page.$eval('#typeTaskField', el => el.value = 'FirstTask');
+		await page.$eval("#typeTaskField", (el) => (el.value = "FirstTask"));
 
 		// adding note
-		await page.$eval('#noteField', el => el.value = 'First Analytic Task!');
+		await page.$eval("#noteField", (el) => (el.value = "First Analytic Task!"));
 
 		// Get the submit button and save task entry
-		let submitButton = await page.$('#subButton');
-		await submitButton.evaluate(b => b.click());
+		let submitButton = await page.$("#subButton");
+		await submitButton.evaluate((b) => b.click());
 
 		// IMPORTANT THE PAGE RELOADS AND SO NAVIGATION BREAKS
 		await page.waitForNavigation();
 
 		// Get the Item from local Storage
-		let localStorage = await page.evaluate(() => localStorage.getItem('tasks'));
+		let localStorage = await page.evaluate(() => localStorage.getItem("tasks"));
 		let storageData = await JSON.parse(localStorage);
 		var arrayFromStorage = await storageData;
 
@@ -788,7 +790,7 @@ describe("Basic user flow for Website", () => {
 		await page.waitForNavigation();
 
 		// Visit Analytic Page
-		await page.goto('https://cse110-fa22-group21.github.io/cse110-fa22-group21/analytics.html');
+		await page.goto("https://cse110-fa22-group21.github.io/cse110-fa22-group21/analytics.html");
 
 		// Grab the data in the table row
 		const data = await page.$$eval("table tr td", (tds) =>
@@ -807,19 +809,17 @@ describe("Basic user flow for Website", () => {
 
 		// Check that there are only 5 elements in the td now
 		expect(data.length).toBe(5);
-
 	}, 1000000);
 
 	// TODO TEAM 2 - LOG PAGE 1
 	// PLEASE DO THE FIRST TEST HERE - REFER TO THINGS TO TEST DOCUMENT
 	// https://docs.google.com/document/d/1vlHuOk9zPHqUExh_X8M09jnKiJaA8sozQ1J0ZeMtGDU/edit#
 
-
 	//-------------------------------------------------------------------------------------------------------------------------DELETE TEAM
 	// DELETE 1 - Clear local storage, add a task, remove it, and check if the local storage is empty
 	it("DELETE 1 - Edit data in the form, click submit then check if localstorage is correct and table is correct.", async () => {
 		// We were in Analytics Page, so visit Home Page
-		await page.goto('https://cse110-fa22-group21.github.io/cse110-fa22-group21/');
+		await page.goto("https://cse110-fa22-group21.github.io/cse110-fa22-group21/");
 
 		// Clear local storage
 		await page.evaluate(() => {
@@ -945,64 +945,66 @@ describe("Basic user flow for Website", () => {
 	});
 
 	// TEAM 1 - MAINPAGE 5 - Populate data with 101 tasks
-	it('TEAM 1 - MAIN PAGE 5 - Add 101 tasks, check if local storage only stored 100 tasks.', async () => {
+	it("TEAM 1 - MAIN PAGE 5 - Add 101 tasks, check if local storage only stored 100 tasks.", async () => {
 		//clear local storage
-		await page.evaluate(() => { window.localStorage.clear(); });
+		await page.evaluate(() => {
+			window.localStorage.clear();
+		});
 
 		// go back to main page
 		await page.goto("https://cse110-fa22-group21.github.io/cse110-fa22-group21/");
 
 		for (let i = 0; i < 101; i += 1) {
 			// Grab the add button to click
-			const addButton = await page.$('#addButton');
+			const addButton = await page.$("#addButton");
 			await addButton.click();
 			// selecting input fields
-			const nameAdd = await page.$('#taskNameField');
-			const hourAdd = await page.$('#hourField');
-			const minAdd = await page.$('#minField');
-			const typeAdd = await page.$('#typeTaskField');
-			const noteAdd = await page.$('#noteField');
+			const nameAdd = await page.$("#taskNameField");
+			const hourAdd = await page.$("#hourField");
+			const minAdd = await page.$("#minField");
+			const typeAdd = await page.$("#typeTaskField");
+			const noteAdd = await page.$("#noteField");
 
 			// assigning input fields
 			// adding name
-			await page.$eval('#taskNameField', el => el.value = 'task');
-			let nameAddValue = await nameAdd.getProperty('value');
+			await page.$eval("#taskNameField", (el) => (el.value = "task"));
+			let nameAddValue = await nameAdd.getProperty("value");
 			let nameAddAnswer = await nameAddValue.jsonValue();
-			expect(nameAddAnswer).toBe('task');
+			expect(nameAddAnswer).toBe("task");
 
 			// adding hour
-			await page.$eval('#hourField', el => el.value = '1');
-			let hourAddValue = await hourAdd.getProperty('value');
+			await page.$eval("#hourField", (el) => (el.value = "1"));
+			let hourAddValue = await hourAdd.getProperty("value");
 			let hourAddAnswer = await hourAddValue.jsonValue();
-			expect(hourAddAnswer).toBe('1');
+			expect(hourAddAnswer).toBe("1");
 
 			// adding minutes
-			await page.$eval('#minField', el => el.value = '60');
-			let minAddValue = await minAdd.getProperty('value');
+			await page.$eval("#minField", (el) => (el.value = "60"));
+			let minAddValue = await minAdd.getProperty("value");
 			let minAddAnswer = await minAddValue.jsonValue();
-			expect(minAddAnswer).toBe('60');
+			expect(minAddAnswer).toBe("60");
 
 			// adding type
-			await page.$eval('#typeTaskField', el => el.value = 'type');
-			let typeAddValue = await typeAdd.getProperty('value');
+			await page.$eval("#typeTaskField", (el) => (el.value = "type"));
+			let typeAddValue = await typeAdd.getProperty("value");
 			let typeAddAnswer = await typeAddValue.jsonValue();
-			expect(typeAddAnswer).toBe('type');
+			expect(typeAddAnswer).toBe("type");
 
 			// adding note
-			await page.$eval('#noteField', el => el.value = 'notes');
-			let noteAddValue = await noteAdd.getProperty('value');
+			await page.$eval("#noteField", (el) => (el.value = "notes"));
+			let noteAddValue = await noteAdd.getProperty("value");
 			let noteAddAnswer = await noteAddValue.jsonValue();
-			expect(noteAddAnswer).toBe('notes');
+			expect(noteAddAnswer).toBe("notes");
 
 			// Get the submit button and save task entry
-			let submitButton = await page.$('#subButton');
-			await submitButton.evaluate(b => b.click());
+			let submitButton = await page.$("#subButton");
+			await submitButton.evaluate((b) => b.click());
 
 			// IMPORTANT THE PAGE RELOADS AND SO NAVIGATION BREAKS
 			await page.waitForNavigation();
 		}
 		// Get the Item from local Storage
-		const localStorage = await page.evaluate(() => localStorage.getItem('tasks'));
+		const localStorage = await page.evaluate(() => localStorage.getItem("tasks"));
 		const storageData = await JSON.parse(localStorage);
 
 		// Check if localStorage has 100 task added
@@ -1012,18 +1014,18 @@ describe("Basic user flow for Website", () => {
 
 		for (let i = 0; i < 100; i += 1) {
 			// Check if the localStorage contains new correct JSON data
-			expect(arrayFromStorage[i].name).toBe('task');
-			expect(arrayFromStorage[i].hours).toBe('1');
-			expect(arrayFromStorage[i].minutes).toBe('60');
-			expect(arrayFromStorage[i].type).toBe('type');
-			expect(arrayFromStorage[i].notes).toBe('notes');
+			expect(arrayFromStorage[i].name).toBe("task");
+			expect(arrayFromStorage[i].hours).toBe("1");
+			expect(arrayFromStorage[i].minutes).toBe("60");
+			expect(arrayFromStorage[i].type).toBe("type");
+			expect(arrayFromStorage[i].notes).toBe("notes");
 		}
 	}, 1000000);
 
 	// Testing for clicking start button
-	it('Click start button for each task, check if field .started changed', async () => {
+	it("Click start button for each task, check if field .started changed", async () => {
 		// Get the Item from local Storage
-		let localStorage = await page.evaluate(() => localStorage.getItem('tasks'));
+		let localStorage = await page.evaluate(() => localStorage.getItem("tasks"));
 		let storageData = await JSON.parse(localStorage);
 
 		// Check if localStorage has 100 task added
@@ -1042,7 +1044,7 @@ describe("Basic user flow for Website", () => {
 		}
 
 		// Get the Item from local Storage
-		localStorage = await page.evaluate(() => localStorage.getItem('tasks'));
+		localStorage = await page.evaluate(() => localStorage.getItem("tasks"));
 		storageData = await JSON.parse(localStorage);
 
 		// Check if localStorage has 100 task added
@@ -1061,9 +1063,9 @@ describe("Basic user flow for Website", () => {
 	}, 1000000);
 
 	// Testing for clicking finish button
-	it('Click finish button for each task, check if field .fnished changed', async () => {
+	it("Click finish button for each task, check if field .fnished changed", async () => {
 		// Get the Item from local Storage
-		let localStorage = await page.evaluate(() => localStorage.getItem('tasks'));
+		let localStorage = await page.evaluate(() => localStorage.getItem("tasks"));
 		let storageData = JSON.parse(localStorage);
 
 		// Check if localStorage only has one task added
@@ -1082,7 +1084,7 @@ describe("Basic user flow for Website", () => {
 		}
 
 		// Get the Item from local Storage
-		localStorage = await page.evaluate(() => localStorage.getItem('tasks'));
+		localStorage = await page.evaluate(() => localStorage.getItem("tasks"));
 		storageData = await JSON.parse(localStorage);
 
 		// Check if localStorage has 100 task added
@@ -1101,36 +1103,36 @@ describe("Basic user flow for Website", () => {
 	}, 1000000);
 
 	// TEAM 3 - ANALYTICS PAGE 2 - After 100 task being complete, Check if the oldest one is removed from table
-	it('TEAM 3 - ANALYTICS PAGE 2 - After 100 task being complete, Check if the oldest one is removed from table', async () => {
+	it("TEAM 3 - ANALYTICS PAGE 2 - After 100 task being complete, Check if the oldest one is removed from table", async () => {
 		// Grab the add button to click
-		const addButton = await page.$('#addButton');
+		const addButton = await page.$("#addButton");
 		await addButton.click();
 
 		// assigning input fields
 		// adding name
-		await page.$eval('#taskNameField', el => el.value = 'Check Limits Task');
+		await page.$eval("#taskNameField", (el) => (el.value = "Check Limits Task"));
 
 		// adding hour
-		await page.$eval('#hourField', el => el.value = '6');
+		await page.$eval("#hourField", (el) => (el.value = "6"));
 
 		// adding minutes
-		await page.$eval('#minField', el => el.value = '15');
+		await page.$eval("#minField", (el) => (el.value = "15"));
 
 		// adding type
-		await page.$eval('#typeTaskField', el => el.value = 'LimitsTask');
+		await page.$eval("#typeTaskField", (el) => (el.value = "LimitsTask"));
 
 		// adding note
-		await page.$eval('#noteField', el => el.value = 'Checking the Maximum Task');
+		await page.$eval("#noteField", (el) => (el.value = "Checking the Maximum Task"));
 
 		// Get the submit button and save task entry
-		let submitButton = await page.$('#subButton');
-		await submitButton.evaluate(b => b.click());
+		let submitButton = await page.$("#subButton");
+		await submitButton.evaluate((b) => b.click());
 
 		// IMPORTANT THE PAGE RELOADS AND SO NAVIGATION BREAKS
 		await page.waitForNavigation();
 
 		// Get the Item from local Storage
-		let localStorage = await page.evaluate(() => localStorage.getItem('tasks'));
+		let localStorage = await page.evaluate(() => localStorage.getItem("tasks"));
 		let storageData = await JSON.parse(localStorage);
 		var arrayFromStorage = await storageData;
 
@@ -1152,7 +1154,7 @@ describe("Basic user flow for Website", () => {
 		await page.waitForNavigation();
 
 		// Visit Analytic Page
-		await page.goto('https://cse110-fa22-group21.github.io/cse110-fa22-group21/analytics.html');
+		await page.goto("https://cse110-fa22-group21.github.io/cse110-fa22-group21/analytics.html");
 
 		// Grab task using the unique id of the oldest task
 		const oldestTask = await page.$(`#task${oldestId}`);
