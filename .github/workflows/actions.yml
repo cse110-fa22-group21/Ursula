@@ -7,6 +7,7 @@ on:
     branches: ["main", "bug-*", "feature-*", "WIP-*"]
   pull_request:
     branches: ["main", "bug-*", "feature-*", "WIP-*"]
+    types: [synchronize, opened, reopened, edited]
 
 jobs:
   build:
