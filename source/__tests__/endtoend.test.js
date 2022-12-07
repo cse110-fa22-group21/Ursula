@@ -609,7 +609,6 @@ describe("Basic user flow for Website", () => {
 		var arrayFromStorage = await storageData;
 
 		// Check that the value of .started is false, start is undefined, status is Planned
-		console.log(arrayFromStorage[0]);
 		expect(arrayFromStorage[0].started).toBe(false);
 		expect(arrayFromStorage[0].start).toBe(undefined);
 		expect(arrayFromStorage[0].status).toBe("Planned");
@@ -636,7 +635,6 @@ describe("Basic user flow for Website", () => {
 		let localStorage = await page.evaluate(() => localStorage.getItem("tasks"));
 		let storageData = JSON.parse(localStorage);
 		var arrayFromStorage = await storageData;
-		console.log(arrayFromStorage);
 
 		// Click start button
 		let startButton = await page.$(`#startButton${arrayFromStorage[0].id}`);
@@ -813,7 +811,24 @@ describe("Basic user flow for Website", () => {
 
 	// TODO TEAM 2 - LOG PAGE 1
 	// PLEASE DO THE FIRST TEST HERE - REFER TO THINGS TO TEST DOCUMENT
-	// https://docs.google.com/document/d/1vlHuOk9zPHqUExh_X8M09jnKiJaA8sozQ1J0ZeMtGDU/edit#
+	it("TEAM 2 - LOG PAGE 1 -check if it appear in log.", async () => {
+		// Visit Analytic Page
+		await page.goto("https://cse110-fa22-group21.github.io/cse110-fa22-group21/log.html");
+
+		// Grab the data in the table row
+		const data = await page.$$eval("table tr td", (tds) =>
+			tds.map((td) => {
+				return td.innerText;
+			})
+		);
+
+		// Check if the data in each td is correct
+		expect(data[0]).toBe("AnalyticTask");
+		expect(data[1]).toBe("FirstTask");
+
+		// Check that there are only 3 elements in the td now
+		expect(data.length).toBe(3);
+	}, 1000000);
 
 	//-------------------------------------------------------------------------------------------------------------------------DELETE TEAM
 	// DELETE 1 - Clear local storage, add a task, remove it, and check if the local storage is empty
@@ -1164,4 +1179,22 @@ describe("Basic user flow for Website", () => {
 	});
 
 	// TODO TEAM 2 - LOG PAGE 2 GOES HERE, START AND END BUTTONS ALREADY CLICKED 100 TIMES
+	it("TEAM 2 - LOG PAGE - After 100 task being complete, Check if the oldest one is removed from table", async () => {
+		// Visit Log Page
+		await page.goto("https://cse110-fa22-group21.github.io/cse110-fa22-group21/log.html");
+
+		// Get the Item from local Storage
+		let localStorage = await page.evaluate(() => localStorage.getItem("tasks"));
+		let storageData = await JSON.parse(localStorage);
+		var arrayFromStorage = await storageData;
+
+		// Grabing the id of the oldest task
+		const oldestId = await arrayFromStorage[0].id;
+
+		// Grab task using the unique id of the oldest task
+		const oldestTask = await page.$(`#task${oldestId}`);
+
+		// Oldest task should be removed from the table after we add the new task
+		expect(oldestTask).toBe(null);
+	});
 });
