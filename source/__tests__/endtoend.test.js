@@ -809,8 +809,7 @@ describe("Basic user flow for Website", () => {
 		expect(data.length).toBe(5);
 	}, 1000000);
 
-	// TODO TEAM 2 - LOG PAGE 1
-	// PLEASE DO THE FIRST TEST HERE - REFER TO THINGS TO TEST DOCUMENT
+	// TEAM 2 - LOG PAGE 1 - Check that first task appears in log page.
 	it("TEAM 2 - LOG PAGE 1 -check if it appear in log.", async () => {
 		// Visit Analytic Page
 		await page.goto("https://cse110-fa22-group21.github.io/cse110-fa22-group21/log.html");
@@ -1178,8 +1177,8 @@ describe("Basic user flow for Website", () => {
 		expect(oldestTask).toBe(null);
 	});
 
-	// TODO TEAM 2 - LOG PAGE 2 GOES HERE, START AND END BUTTONS ALREADY CLICKED 100 TIMES
-	it("TEAM 2 - LOG PAGE - After 100 task being complete, Check if the oldest one is removed from table", async () => {
+	// TEAM 2 - LOG PAGE 2 - Check that oldest one is removed from table
+	it("TEAM 2 - LOG PAGE 2 - After 100 task being complete, Check if the oldest one is removed from table", async () => {
 		// Visit Log Page
 		await page.goto("https://cse110-fa22-group21.github.io/cse110-fa22-group21/log.html");
 
