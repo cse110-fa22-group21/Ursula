@@ -1190,7 +1190,7 @@ describe("Basic user flow for Website", () => {
 
 		// Grabing the id of the oldest task
 		const oldestId = await arrayFromStorage[0].id;
-	
+
 		// Grab task using the unique id of the oldest task
 		const oldestTask = await page.$(`#task${oldestId}`);
 
