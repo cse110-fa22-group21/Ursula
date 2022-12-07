@@ -4,7 +4,7 @@
 
 ## Welcome To Our Repo
 
-We are a 10 member team working on a CRUD application using HTML, CSS and JavaScript. The team consists of 2 team leads and 8 developers. Our mentor is Navya Shetty. Here is a link to the [team page](admin/team.md). If you are looking to get started in Team Ursula then be sure to read our [onboarding files](../admin/../cse110-fa22-group21/admin/onboard.md)!
+We are a 10 member team working on a CRUD application using HTML, CSS and JavaScript. The team consists of 2 team leads and 8 developers. Our mentor is Navya Shetty. Here is a link to the [team page](admin/team.md). If you are looking to get started in Team Ursula then be sure to read our [onboarding files](admin/onboard.md)!
 
 ## Project
 
