@@ -13,7 +13,7 @@ Our GitHub Repository has 4 main folders:
 As a new member of Team Ursula, it is highly recommended that you spend some time reading through our [programming manifesto](../admin/cipipeline/CodingManifest.md) so that you can familiarize yourself with the standards and expectations in which we write code here. Be sure to read that before you begin writing any code.
 
 ## CI/CD Pipeline
-Being familiar with our CI/CD Pipeline is also highly recommended before you begin writing any code. We have thoroughly documented all the processes in [githubworkflows.md](../admin/cipipeline/githubworkflows.md) and even provided [video](../admin/cipipeline/phase2.mp4.mp4) examples to describe and show off the CI/CD pipeline that is in place so be sure to check that out.
+Being familiar with our CI/CD Pipeline is also highly recommended before you begin writing any code. We have thoroughly documented all the processes in [githubworkflows.md](../admin/cipipeline/phase2.md) and even provided [video](../admin/cipipeline/phase2.mp4.mp4) examples to describe and show off the CI/CD pipeline that is in place so be sure to check that out.
 
 ## Definition of Done
 Having a good understanding of what it means to us for a feature to be "Done" is also very important. You can familiarize yourself with our definition of done by reading [definitionofdone.md](../specs/definitionofdone.md) so that you understand what it means for us to be "Done".
