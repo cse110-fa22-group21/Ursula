@@ -28,6 +28,8 @@ main {
 #pageIdentifier {
 	margin-top: 10rem;
 	text-align: center;
+	display: flex;
+	justify-content: center;
 }
 /* End of Page Identifier Name */
 

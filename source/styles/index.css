@@ -5,9 +5,12 @@
 #pageIdentifier > * {
 	/* Font size of page identifier + button */
 	display: inline;
-	margin-left: 5vw;
 }
 /* End of Page Identifier*/
+
+h1 {
+	margin: auto;
+}
 
 /* Button Styling */
 button {
@@ -45,7 +48,8 @@ button:hover {
 }
 
 #addButton {
-	border: 1px solid var(--btnBorderColor);
+	/* border: 1px solid var(--btnBorderColor); */
+	border: none;
 	border-radius: 6px;
 	box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
 	box-sizing: border-box;
@@ -60,7 +64,7 @@ button:hover {
 	vertical-align: middle;
 	white-space: nowrap;
 	word-wrap: break-word;
-	margin-left: 10vw;
+	margin-right: 10%;
 }
 /* End of Button Styling */
 /* IMPORTANT EDIT FORM AND ADD FORM ARE USING THE SAME CSS FOR CONSISTENCY */
