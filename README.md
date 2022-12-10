@@ -27,9 +27,9 @@ As aspiring software developers, we strive for our work to be professional, high
 -   Developer - Tianya Zhan
 -   Developer - Vicky Chou
 -   Developer - Ziting Xiong
--   Developer - Melvyn Tan
+-   Developer - Melvyn Nam Qiang Tan
 
 ## JSDocs Documentation
 
-JSDocs ocumentation can be found at
+JSDocs Documentation can be found at
 https://cse110-fa22-group21.github.io/cse110-fa22-group21/docs/index.html
